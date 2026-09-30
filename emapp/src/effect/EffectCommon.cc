@@ -711,6 +711,36 @@ void
 Preshader::execute(const GlobalUniform::Buffer &inputBuffer, GlobalUniform::Buffer &outputBuffer) const
 {
     const size_t numInstructions = m_instructions.size();
+#if defined(NANOEM_ENABLE_LOGGING)
+    /* TEMPORARY DIAGNOSTIC: 输出预着色器程序内容（判断 static 初始化依赖的参数是否作为输入被读取） */
+    {
+        static tinystl::unordered_set<const void *, TinySTLAllocator> diagnosedPreshaders;
+        if (diagnosedPreshaders.find(this) == diagnosedPreshaders.end()) {
+            diagnosedPreshaders.insert(this);
+            EMLOG_INFO("effectdiag: preshaderExecute self=0x{} instructions={} symbols={} inputElements={} "
+                       "outputElements={}",
+                static_cast<const void *>(this), int(numInstructions), int(m_symbols.size()),
+                int(inputBuffer.m_float4.size()), int(outputBuffer.m_float4.size()));
+            for (size_t i = 0; i < m_symbols.size() && i < 24; i++) {
+                const Preshader::Symbol &sym = m_symbols[i];
+                EMLOG_INFO("effectdiag: preshaderSymbol name={} set={} index={} count={}", sym.m_name.c_str(),
+                    int(sym.m_set), int(sym.m_index), int(sym.m_count));
+            }
+            for (size_t i = 0; i < numInstructions && i < 10; i++) {
+                const Instruction &ins = m_instructions[i];
+                String operands;
+                for (size_t j = 0; j < ins.m_operands.size(); j++) {
+                    char buf[32];
+                    StringUtils::format(buf, sizeof(buf), "[t=%d,i=%d]", int(ins.m_operands[j].m_type),
+                        int(ins.m_operands[j].m_index));
+                    operands.append(buf);
+                }
+                EMLOG_INFO("effectdiag: preshaderInstruction opcode={} numElements={} operands={}", int(ins.m_opcode),
+                    int(ins.m_numElements), operands.c_str());
+            }
+        }
+    }
+#endif /* NANOEM_ENABLE_LOGGING */
     tinystl::vector<nanoem_f32_t, TinySTLAllocator> temp(m_numTemporaryRegisters);
     Vector4 src[4], dst;
     nanoem_u32_t soffset[4];

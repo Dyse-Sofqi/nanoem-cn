@@ -1,5 +1,1206 @@
 
-��F
+��@
+nanoem.gui.unimplemented$未実装のため現在利用不可
+nanoem.gui.camera	カメラ%
+nanoem.gui.keyframe.copy	コピー'
+nanoem.gui.keyframe.cut切り取り"
+nanoem.gui.keyframe.end#終了)
+nanoem.gui.keyframe.pasteペースト7
+!nanoem.gui.keyframe.inverse-paste反転ペースト$
+nanoem.gui.keyframe.remove削除#
+nanoem.gui.keyframe.scale拡大$
+nanoem.gui.keyframe.select選択.
+!nanoem.gui.keyframe.select-column	列選択$
+nanoem.gui.keyframe.start#開始$
+nanoem.gui.effectエフェクト7
+nanoem.gui.effect.reloadエフェクトの再読込3
+ nanoem.gui.panel.accessory.titleアクセサリ/
+nanoem.gui.panel.accessory.none（なし）0
+$nanoem.gui.panel.accessory.bone.none(なし)+
+!nanoem.gui.panel.accessory.delete削除+
+!nanoem.gui.panel.accessory.ground地面)
+nanoem.gui.panel.accessory.load読込+
+nanoem.gui.panel.accessory.none(なし)2
+"nanoem.gui.panel.accessory.opacity不透明度0
+&nanoem.gui.panel.accessory.orientation回転-
+#nanoem.gui.panel.accessory.register登録-
+ nanoem.gui.panel.accessory.scale	拡大率0
+&nanoem.gui.panel.accessory.translation移動,
+"nanoem.gui.panel.accessory.visible表示*
+nanoem.gui.panel.accessory.op	外部親(
+nanoem.gui.panel.bone.title	ボーン'
+nanoem.gui.panel.bone.copy	コピー=
+*nanoem.gui.panel.bone.label.selection-mode選択モード$
+nanoem.gui.panel.bone.move移動+
+nanoem.gui.panel.bone.pasteペースト9
+#nanoem.gui.panel.bone.inverse-paste反転ペースト2
+(nanoem.gui.panel.bone.physics-simulation物理(
+nanoem.gui.panel.bone.register登録&
+nanoem.gui.panel.bone.rotate回転&
+nanoem.gui.panel.bone.select選択-
+ nanoem.gui.panel.bone.select.all	全選択-
+ nanoem.gui.panel.bone.select.box	箱選択/
+"nanoem.gui.panel.bone.select.dirty	未登録*
+nanoem.gui.panel.camera.title	カメラ<
+)nanoem.gui.panel.camera.following-to-boneボーン追従-
+!nanoem.gui.panel.camera.bone.none(なし)(
+nanoem.gui.panel.camera.fov	視野角3
+"nanoem.gui.panel.camera.fov.format視野角: %d*
+nanoem.gui.panel.camera.reset	初期化*
+nanoem.gui.panel.camera.label	カメラ.
+"nanoem.gui.panel.camera.model.none(なし)?
+#nanoem.gui.panel.camera.perspectiveパースペクティブ*
+ nanoem.gui.panel.camera.register登録4
+$nanoem.gui.panel.interpolation.title補間曲線8
+(nanoem.gui.panel.interpolation.automatic自動補間9
+/nanoem.gui.panel.interpolation.bone.orientation回転A
+1nanoem.gui.panel.interpolation.bone.translation.x移動(X軸)A
+1nanoem.gui.panel.interpolation.bone.translation.y移動(Y軸)A
+1nanoem.gui.panel.interpolation.bone.translation.z移動(Z軸)>
+.nanoem.gui.panel.interpolation.camera.distance視野距離6
+)nanoem.gui.panel.interpolation.camera.fov	視野角;
+1nanoem.gui.panel.interpolation.camera.orientation回転C
+3nanoem.gui.panel.interpolation.camera.translation.x移動(X軸)C
+3nanoem.gui.panel.interpolation.camera.translation.y移動(Y軸)C
+3nanoem.gui.panel.interpolation.camera.translation.z移動(Z軸)0
+#nanoem.gui.panel.interpolation.copy	コピー5
+%nanoem.gui.panel.interpolation.linear線形補間4
+$nanoem.gui.panel.interpolation.pasteペースト&
+nanoem.gui.panel.light.title照明#
+nanoem.gui.panel.light.color色*
+ nanoem.gui.panel.light.direction方向)
+nanoem.gui.panel.light.reset	初期化;
+"nanoem.gui.panel.light.self-shadowセルフシャドウ)
+nanoem.gui.panel.light.register登録)
+nanoem.gui.panel.model.title	モデル*
+ nanoem.gui.panel.model.blend-add加算-
+&nanoem.gui.panel.model.blend-add.short加B
+nanoem.gui.panel.model.default カメラ/照明/アクセサリ'
+nanoem.gui.panel.model.delete削除%
+nanoem.gui.panel.model.load読込,
+%nanoem.gui.panel.model.outside-parent外)
+nanoem.gui.panel.model.register登録6
+nanoem.gui.panel.model.shadowセルフシャドウ*
+#nanoem.gui.panel.model.shadow.short影(
+nanoem.gui.panel.model.visible表示+
+$nanoem.gui.panel.model.visible.short表2
+&nanoem.gui.panel.model.constraint.none(なし))
+nanoem.gui.panel.morph.title	モーフ'
+nanoem.gui.panel.morph.none(なし)!
+nanoem.gui.panel.morph.eye目-
+#nanoem.gui.panel.morph.eye.register登録(
+nanoem.gui.panel.morph.eyebrowまゆ1
+'nanoem.gui.panel.morph.eyebrow.register登録'
+nanoem.gui.panel.morph.lip	リップ-
+#nanoem.gui.panel.morph.lip.register登録)
+nanoem.gui.panel.morph.other	その他/
+%nanoem.gui.panel.morph.other.register登録.
+nanoem.gui.panel.morph.weight#ウェイト:
+$nanoem.gui.panel.morph.weight.formatウェイト: %.2f%
+nanoem.gui.panel.play.title再生$
+nanoem.gui.panel.play.end#終了'
+nanoem.gui.panel.play.loop	ループ+
+nanoem.gui.panel.play.pause一時停止$
+nanoem.gui.panel.play.play再生&
+nanoem.gui.panel.play.resume再開&
+nanoem.gui.panel.play.start#開始'
+nanoem.gui.panel.play.volume#音量3
+#nanoem.gui.panel.play.volume.format音量: %d%%6
+nanoem.gui.panel.shadow.titleセルフシャドウ+
+ nanoem.gui.panel.shadow.distance#距離.
+nanoem.gui.panel.shadow.mode-1モード１.
+nanoem.gui.panel.shadow.mode-2モード２&
+nanoem.gui.panel.shadow.noneなし*
+ nanoem.gui.panel.shadow.register登録(
+nanoem.gui.panel.view.title	ビュー$
+nanoem.gui.panel.view.back背面&
+nanoem.gui.panel.view.bottom底面,
+nanoem.gui.panel.view.followフォロー.
+!nanoem.gui.panel.view.follow.bone	ボーン/
+"nanoem.gui.panel.view.follow.model	モデル%
+nanoem.gui.panel.view.front前面$
+nanoem.gui.panel.view.left左面%
+nanoem.gui.panel.view.right右面"
+nanoem.gui.panel.view.up上面5
++nanoem.gui.panel.model.edit.operation.title操作E
+2nanoem.gui.panel.model.edit.operation.action.titleアクションF
+9nanoem.gui.panel.model.edit.operation.action.camera.title	カメラF
+<nanoem.gui.panel.model.edit.operation.action.selection.title選択^
+Enanoem.gui.panel.model.edit.operation.action.create-parent-bone.title親ボーンの作成d
+Enanoem.gui.panel.model.edit.operation.action.create-target-bone.title表示先ボーンの作成e
+Fnanoem.gui.panel.model.edit.operation.action.paint-vertex-weight.title頂点ウェイトを塗るq
+Lnanoem.gui.panel.model.edit.operation.action.create-material-primitive.title!材質プリミティブの作成U
+Knanoem.gui.panel.model.edit.operation.action.create-material-primitive.cone円錐X
+Knanoem.gui.panel.model.edit.operation.action.create-material-primitive.cube	立方体Y
+Onanoem.gui.panel.model.edit.operation.action.create-material-primitive.cylinder円筒W
+Mnanoem.gui.panel.model.edit.operation.action.create-material-primitive.sphere球体\
+Lnanoem.gui.panel.model.edit.operation.action.create-material-primitive.torusトーラスj
+]nanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.translation	移動量g
+Znanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.rotation	回転量g
+Wnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.scaleスケールo
+Xnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.slices円周分割数: %do
+Xnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.stacks高さ分割数: %dh
+Xnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.radius内径: %.1fH
+5nanoem.gui.panel.model.edit.operation.selection.title選択モード@
+6nanoem.gui.panel.model.edit.operation.selection.circle円形C
+9nanoem.gui.panel.model.edit.operation.selection.rectangle矩形<
+5nanoem.gui.panel.model.edit.operation.selection.point点4
+'nanoem.gui.panel.model.edit.gizmo.title	ギズモA
+1nanoem.gui.panel.model.edit.gizmo.operation.title操作種別?
+5nanoem.gui.panel.model.edit.gizmo.operation.translate移動<
+2nanoem.gui.panel.model.edit.gizmo.operation.rotate回転A
+1nanoem.gui.panel.model.edit.gizmo.operation.scaleスケールB
+2nanoem.gui.panel.model.edit.gizmo.coordinate.title座標種別F
+3nanoem.gui.panel.model.edit.gizmo.coordinate.globalグローバルE
+2nanoem.gui.panel.model.edit.gizmo.coordinate.localグローバルP
+.nanoem.gui.panel.model.edit.weight-paint.title頂点ウェイトペイントK
+5nanoem.gui.panel.model.edit.weight-paint.painter-typeペイント種別V
+@nanoem.gui.panel.model.edit.weight-paint.painter-type.base-brushベースブラシR
+?nanoem.gui.panel.model.edit.weight-paint.painter-type.air-brushエアブラシD
+4nanoem.gui.panel.model.edit.weight-paint.vertex-type頂点種別:
+-nanoem.gui.panel.model.edit.weight-paint.bone	ボーン?
+/nanoem.gui.panel.model.edit.weight-paint.radius半径: %.3f>
+.nanoem.gui.panel.model.edit.weight-paint.delta差分: %.3f?
+2nanoem.gui.panel.model.edit.weight-paint.normalize	正規化S
+@nanoem.gui.panel.model.edit.weight-paint.automatic-normalization自動正規化
+nanoem.gui.redoやり直し)
+nanoem.gui.timelineタイムライン
+nanoem.gui.undo元に戻す/
+nanoem.gui.viewport.titleビューポートB
+#nanoem.gui.viewport.model-with-boneビューポート - %s: %s1
+$nanoem.gui.viewport.parameter.camera	カメラ4
+*nanoem.gui.viewport.parameter.camera.angle角度=
+-nanoem.gui.viewport.parameter.camera.distance視野距離9
+,nanoem.gui.viewport.parameter.camera.look-at	注視点0
+#nanoem.gui.viewport.parameter.model	モデル9
+/nanoem.gui.viewport.parameter.model.orientation回転9
+/nanoem.gui.viewport.parameter.model.translation移動5
+%nanoem.gui.window.interpolation.title補間曲線6
+nanoem.gui.window.op.model外部親（モデル）M
+(nanoem.gui.window.op.model.register.bone!ボーンキーフレーム登録<
+)nanoem.gui.window.op.model.register.model外部親登録:
+'nanoem.gui.window.op.model.subject.bone対象ボーン8
+,nanoem.gui.window.op.model.subject.bone.none(なし)?
+&nanoem.gui.window.op.model.target.bone接続先親ボーン7
++nanoem.gui.window.op.model.target.bone.none(なし)@
+'nanoem.gui.window.op.model.target.model接続先親モデル8
+,nanoem.gui.window.op.model.target.model.none(なし)a
+3nanoem.gui.window.op.model.subject.bone.translation*対象ボーンの位置（自動計算）a
+3nanoem.gui.window.op.model.subject.bone.orientation*対象ボーンの回転（自動計算）@
+nanoem.gui.window.op.accessory外部親（アクセサリ）@
+-nanoem.gui.window.op.accessory.register.model外部親登録@
+*nanoem.gui.window.op.accessory.target.bone接続先ボーン;
+/nanoem.gui.window.op.accessory.target.bone.none(なし)A
++nanoem.gui.window.op.accessory.target.model接続先モデル<
+0nanoem.gui.window.op.accessory.target.model.none(地面):
+'nanoem.gui.window.op.accessory.register外部親登録9
+ nanoem.gui.window.op.self-shadowセルフシャドウ8
++nanoem.gui.window.op.self-shadow.mode.title	モード:
+*nanoem.gui.window.op.self-shadow.mode.none（なし）P
++nanoem.gui.window.op.self-shadow.mode.type1!モード１（バランス型）P
++nanoem.gui.window.op.self-shadow.mode.type2!モード２（近接重視型）9
+/nanoem.gui.window.op.self-shadow.distance.title距離8
++nanoem.gui.window.op.self-shadow.initialize	初期化3
+)nanoem.gui.window.op.self-shadow.register登録E
+&nanoem.gui.window.bone.parameter.title数値入力（ボーン）6
+,nanoem.gui.window.bone.parameter.translation移動6
+,nanoem.gui.window.bone.parameter.orientation回転G
+(nanoem.gui.window.camera.parameter.title数値入力（カメラ）7
+*nanoem.gui.window.camera.parameter.look-at	注視点2
+(nanoem.gui.window.camera.parameter.angle角度;
++nanoem.gui.window.camera.parameter.distance視野距離@
+'nanoem.gui.window.bone.correction.title補正（ボーン）7
+-nanoem.gui.window.bone.correction.translation移動7
+-nanoem.gui.window.bone.correction.orientation回転B
+)nanoem.gui.window.camera.correction.title補正（カメラ）8
++nanoem.gui.window.camera.correction.look-at	注視点3
+)nanoem.gui.window.camera.correction.angle角度<
+,nanoem.gui.window.camera.correction.distance視野距離A
+(nanoem.gui.window.morph.correction.title補正（モーフ）9
+)nanoem.gui.window.morph.correction.weightウェイトD
+(nanoem.gui.window.project.viewport.titleビューポート設定O
+-nanoem.gui.window.project.viewport.size.title出力サイズ (幅 / 高さ)M
+.nanoem.gui.window.project.viewport.size.presetプリセットから設定@
+3nanoem.gui.window.project.viewport.size.preset.from	選択...A
+.nanoem.gui.window.project.viewport.color.title出力背景色V
+4nanoem.gui.window.project.viewport.transparent.title透過背景を有効にするY
+.nanoem.gui.window.project.order.drawable.title'モデル・アクセサリの描画順H
+/nanoem.gui.window.project.order.transform.titleモデルの変形順>
+.nanoem.gui.window.project.physics-engine.title物理演算B
+5nanoem.gui.window.project.physics-engine.acceleration	加速度<
+2nanoem.gui.window.project.physics-engine.direction方向U
+9nanoem.gui.window.project.physics-engine.time-step-factor時間ステップ係数A
+.nanoem.gui.window.project.physics-engine.noiseノイズ係数R
+6nanoem.gui.window.project.physics-engine.noise.enabledノイズを付加する7
+'nanoem.gui.window.preference.tab.global全体設定D
+(nanoem.gui.window.preference.tab.projectプロジェクト設定;
+(nanoem.gui.window.preference.tab.specialスペシャルc
+;nanoem.gui.window.preference.special.application-preference$アプリケーション環境設定<
+/nanoem.gui.window.preference.special.initialize	初期化S
+4nanoem.gui.window.preference.special.undo-soft-limitアンドゥソフト制限W
+5nanoem.gui.window.preference.special.buffer-pool-sizeバッファプールサイズV
+4nanoem.gui.window.preference.special.image-pool-sizeイメージプールサイズZ
+5nanoem.gui.window.preference.special.shader-pool-size!シェーダープールサイズO
+3nanoem.gui.window.preference.special.pass-pool-sizeパスプールサイズ_
+7nanoem.gui.window.preference.special.pipeline-pool-size$パイプラインプールサイズc
+8nanoem.gui.window.preference.special.uniform-buffer-size'ユニフォームバッファサイズ5
+"nanoem.gui.window.model.edge.titleエッジ設定2
+"nanoem.gui.window.model.edge.colorエッジ色1
+!nanoem.gui.window.model.edge.sizeエッジ幅J
+%nanoem.gui.window.model.edge.register!キーフレームを登録する9
+&nanoem.gui.window.project.effect.titleエフェクト9
+&nanoem.gui.window.project.effect.titleエフェクトG
+.nanoem.gui.window.project.effect.tab.offscreenオフスクリーン7
+*nanoem.gui.window.project.effect.tab.model	モデルA
+.nanoem.gui.window.project.effect.tab.parameterパラメータK
+2nanoem.gui.window.project.effect.offscreen.default（デフォルト）?
+/nanoem.gui.window.project.effect.offscreen.none（なし）w
+:nanoem.gui.window.project.effect.offscreen.display-texture9レンダーターゲットテクスチャを表示する>
+.nanoem.gui.window.project.effect.material.none（なし）Y
+1nanoem.gui.window.project.effect.parameter.reload$エフェクトをリロードするf
+2nanoem.gui.window.project.effect.parameter.inspect0パラメータのデバッグを有効にする3
+)nanoem.gui.window.project.effect.emd.load読込3
+)nanoem.gui.window.project.effect.emd.save保存*
+nanoem.gui.window.model.title	モデル-
+#nanoem.gui.window.model.tab.measure測定2
+"nanoem.gui.window.model.tab.systemシステム,
+"nanoem.gui.window.model.tab.vertex頂点'
+ nanoem.gui.window.model.tab.face面C
+$nanoem.gui.window.model.tab.material材質（マテリアル）-
+ nanoem.gui.window.model.tab.bone	ボーン:
+!nanoem.gui.window.model.tab.morphモーフ（表情）=
+!nanoem.gui.window.model.tab.label表示枠（ラベル）0
+&nanoem.gui.window.model.tab.rigid-body剛体4
+!nanoem.gui.window.model.tab.jointジョイント;
+%nanoem.gui.window.model.tab.soft-bodyソフトボディ-
+#nanoem.gui.window.model.menu.vertex頂点(
+!nanoem.gui.window.model.menu.face面/
+%nanoem.gui.window.model.menu.material材質.
+!nanoem.gui.window.model.menu.bone	ボーン/
+"nanoem.gui.window.model.menu.morph	モーフ<
+&nanoem.gui.window.model.menu.type.boneボーンモーフ@
+'nanoem.gui.window.model.menu.type.groupグループモーフ=
+*nanoem.gui.window.model.menu.type.material材質モーフE
+)nanoem.gui.window.model.menu.type.textureテクスチャモーフ;
+$nanoem.gui.window.model.menu.type.uv拡張 UV モーフ;
+(nanoem.gui.window.model.menu.type.vertex頂点モーフ?
+&nanoem.gui.window.model.menu.type.flipフリップモーフE
+)nanoem.gui.window.model.menu.type.impulseインパルスモーフ/
+"nanoem.gui.window.model.menu.label	表示枠1
+'nanoem.gui.window.model.menu.rigid-body剛体5
+"nanoem.gui.window.model.menu.jointジョイント<
+&nanoem.gui.window.model.menu.soft-bodyソフトボディD
+"nanoem.gui.window.preference.titleアプリケーション設定n
+,nanoem.gui.window.preference.global.renderer>レンダラ ※ 変更後要アプリケーション再起動O
+0nanoem.gui.window.preference.global.color-formatカラーフォーマットE
+6nanoem.gui.window.preference.global.color-format.rgba8RGBA8 (SDR)I
+8nanoem.gui.window.preference.global.color-format.rgb10a2RGB10A2 (HDR)H
+8nanoem.gui.window.preference.global.color-format.rgba16fRGBA16 (HDR)I
+'nanoem.gui.window.preference.global.fps編集時フレームレート>
+1nanoem.gui.window.preference.global.fps.unlimited	無制限4
+*nanoem.gui.window.preference.global.fps.3030 FPS4
+*nanoem.gui.window.preference.global.fps.6060 FPS<
+,nanoem.gui.window.preference.global.fps.auto自動設定v
+3nanoem.gui.window.preference.viewport.high-dpi.mode?起動時の高解像度ビューポートを有効にするかH
+8nanoem.gui.window.preference.viewport.high-dpi.mode.auto自動設定K
+;nanoem.gui.window.preference.viewport.high-dpi.mode.enabled常に有効L
+<nanoem.gui.window.preference.viewport.high-dpi.mode.disabled常に無効{
+8nanoem.gui.window.preference.global.editing-model.enable?モデル編集機能を有効にする（実験的な機能）I
+3nanoem.gui.window.preference.global.analytics.titleアクセス解析\
+4nanoem.gui.window.preference.global.analytics.enable$アクセス解析を有効にするd
+3nanoem.gui.window.preference.global.analytics.reset-アクセス解析用の UUID をリセットh
+7nanoem.gui.window.preference.global.crash-report.enable-クラッシュレポートを有効にする�
+;nanoem.gui.window.preference.global.analytics.reset.cautionR※ 変更を反映するにはアプリケーションの再起動が必要ですb
+.nanoem.gui.window.preference.global.sda.enable0モデル描画の負荷分散を有効にするL
+6nanoem.gui.window.preference.global.system-informationシステム情報:
+'nanoem.gui.window.preference.grid.title地面軸設定=
+3nanoem.gui.window.preference.project.language.title言語?
+5nanoem.gui.window.preference.project.language.english英語C
+6nanoem.gui.window.preference.project.language.japanese	日本語V
+@nanoem.gui.window.preference.project.language.simplified-chinese簡体字中国語R
+9nanoem.gui.window.preference.project.model-language.titleモデル名の言語R
+=nanoem.gui.window.preference.project.model-language.follow-uiUI言語に従うI
+<nanoem.gui.window.preference.project.model-language.japanese	日本語E
+;nanoem.gui.window.preference.project.model-language.english英語_
+Fnanoem.gui.window.preference.project.model-language.chinese-dictionary中国語（辞書）J
++nanoem.gui.window.preference.grid.size.cell地面軸セルの大きさJ
++nanoem.gui.window.preference.grid.size.grid地面軸セルの表示数Y
+1nanoem.gui.window.preference.file-path-mode.title$保存時のファイルパス設定D
+4nanoem.gui.window.preference.file-path-mode.absolute絶対パスD
+4nanoem.gui.window.preference.file-path-mode.relative相対パス1
+$nanoem.gui.model.edit.measure.vertex	頂点数,
+"nanoem.gui.model.edit.measure.face面数3
+&nanoem.gui.model.edit.measure.material	材質数;
+%nanoem.gui.model.edit.measure.textureテクスチャ数2
+"nanoem.gui.model.edit.measure.boneボーン数:
+(nanoem.gui.model.edit.measure.constraintIKボーン数3
+#nanoem.gui.model.edit.measure.morphモーフ数3
+#nanoem.gui.model.edit.measure.label表情枠数5
+(nanoem.gui.model.edit.measure.rigid-body	剛体数9
+#nanoem.gui.model.edit.measure.jointジョイント数@
+'nanoem.gui.model.edit.measure.soft-bodyソフトボディ数F
+-nanoem.gui.model.edit.measure.transform.title一括モデル変形7
+-nanoem.gui.model.edit.measure.transform.apply適用=
+-nanoem.gui.model.edit.measure.transform.resetリセットM
+:nanoem.gui.model.edit.measure.transform.height-based.title身長ベースa
+6nanoem.gui.model.edit.measure.transform.height-based.a'(A): MMD におけるモデルの身長m
+6nanoem.gui.model.edit.measure.transform.height-based.b3(B): MMD におけるセンチメートルの単位c
+6nanoem.gui.model.edit.measure.transform.height-based.c)(C): 補正用途のセンチメートル}
+;nanoem.gui.model.edit.measure.transform.height-based.result>センチメートル単位のモデルの身長 = (A / B) + CN
+Ananoem.gui.model.edit.measure.transform.height-based.scale-factor	拡大率K
+;nanoem.gui.model.edit.measure.transform.numeric-input.title数値入力+
+!nanoem.gui.model.edit.system.name名前4
+$nanoem.gui.model.edit.system.commentコメント>
+%nanoem.gui.model.edit.system.encoding文字エンコード1
+ nanoem.gui.model.edit.system.uva追加 UV 数3
+#nanoem.gui.model.edit.vertex.origin頂点座標3
+#nanoem.gui.model.edit.vertex.normal法線座標1
+%nanoem.gui.model.edit.vertex.texcoordUV座標C
+!nanoem.gui.model.edit.vertex.type頂点種別と影響ボーン3
+#nanoem.gui.model.edit.vertex.weightウェイト/
+#nanoem.gui.model.edit.vertex.sdef.cSDEF (C)1
+$nanoem.gui.model.edit.vertex.sdef.r0	SDEF (R0)1
+$nanoem.gui.model.edit.vertex.sdef.r1	SDEF (R1)5
+%nanoem.gui.model.edit.vertex.material所属材質1
+!nanoem.gui.model.edit.vertex.edgeエッジ幅2
+ nanoem.gui.model.edit.vertex.uva拡張UV座標E
+,nanoem.gui.model.edit.material.name.japanese名称（日本語）A
++nanoem.gui.model.edit.material.name.english名称（英語）T
+,nanoem.gui.model.edit.material.ambient.color$環境光色（アンビエント）T
+,nanoem.gui.model.edit.material.diffuse.color$拡散光色（ディフューズ）G
+.nanoem.gui.model.edit.material.diffuse.opacity拡散光の透明度U
+-nanoem.gui.model.edit.material.specular.color$鏡面光色（スペキュラー）=
+-nanoem.gui.model.edit.material.specular.power鏡面強度J
+4nanoem.gui.model.edit.material.specular.power.format鏡面強度: %.2f6
+)nanoem.gui.model.edit.material.edge.title	エッジ9
+)nanoem.gui.model.edit.material.edge.colorエッジ色G
++nanoem.gui.model.edit.material.edge.opacityエッジ色の透明度8
+(nanoem.gui.model.edit.material.edge.sizeエッジ幅E
+/nanoem.gui.model.edit.material.edge.size.formatエッジ幅: %.2fI
+-nanoem.gui.model.edit.material.primitive.typeプリミティブ種別L
+-nanoem.gui.model.edit.material.spheremap.typeスフィアマップ種別?
+,nanoem.gui.model.edit.material.texture.titleテクスチャF
+-nanoem.gui.model.edit.material.arbitrary-area任意ユーザ領域J
+.nanoem.gui.model.edit.material.texture.diffuse拡散光テクスチャU
+-nanoem.gui.model.edit.material.texture.sphere$スフィアマップテクスチャJ
++nanoem.gui.model.edit.material.texture.toonトゥーンテクスチャX
+6nanoem.gui.model.edit.material.texture.display-uv-meshUV メッシュを表示する<
+)nanoem.gui.model.edit.material.propertiesプロパティX
+3nanoem.gui.model.edit.material.property.shared-toon!共有トゥーンテクスチャ_
+7nanoem.gui.model.edit.material.property.disable-culling$カリング無効（両面描画）R
+6nanoem.gui.model.edit.material.property.casting-shadow地面影の投影対象c
+;nanoem.gui.model.edit.material.property.casting-self-shadow$セルフシャドウの投影対象L
+3nanoem.gui.model.edit.material.property.self-shadowセルフシャドウ9
+,nanoem.gui.model.edit.material.property.edge	エッジG
+4nanoem.gui.model.edit.material.property.vertex-color頂点カラーG
+.nanoem.gui.model.edit.material.primitive.point点（ポイント）C
+-nanoem.gui.model.edit.material.primitive.line線（ライン）V
+1nanoem.gui.model.edit.material.primitive.triangle!三角（トライアングル）<
+2nanoem.gui.model.edit.material.spheremap.type.noneなし;
+1nanoem.gui.model.edit.material.spheremap.type.add加算@
+6nanoem.gui.model.edit.material.spheremap.type.multiply乗算R
+9nanoem.gui.model.edit.material.spheremap.type.sub-textureサブテクスチャA
+(nanoem.gui.model.edit.bone.name.japanese名称（日本語）=
+'nanoem.gui.model.edit.bone.name.english名称（英語）1
+!nanoem.gui.model.edit.bone.origin原点座標1
+!nanoem.gui.model.edit.bone.parent親ボーンA
++nanoem.gui.model.edit.bone.destination.bone接続先ボーンF
+-nanoem.gui.model.edit.bone.destination.origin接続先原点座標0
+ nanoem.gui.model.edit.bone.stage変形階層8
+%nanoem.gui.model.edit.bone.propertiesプロパティ2
+"nanoem.gui.model.edit.bone.movable移動可能5
+%nanoem.gui.model.edit.bone.rotateable回転可能,
+"nanoem.gui.model.edit.bone.visible可視:
+*nanoem.gui.model.edit.bone.user-handleable操作可能:
+-nanoem.gui.model.edit.bone.inverse-kinematics	IK 制約M
+.nanoem.gui.model.edit.bone.constraint.effectorIK ターゲットボーン?
+,nanoem.gui.model.edit.bone.constraint.targetIK 元ボーン5
++nanoem.gui.model.edit.bone.constraint.angle角度E
+,nanoem.gui.model.edit.bone.constraint.jointsIK リンクボーン:
+0nanoem.gui.model.edit.bone.constraint.joints.add追加=
+3nanoem.gui.model.edit.bone.constraint.joints.remove削除Y
+7nanoem.gui.model.edit.bone.constraint.joint.angle-limit角度制限を有効にするM
+=nanoem.gui.model.edit.bone.constraint.joint.angle-limit.lower角度下限M
+=nanoem.gui.model.edit.bone.constraint.joint.angle-limit.upper角度上限?
+/nanoem.gui.model.edit.bone.constraint.iteration試行回数<
+)nanoem.gui.model.edit.bone.inherent.title付与ボーン?
+/nanoem.gui.model.edit.bone.inherent.translation移動付与?
+/nanoem.gui.model.edit.bone.inherent.orientation回転付与E
+/nanoem.gui.model.edit.bone.inherent.parent-bone付与親ボーン<
+/nanoem.gui.model.edit.bone.inherent.coefficient	付与率6
+)nanoem.gui.model.edit.bone.has-fixed-axis	固定軸8
++nanoem.gui.model.edit.bone.fixed-axis.title	固定軸<
+)nanoem.gui.model.edit.bone.has-local-axesローカル軸>
++nanoem.gui.model.edit.bone.local-axes.titleローカル軸>
+'nanoem.gui.model.edit.bone.local-axis.xローカル軸 (X)>
+'nanoem.gui.model.edit.bone.local-axis.zローカル軸 (Z)?
+)nanoem.gui.model.edit.bone.inherent.localローカル付与R
+9nanoem.gui.model.edit.bone.affected-by-physics-simulation物理演算後計算B
+)nanoem.gui.model.edit.morph.name.japanese名称（日本語）>
+(nanoem.gui.model.edit.morph.name.english名称（英語）4
+$nanoem.gui.model.edit.morph.categoryカテゴリ*
+ nanoem.gui.model.edit.morph.type種別?
+)nanoem.gui.model.edit.morph.category.baseシステム予約/
+(nanoem.gui.model.edit.morph.category.eye目6
+,nanoem.gui.model.edit.morph.category.eyebrowまゆ5
+(nanoem.gui.model.edit.morph.category.lip	リップ7
+*nanoem.gui.model.edit.morph.category.other	その他6
+,nanoem.gui.model.edit.morph.category.unknown不明2
+%nanoem.gui.model.edit.morph.type.bone	ボーン5
+%nanoem.gui.model.edit.morph.type.flipフリップ6
+&nanoem.gui.model.edit.morph.type.groupグループ;
+(nanoem.gui.model.edit.morph.type.impulseインパルス3
+)nanoem.gui.model.edit.morph.type.material材質;
+(nanoem.gui.model.edit.morph.type.textureテクスチャ3
+%nanoem.gui.model.edit.morph.type.uva1
+拡張 UV13
+%nanoem.gui.model.edit.morph.type.uva2
+拡張 UV23
+%nanoem.gui.model.edit.morph.type.uva3
+拡張 UV33
+%nanoem.gui.model.edit.morph.type.uva4
+拡張 UV41
+'nanoem.gui.model.edit.morph.type.vertex頂点2
+(nanoem.gui.model.edit.morph.type.unknown不明9
+,nanoem.gui.model.edit.morph.bone.translation	移動量9
+,nanoem.gui.model.edit.morph.bone.orientation	回転量.
+$nanoem.gui.model.edit.morph.bone.add追加1
+'nanoem.gui.model.edit.morph.bone.remove削除7
+'nanoem.gui.model.edit.morph.flip.weightウェイト.
+$nanoem.gui.model.edit.morph.flip.add追加1
+'nanoem.gui.model.edit.morph.flip.remove削除8
+(nanoem.gui.model.edit.morph.group.weightウェイト/
+%nanoem.gui.model.edit.morph.group.add追加2
+(nanoem.gui.model.edit.morph.group.remove削除@
+*nanoem.gui.model.edit.morph.impulse.torqueトルク（力）K
+,nanoem.gui.model.edit.morph.impulse.velocityベロシティ（速度）N
+)nanoem.gui.model.edit.morph.impulse.local!ローカル軸を有効にする1
+'nanoem.gui.model.edit.morph.impulse.add追加4
+*nanoem.gui.model.edit.morph.impulse.remove削除>
+.nanoem.gui.model.edit.morph.material.operation動作種別B
+2nanoem.gui.model.edit.morph.material.ambient.color環境光色B
+2nanoem.gui.model.edit.morph.material.diffuse.color拡散光色C
+3nanoem.gui.model.edit.morph.material.specular.color鏡面光色C
+3nanoem.gui.model.edit.morph.material.specular.power鏡面強度?
+/nanoem.gui.model.edit.morph.material.edge.colorエッジ色>
+.nanoem.gui.model.edit.morph.material.edge.sizeエッジ幅Z
+2nanoem.gui.model.edit.morph.material.blend.diffuse$拡散光テクスチャブレンドi
+5nanoem.gui.model.edit.morph.material.blend.sphere-map0スフィアマップテクスチャブレンドZ
+/nanoem.gui.model.edit.morph.material.blend.toon'トゥーンテクスチャブレンド2
+(nanoem.gui.model.edit.morph.material.add追加5
++nanoem.gui.model.edit.morph.material.remove削除4
+'nanoem.gui.model.edit.morph.uv.position	UV 座標5
++nanoem.gui.model.edit.morph.vertex.position位置B
+)nanoem.gui.model.edit.label.name.japanese名称（日本語）>
+(nanoem.gui.model.edit.label.name.english名称（英語）0
+#nanoem.gui.model.edit.label.special	特殊枠G
+.nanoem.gui.model.edit.rigid-body.name.japanese名称（日本語）C
+-nanoem.gui.model.edit.rigid-body.name.english名称（英語）8
+%nanoem.gui.model.edit.rigid-body.bone接続ボーンH
+,nanoem.gui.model.edit.rigid-body.object-typeオブジェクト種別;
++nanoem.gui.model.edit.rigid-body.shape-type形状種別7
+'nanoem.gui.model.edit.rigid-body.origin原点座標6
+,nanoem.gui.model.edit.rigid-body.orientation回転A
++nanoem.gui.model.edit.rigid-body.shape.size形状の大きさ/
+%nanoem.gui.model.edit.rigid-body.mass質量?
+/nanoem.gui.model.edit.rigid-body.linear-damping移動減衰@
+0nanoem.gui.model.edit.rigid-body.angular-damping回転減衰9
+)nanoem.gui.model.edit.rigid-body.friction摩擦係数<
+,nanoem.gui.model.edit.rigid-body.restitution反発係数F
+0nanoem.gui.model.edit.rigid-body.collision.group衝突グループB
+/nanoem.gui.model.edit.rigid-body.collision.mask衝突マスクS
+4nanoem.gui.model.edit.rigid-body.object-type.dynamic演算結果を全て反映L
+6nanoem.gui.model.edit.rigid-body.object-type.kinematic回転のみ反映F
+3nanoem.gui.model.edit.rigid-body.object-type.staticボーン連動>
+4nanoem.gui.model.edit.rigid-body.object-type.unknown不明6
+/nanoem.gui.model.edit.rigid-body.shape-type.box箱C
+3nanoem.gui.model.edit.rigid-body.shape-type.capsuleカプセル<
+2nanoem.gui.model.edit.rigid-body.shape-type.sphere球体=
+3nanoem.gui.model.edit.rigid-body.shape-type.unknown不明B
+)nanoem.gui.model.edit.joint.name.japanese名称（日本語）>
+(nanoem.gui.model.edit.joint.name.english名称（英語）<
+(nanoem.gui.model.edit.joint.rigid-body.a接続剛体 (A)<
+(nanoem.gui.model.edit.joint.rigid-body.b接続剛体 (B)2
+"nanoem.gui.model.edit.joint.origin原点座標1
+'nanoem.gui.model.edit.joint.orientation回転8
+(nanoem.gui.model.edit.joint.linear.upper移動上限8
+(nanoem.gui.model.edit.joint.linear.lower移動下限<
+,nanoem.gui.model.edit.joint.linear.stiffness移動剛性9
+)nanoem.gui.model.edit.joint.angular.upper回転上限9
+)nanoem.gui.model.edit.joint.angular.lower回転下限=
+-nanoem.gui.model.edit.joint.angular.stiffness回転剛性2
+(nanoem.gui.model.edit.soft-body.material材質:
+*nanoem.gui.model.edit.soft-body.shape-type形状種別I
+3nanoem.gui.model.edit.soft-body.shape-type.tri-mesh三角メッシュ<
+/nanoem.gui.model.edit.soft-body.shape-type.rope	ロープK
+/nanoem.gui.model.edit.soft-body.aero-model-typeエアロモデル種別X
+<nanoem.gui.model.edit.soft-body.aero-model-type.vertex-point頂点（ポイント）V
+@nanoem.gui.model.edit.soft-body.aero-model-type.vertex-two-sided頂点（両面）V
+@nanoem.gui.model.edit.soft-body.aero-model-type.vertex-one-sided頂点（片面）Q
+>nanoem.gui.model.edit.soft-body.aero-model-type.face-two-sided面（両面）Q
+>nanoem.gui.model.edit.soft-body.aero-model-type.face-one-sided面（方面）:
+*nanoem.gui.model.edit.soft-body.total-mass合計質量F
+0nanoem.gui.model.edit.soft-body.collision-margin衝突マージンJ
+2nanoem.gui.model.edit.soft-body.collision-group-id衝突グループIDS
+4nanoem.gui.model.edit.soft-body.collision-group-mask衝突グループマスクX
+:nanoem.gui.model.edit.soft-body.velocity-correction-factorVelocity Correction FactorJ
+3nanoem.gui.model.edit.soft-body.damping-coefficientDamping CoefficientD
+0nanoem.gui.model.edit.soft-body.drag-coefficientDrag CoefficientD
+0nanoem.gui.model.edit.soft-body.lift-coefficientLift CoefficientL
+4nanoem.gui.model.edit.soft-body.pressure-coefficientPressure Coefficientb
+?nanoem.gui.model.edit.soft-body.volume-conversation-coefficientVolume Conversation Coefficient\
+<nanoem.gui.model.edit.soft-body.dynamic-friction-coefficientDynamic Friction CoefficientV
+9nanoem.gui.model.edit.soft-body.pose-matching-coefficientPose Matching CoefficientP
+6nanoem.gui.model.edit.soft-body.rigid-contact-hardnessRigid Contact HardnessT
+8nanoem.gui.model.edit.soft-body.kinetic-contact-hardnessKinetic Contact HardnessN
+5nanoem.gui.model.edit.soft-body.soft-contact-hardnessSoft Contact HardnessB
+/nanoem.gui.model.edit.soft-body.anchor-hardnessAnchor HardnessT
+8nanoem.gui.model.edit.soft-body.soft-vs-kinetic-hardnessSoft vs Kinetic HardnessP
+6nanoem.gui.model.edit.soft-body.soft-vs-rigid-hardnessSoft vs Rigid HardnessN
+5nanoem.gui.model.edit.soft-body.soft-vs-soft-hardnessSoft vs Soft Hardness^
+=nanoem.gui.model.edit.soft-body.soft-vs-kinetic-impulse-splitSoft vs Kinetic Impulse SplitZ
+;nanoem.gui.model.edit.soft-body.soft-vs-rigid-impulse-splitSoft vs Rigid Impulse SplitX
+:nanoem.gui.model.edit.soft-body.soft-vs-soft-impulse-splitSoft vs Soft Impulse Split\
+<nanoem.gui.model.edit.soft-body.linear-stiffness-coefficientLinear Stiffness Coefficient^
+=nanoem.gui.model.edit.soft-body.angular-stiffness-coefficientAngular Stiffness Coefficient\
+<nanoem.gui.model.edit.soft-body.volume-stiffness-coefficientVolume Stiffness Coefficient\
+<nanoem.gui.model.edit.soft-body.bending-constraints-distanceBending Constraints Distance@
+-nanoem.gui.model.edit.soft-body.cluster-countクラスタ数X
+:nanoem.gui.model.edit.soft-body.velocity-solver-iterationsVelocity Solver IterationsX
+:nanoem.gui.model.edit.soft-body.position-solver-iterationsPosition Solver IterationsR
+7nanoem.gui.model.edit.soft-body.drift-solver-iterationsDrift Solver IterationsV
+9nanoem.gui.model.edit.soft-body.cluster-solver-iterationsCluster Solver IterationsY
+;nanoem.gui.model.edit.soft-body.bending-constraints-enabledEnable Bending ConstraintsR
+0nanoem.gui.model.edit.soft-body.clusters-enabledクラスタを有効にする]
+=nanoem.gui.model.edit.soft-body.randomize-constraints-enabledEnable Randomize Constraints(
+nanoem.gui.model.editモデル編集*
+ nanoem.gui.model.edit.info.title情報,
+"nanoem.gui.model.edit.vertex.title頂点C
+$nanoem.gui.model.edit.material.title材質（マテリアル）-
+ nanoem.gui.model.edit.bone.title	ボーン:
+!nanoem.gui.model.edit.morph.titleモーフ（表情）=
+!nanoem.gui.model.edit.label.title表示枠（ラベル）0
+&nanoem.gui.model.edit.rigid-body.title剛体4
+!nanoem.gui.model.edit.joint.titleジョイント,
+"nanoem.gui.model.edit.window.apply適用6
+#nanoem.gui.model.edit.window.cancelキャンセル=
+-nanoem.gui.model.edit.action.insert.new.title新規追加8
++nanoem.gui.model.edit.action.insert.at-last	最後尾a
+6nanoem.gui.model.edit.action.insert.new.after-selected'選択したオブジェクトの後ろD
+.nanoem.gui.model.edit.action.insert.copy.titleコピーを追加@
+0nanoem.gui.model.edit.action.insert.copy.at-next対象の次6
+,nanoem.gui.model.edit.action.selection.title選択=
+*nanoem.gui.model.edit.action.masking.titleマスキングT
+8nanoem.gui.model.edit.action.selection.vertex.enable-all全ての頂点を選択d
+9nanoem.gui.model.edit.action.selection.vertex.disable-all'選択された全ての頂点を解除n
+@nanoem.gui.model.edit.action.selection.vertex.enable-all-by-type*次の種類に該当する頂点を選択r
+>nanoem.gui.model.edit.action.selection.vertex.enable-all-faces0選択された頂点が含まれる面を選択y
+Bnanoem.gui.model.edit.action.selection.vertex.enable-all-materials3選択された頂点が含まれる材質を選択�
+Fnanoem.gui.model.edit.action.selection.vertex.enable-all-vertex-morphs<選択された頂点が含まれる頂点モーフを選択�
+Gnanoem.gui.model.edit.action.selection.vertex.enable-all-texture-morphsE選択された頂点が含まれるテクスチャモーフを選択j
+6nanoem.gui.model.edit.action.masking.vertex.enable-all0選択された全ての頂点をマスキングt
+7nanoem.gui.model.edit.action.masking.vertex.disable-all9選択された全ての頂点のマスキングを解除j
+6nanoem.gui.model.edit.action.masking.vertex.invert-all0全ての頂点のマスキング状態を反転O
+6nanoem.gui.model.edit.action.selection.face.enable-all全ての面を選択t
+@nanoem.gui.model.edit.action.selection.face.enable-all-materials0選択された面が含まれる材質を選択_
+7nanoem.gui.model.edit.action.selection.face.disable-all$選択された全ての面を解除e
+4nanoem.gui.model.edit.action.masking.face.enable-all-選択された全ての面をマスキングo
+5nanoem.gui.model.edit.action.masking.face.disable-all6選択された全ての面のマスキングを解除e
+4nanoem.gui.model.edit.action.masking.face.invert-all-全ての面のマスキング状態を反転V
+:nanoem.gui.model.edit.action.selection.material.enable-all全ての材質を選択f
+;nanoem.gui.model.edit.action.selection.material.disable-all'選択された全ての材質を解除�
+@nanoem.gui.model.edit.action.selection.material.enable-all-bonesE選択された材質に含まれる全てのボーンを選択する�
+@nanoem.gui.model.edit.action.selection.material.enable-all-faces?選択された材質に含まれる全ての面を選択する�
+Cnanoem.gui.model.edit.action.selection.material.enable-all-verticesB選択された材質に含まれる全ての頂点を選択するl
+8nanoem.gui.model.edit.action.masking.material.enable-all0選択された全ての材質をマスキングv
+9nanoem.gui.model.edit.action.masking.material.disable-all9選択された全ての材質のマスキングを解除l
+8nanoem.gui.model.edit.action.masking.material.invert-all0全ての材質のマスキング状態を反転U
+6nanoem.gui.model.edit.action.selection.bone.enable-all全てのボーンを選択y
+?nanoem.gui.model.edit.action.selection.bone.enable-all-vertices6選択されたボーンが含まれる頂点を選択�
+=nanoem.gui.model.edit.action.selection.bone.enable-all-morphsB選択されたボーンが含まれるボーンモーフを選択}
+Cnanoem.gui.model.edit.action.selection.bone.enable-all-rigid-bodies6選択されたボーンが含まれる剛体を選択c
+>nanoem.gui.model.edit.action.selection.bone.enable-all-visible!全ての表示ボーンを選択l
+Ananoem.gui.model.edit.action.selection.bone.enable-all-rotateable'全ての回転可能ボーンを選択i
+>nanoem.gui.model.edit.action.selection.bone.enable-all-movable'全ての移動可能ボーンを選択a
+<nanoem.gui.model.edit.action.selection.bone.enable-symmetric!左右対称のボーンを選択e
+7nanoem.gui.model.edit.action.selection.bone.disable-all*選択された全てのボーンを解除k
+4nanoem.gui.model.edit.action.masking.bone.enable-all3選択された全てのボーンをマスキングr
+>nanoem.gui.model.edit.action.masking.bone.enable-all-invisible0非表示の全てのボーンをマスキングu
+5nanoem.gui.model.edit.action.masking.bone.disable-all<選択された全てのボーンのマスキングを解除k
+4nanoem.gui.model.edit.action.masking.bone.invert-all3全てのボーンのマスキング状態を反転V
+7nanoem.gui.model.edit.action.selection.morph.enable-all全てのモーフを選択f
+8nanoem.gui.model.edit.action.selection.morph.disable-all*選択された全てのモーフを解除�
+9nanoem.gui.model.edit.action.selection.morph.children-allW選択されたモーフから該当する全てのモデルオブジェクトを選択V
+7nanoem.gui.model.edit.action.selection.label.enable-all全ての表示枠を選択f
+8nanoem.gui.model.edit.action.selection.label.disable-all*選択された全ての表示枠を解除�
+9nanoem.gui.model.edit.action.selection.label.children-allW選択された表示枠から該当する全てのボーンまたはモーフを選択X
+<nanoem.gui.model.edit.action.selection.rigid-body.enable-all全ての剛体を選択�
+Bnanoem.gui.model.edit.action.selection.rigid-body.enable-all-bonesB選択された剛体から該当する全てのボーンを選択d
+Bnanoem.gui.model.edit.action.selection.rigid-body.enable-symmetric左右対称の剛体を選択h
+=nanoem.gui.model.edit.action.selection.rigid-body.disable-all'選択された全ての剛体を解除n
+:nanoem.gui.model.edit.action.masking.rigid-body.enable-all0選択された全ての剛体をマスキングx
+;nanoem.gui.model.edit.action.masking.rigid-body.disable-all9選択された全ての剛体のマスキングを解除n
+:nanoem.gui.model.edit.action.masking.rigid-body.invert-all0全ての剛体のマスキング状態を反転\
+7nanoem.gui.model.edit.action.selection.joint.enable-all!全てのジョイントを選択�
+=nanoem.gui.model.edit.action.selection.joint.enable-all-bonesK選択されたジョイントから該当する全てのボーンを選択�
+Dnanoem.gui.model.edit.action.selection.joint.enable-all-rigid-bodiesH選択されたジョイントから該当する全ての剛体を選択h
+=nanoem.gui.model.edit.action.selection.joint.enable-symmetric'左右対称のジョイントを選択l
+8nanoem.gui.model.edit.action.selection.joint.disable-all0選択された全てのジョイントを解除r
+5nanoem.gui.model.edit.action.masking.joint.enable-all9選択された全てのジョイントをマスキング|
+6nanoem.gui.model.edit.action.masking.joint.disable-allB選択された全てのジョイントのマスキングを解除r
+5nanoem.gui.model.edit.action.masking.joint.invert-all9全てのジョイントのマスキング状態を反転c
+;nanoem.gui.model.edit.action.selection.soft-body.enable-all$全てのソフトボディを選択s
+<nanoem.gui.model.edit.action.selection.soft-body.disable-all3選択された全てのソフトボディを解除f
+/nanoem.gui.model.edit.action.vertex.create-bone3選択された頂点の中心にボーンを追加h
+4nanoem.gui.model.edit.action.vertex.add-vertex-morph0選択された頂点を頂点モーフに追加r
+5nanoem.gui.model.edit.action.vertex.add-texture-morph9選択された頂点をテクスチャモーフに追加F
+0nanoem.gui.model.edit.action.vertex.weight.titleウェイト転送Q
+/nanoem.gui.model.edit.action.vertex.weight.loadファイルから読み込みH
+/nanoem.gui.model.edit.action.vertex.weight.saveファイルに保存S
+7nanoem.gui.model.edit.action.vertex.weight.dialog.titleウェイト転送結果y
+9nanoem.gui.model.edit.action.vertex.weight.dialog.message<%u (対象頂点数 %u) の頂点が適用されました。l
+5nanoem.gui.model.edit.action.material.copy-from-model3次のモデルにある材質からコピーするh
+5nanoem.gui.model.edit.action.material.create-from-obj/ファイル (.obj) から材質を作成するl
+8nanoem.gui.model.edit.action.material.add-material-morph0選択された材質を材質モーフに追加G
++nanoem.gui.model.edit.action.material.merge材質をマージする^
+9nanoem.gui.model.edit.action.material.texture.diffuse.set!拡散光テクスチャを設定c
+;nanoem.gui.model.edit.action.material.texture.diffuse.clear$拡散光テクスチャをクリアl
+;nanoem.gui.model.edit.action.material.texture.spheremap.set-スフィアマップテクスチャを設定q
+=nanoem.gui.model.edit.action.material.texture.spheremap.clear0スフィアマップテクスチャをクリア^
+6nanoem.gui.model.edit.action.material.texture.toon.set$トゥーンテクスチャを設定c
+8nanoem.gui.model.edit.action.material.texture.toon.clear'トゥーンテクスチャをクリア^
+4nanoem.gui.model.edit.action.bone.create.destination&「%s」の接続先ボーンを作成L
+0nanoem.gui.model.edit.action.bone.create.staging多段ボーンを作成a
+7nanoem.gui.model.edit.action.bone.create.staging.parent&「%s」の親ボーンとして作成`
+6nanoem.gui.model.edit.action.bone.create.staging.child&「%s」の子ボーンとして作成l
+7nanoem.gui.model.edit.action.bone.add-constraint-joints1選択されたボーンを IK ボーンに追加\
++nanoem.gui.model.edit.action.bone.add-label-選択されたボーンを表示枠に追加j
+0nanoem.gui.model.edit.action.bone.add-bone-morph6選択されたボーンをボーンモーフに追加I
+-nanoem.gui.model.edit.action.bone.axis.parent親ボーンから設定F
+-nanoem.gui.model.edit.action.bone.axis.target接続先から設定L
+-nanoem.gui.model.edit.action.bone.axis.select次のボーンから設定^
+-nanoem.gui.model.edit.action.bone.axis.global-次の方向のグローバル軸から設定x
+>nanoem.gui.model.edit.action.morph.create-bone-morph-from-file6ポーズファイルからボーンモーフを作成w
+@nanoem.gui.model.edit.action.morph.create-vertex-morph-from-file3モデルファイルから頂点モーフを作成]
+,nanoem.gui.model.edit.action.morph.add-label-選択されたモーフを表示枠に追加o
+2nanoem.gui.model.edit.action.morph.add-group-morph9選択されたモーフをグループモーフに追加n
+1nanoem.gui.model.edit.action.morph.add-flip-morph9選択されたモーフをフリップモーフに追加{
+Ananoem.gui.model.edit.action.rigid-body.create-intermediate-joint6ふたつの剛体から中間ジョイントを作成v
+9nanoem.gui.model.edit.action.rigid-body.add-impulse-morph9選択された剛体をインパルスモーフに追加D
+(nanoem.gui.model.edit.batch.apply.vertex%u 頂点を一括適用F
+*nanoem.gui.model.edit.batch.apply.material%u 材質を一括適用E
+&nanoem.gui.model.edit.batch.apply.bone%u ボーンを一括適用F
+'nanoem.gui.model.edit.batch.apply.morph%u モーフを一括適用H
+,nanoem.gui.model.edit.batch.apply.rigid-body%u 剛体を一括適用L
+'nanoem.gui.model.edit.batch.apply.joint!%u ジョイントを一括適用S
++nanoem.gui.model.edit.batch.apply.soft-body$%u ソフトボディを一括適用X
+'nanoem.gui.model.edit.batch.copy.vertex-次の頂点からパラメータをコピーZ
+)nanoem.gui.model.edit.batch.copy.material-次の材質からパラメータをコピーY
+%nanoem.gui.model.edit.batch.copy.bone0次のボーンからパラメータをコピーZ
+&nanoem.gui.model.edit.batch.copy.morph0次のモーフからパラメータをコピー\
++nanoem.gui.model.edit.batch.copy.rigid-body-次の剛体からパラメータをコピー`
+&nanoem.gui.model.edit.batch.copy.joint6次のジョイントからパラメータをコピーg
+*nanoem.gui.model.edit.batch.copy.soft-body9次のソフトボディからパラメータをコピー+
+nanoem.versionnanoem のバージョン+
+!nanoem.window.dialog.buttons.save保存.
+$nanoem.window.dialog.buttons.discard破棄6
+#nanoem.window.dialog.buttons.cancelキャンセル_
+.nanoem.window.confirm-before-new-project.title-プロジェクトは変更されています�
+0nanoem.window.confirm-before-new-project.messagec新しいプロジェクトを作成する前に現在のプロジェクトを保存しますか？`
+/nanoem.window.confirm-before-open-project.title-プロジェクトは変更されています�
+1nanoem.window.confirm-before-open-project.message]新しいプロジェクトを開く前に現在のプロジェクトを保存しますか？d
+3nanoem.window.confirm-before-exit-application.title-プロジェクトは変更されています�
+5nanoem.window.confirm-before-exit-application.message`アプリケーションを終了する前に現在のプロジェクトを保存しますか？c
+2nanoem.window.confirm-before-exporting-image.title-プロジェクトは変更されています�
+4nanoem.window.confirm-before-exporting-image.messageN画像を出力する前に現在のプロジェクトを保存しますか？c
+2nanoem.window.confirm-before-exporting-video.title-プロジェクトは変更されています�
+4nanoem.window.confirm-before-exporting-video.messageN動画を出力する前に現在のプロジェクトを保存しますか？C
+*nanoem.window.confirm-editing-model.button編集機能有効化�
++nanoem.window.confirm-editing-model.messagef当該モデルの利用規約を確認済みの上でモデル編集機能を有効にしますか？T
+)nanoem.window.confirm-editing-model.title'モデル編集機能有効化の確認8
+"nanoem.window.dialog.capture-image画像出力設定8
+"nanoem.window.dialog.capture-video動画出力設定�
+4nanoem.window.dialog.capture-video.caution.exportingb* 出力中はアスペクト比が崩れることがありますが、終了後元に戻ります�
+1nanoem.window.dialog.capture-video.caution.retina�* 高解像度モードで出力するとクラッシュする問題があるため、一度終了して Finder から「低解像度モードで開く」をチェックしてから出力してください�
+8nanoem.window.dialog.capture-video.caution.uncancellable�* 出力中はキャンセル出来ません（アプリケーション終了させた場合は終了直前までが出力されます）�
+5nanoem.window.dialog.capture-video.caution.resolutionn* 画面解像度を超える出力は出来ません（超える場合は縮小されて出力されます）�
+/nanoem.window.dialog.deleting-accessory.messageN一度削除すると戻せません。アクセサリを削除しますか？O
+-nanoem.window.dialog.deleting-accessory.titleアクセサリ削除の確認�
+1nanoem.window.dialog.converting-accessory.message�変換するとアクセサリが削除されてモデルとして追加されます。アクセサリをモデルに変換しますか？]
+/nanoem.window.dialog.converting-accessory.title*アクセサリのモデル変換の確認w
++nanoem.window.dialog.deleting-model.messageH一度削除すると戻せません。モデルを削除しますか？E
+)nanoem.window.dialog.deleting-model.titleモデル削除の確認�
+3nanoem.window.dialog.enabling-effect-plugin.message�エフェクトプラグイン無効状態のまま fx 形式のファイル読み込もうとしました。エフェクトプラグインを有効にしますか？e
+1nanoem.window.dialog.enabling-effect-plugin.title0エフェクトプラグイン有効化の確認[
+*nanoem.window.dialog.error.decoding.reason-音源または動画のデコードに失敗�
+7nanoem.window.dialog.error.decoding.recovery-suggestion�別の音源または動画ファイルを指定するか、入力可能な音源または動画形式に変換してから指定してくださいO
+*nanoem.window.dialog.error.encoding.reason!動画のエンコードに失敗�
+7nanoem.window.dialog.error.encoding.recovery-suggestionZもう一度動画出力をやり直すか、別の動画形式で出力してください�
+;nanoem.window.dialog.error.no-such-file.recovery-suggestion{%s が移動したことが原因かもしれません。ファイルを移動前のパスにコピーしてください。�
+5nanoem.window.dialog.error.file-content-digest.reasonZ%s がプロジェクト保存時と違う内容となってるため読み込めませんo
+)nanoem.window.dialog.error.message.reasonBエラーが発生しました。内容は以下のとおりですy
+6nanoem.window.dialog.error.message.recovery-suggestion?以下の方法でエラーが解決するかもしれません3
+ nanoem.window.dialog.error.titleエラー発生Z
+'nanoem.window.dialog.redo.confirm.title/REDO ログファイルが見つかりました�
+)nanoem.window.dialog.redo.confirm.message�前回のクラッシュによる REDO ログがあります。REDO ログからクラッシュ直前までのリカバリを行いますか？8
+(nanoem.window.dialog.redo.progress.title作業中...`
+*nanoem.window.dialog.redo.progress.message2REDO ログから作業状態をリカバリ中...`
+*nanoem.window.dialog.redo.progress.message2REDO ログから作業状態をリカバリ中...>
++nanoem.window.dialog.export.resolution-size出力解像度J
+(nanoem.window.dialog.export.sample-levelアンチエイリアス設定]
+&nanoem.window.dialog.export.image.seek3現在のフレーム位置で画像を出力するQ
+)nanoem.window.dialog.export.image.seek.at$画像出力するフレーム位置K
+,nanoem.window.dialog.export.same-as-viewportビューポートと同じk
+1nanoem.window.dialog.export.viewport-aspect-ratio6ビューポートのアスペクト比を維持するd
+6nanoem.window.dialog.export.prevent-frame-misalighment*フレームズレ抑止を有効にするg
+6nanoem.window.dialog.export.video.capture-video.native-OS 付属のエンコーダを有効にする@
+'nanoem.window.dialog.export.audio.codec音声コーデック@
+'nanoem.window.dialog.export.video.codec動画コーデックG
+(nanoem.window.dialog.export.video.format動画のピクセル形式E
+)nanoem.window.dialog.export.video.profile動画プロファイル7
+'nanoem.window.dialog.export.video.range出力範囲)
+nanoem.dialog.filename.untitled無題.
+nanoem.dialog.capture.title動画出力中f
+nanoem.dialog.capture.messageE動画出力中です。完了までしばらくお待ち下さい...F
+!nanoem.dialog.progress.exit.title!アプリケーション終了中i
+#nanoem.dialog.progress.exit.messageBアプリケーションが終了するまでお待ち下さい...=
+!nanoem.dialog.progress.load.titleファイルを読込中Z
+#nanoem.dialog.progress.load.message3ファイルの読込完了までお待ち下さい=
+!nanoem.dialog.progress.save.titleファイルを保存中Z
+#nanoem.dialog.progress.save.message3ファイルの保存完了までお待ち下さいO
+!nanoem.dialog.progress.bake.title*モデルモーションの焼き込み中x
+#nanoem.dialog.progress.bake.messageQ全てのモデルに対するモーションの焼き込みをしています...E
+&nanoem.window.effect.%p.render-targetsレンダーターゲットc
+/nanoem.window.effect.offscreen-render-target.%d0オフスクリーンレンダーターゲットD
+%nanoem.window.effect.render-target.%dレンダーターゲットC
+$nanoem.window.progress.capture-image%s に画像を出力中...L
+$nanoem.window.progress.capture-video$%s に動画を出力中... (%u FPS)/
+nanoem.window.scheme.finderFinder で開く?
+!nanoem.window.title.confirm.modelモデル「%s」の確認*
+nanoem.menu.file.titleファイル(&F)<
+nanoem.menu.file.new.project新規プロジェクト(&N)-
+nanoem.menu.file.new.model新規モデル8
+nanoem.menu.file.openプロジェクトを開く(&O).
+nanoem.menu.file.import.modelモデル(&M)8
+!nanoem.menu.file.import.accessoryアクセサリ(&A)6
+nanoem.menu.file.import.poseモデルポーズ(&P)D
+$nanoem.menu.file.import.motion.modelモデルモーション(&O)E
+%nanoem.menu.file.import.motion.cameraカメラモーション(&C)A
+$nanoem.menu.file.import.motion.light照明モーション(&L);
+$nanoem.menu.file.import.motion.titleモーション(&M)+
+nanoem.menu.file.import.audio
+音源(&U)1
+nanoem.menu.file.import.video背景動画(&V)+
+nanoem.menu.file.import.title
+開く(&I)8
+nanoem.menu.file.saveプロジェクトを保存(&S)4
+nanoem.menu.file.save-as名前をつけて保存6
+nanoem.menu.file.export.poseモデルポーズ(&P)D
+$nanoem.menu.file.export.motion.modelモデルモーション(&O)E
+%nanoem.menu.file.export.motion.cameraカメラモーション(&C)A
+$nanoem.menu.file.export.motion.light照明モーション(&L)*
+nanoem.menu.file.export.model	モデル+
+nanoem.menu.file.export.image
+画像(&I)+
+nanoem.menu.file.export.video
+動画(&V)1
+nanoem.menu.file.export.title書き出し(&E)#
+nanoem.menu.file.exit
+終了(&X))
+nanoem.menu.edit.undo元に戻す(&U))
+nanoem.menu.edit.redoやり直し(&R)$
+nanoem.menu.edit.cut切り取り&
+nanoem.menu.edit.copyコピー(&C)*
+nanoem.menu.edit.paste貼り付け(&P)9
+nanoem.menu.edit.plugin.modelモデルプラグイン@
+nanoem.menu.edit.plugin.motionモーションプラグインO
+nanoem.menu.edit.window.effect-エフェクト設定ウィンドウを開くH
+nanoem.menu.edit.window.model'モデル編集ウィンドウを開くQ
+%nanoem.menu.edit.select-all-keyframes(全てのキーフレームを選択(&A)%
+nanoem.menu.edit.preference設定$
+nanoem.menu.edit.title
+編集(&E)&
+nanoem.menu.project.play
+再生(&P)&
+nanoem.menu.project.stop
+停止(&S)P
+nanoem.menu.project.viewport0ビューポート設定ダイアログを開くC
+nanoem.menu.project.order.draw!描画順ダイアログを開くH
+#nanoem.menu.project.order.transform!変形順ダイアログを開くU
+#nanoem.menu.project.viewport.detach.ビューポートウィンドウを分離(&D)H
+nanoem.menu.project.enable.loop%ループ再生を有効にする(&L)B
+nanoem.menu.project.enable.grid地面軸を有効にする(&G)G
+(nanoem.menu.project.enable.ground-shadow地面影を有効にするJ
+!nanoem.menu.project.enable.effect%エフェクトを有効にする(&E)k
+3nanoem.menu.project.enable.high-resolution-viewport4高解像度ビューポートを有効にする(&H)~
+2nanoem.menu.project.enable.compute-shader-skinningHコンピュートシェーダによるスキニングを有効にするq
+1nanoem.menu.project.enable.vertex-shader-skinning<頂点シェーダによるスキニングを有効にする0
+nanoem.menu.project.msaa.x16最高 (MSAAx16)+
+nanoem.menu.project.msaa.x8高 (MSAAx8)1
+nanoem.menu.project.msaa.x4やや高 (MSAAx4).
+nanoem.menu.project.msaa.x2普通 (MSAAx2)+
+!nanoem.menu.project.msaa.disabled無効@
+nanoem.menu.project.msaa.titleアンチエイリアス設定E
+5nanoem.menu.project.physics-simulation.enable.anytime常時有効H
+5nanoem.menu.project.physics-simulation.enable.playing再生時のみN
+5nanoem.menu.project.physics-simulation.enable.tracingトレースモード9
+/nanoem.menu.project.physics-simulation.disabled無効D
+4nanoem.menu.project.physics-simulation.configuration演算設定b
++nanoem.menu.project.physics-simulation.bake3全てのモデルのモーションを焼き込むr
+,nanoem.menu.project.physics-simulation.bake2B全てのモデルのモーションを焼き込む（IK 含む）Q
+;nanoem.menu.project.physics-simulation.enable.drawing.titleデバッグ描画O
+?nanoem.menu.project.physics-simulation.enable.drawing.wireframeワイヤーB
+:nanoem.menu.project.physics-simulation.enable.drawing.aabbAABBQ
+Dnanoem.menu.project.physics-simulation.enable.drawing.contact-points	接続点]
+Ananoem.menu.project.physics-simulation.enable.drawing.constraintsコンストレイントV
+Fnanoem.menu.project.physics-simulation.enable.drawing.constraint-limit制約角度<
+,nanoem.menu.project.physics-simulation.title物理演算.
+!nanoem.menu.project.fps.unlimited	無制限#
+nanoem.menu.project.fps.6060FPS#
+nanoem.menu.project.fps.3030FPS?
+nanoem.menu.project.fps.title再生時フレームレート2
+nanoem.menu.project.clear.audio音源を消去8
+nanoem.menu.project.clear.video背景動画を消去X
+&nanoem.menu.project.enable.fps-counter.FPS カウンターの表示を有効にするn
+.nanoem.menu.project.enable.performance-monitor<パフォーマンスモニターの表示を有効にする/
+nanoem.menu.camera.toggleモードを切替'
+nanoem.menu.camera.preset.top上面%
+nanoem.menu.camera.preset.left左&
+nanoem.menu.camera.preset.right右*
+ nanoem.menu.camera.preset.bottom底面)
+nanoem.menu.camera.preset.front前面(
+nanoem.menu.camera.preset.back背面>
+nanoem.menu.camera.preset.titleプリセットから選択G
+$nanoem.menu.camera.register-keyframeキーフレームを登録(&R)A
+"nanoem.menu.camera.remove-keyframeキーフレームを削除)
+nanoem.menu.camera.reset初期化(&I))
+nanoem.menu.camera.titleカメラ(&C).
+nanoem.menu.light.toggleモードを切替F
+#nanoem.menu.light.register-keyframeキーフレームを登録(&R)@
+!nanoem.menu.light.remove-keyframeキーフレームを削除(
+nanoem.menu.light.reset初期化(&I)%
+nanoem.menu.light.title
+照明(&L)@
+#nanoem.menu.light.self-shadow.titleセルフシャドウ(&S)/
+%nanoem.menu.light.self-shadow.disable無効O
+*nanoem.menu.light.self-shadow.enable.mode1!モード１（バランス型）O
+*nanoem.menu.light.self-shadow.enable.mode2!モード２（近接重視型）O
+/nanoem.menu.light.self-shadow.register-keyframeキーフレーム登録(&R)I
+-nanoem.menu.light.self-shadow.remove-keyframeキーフレーム削除4
+#nanoem.menu.light.self-shadow.reset初期化(&I)8
+nanoem.menu.model.select.titleモデルを選択(&M)=
+#nanoem.menu.model.select.bone.titleボーンを選択(&B)>
+$nanoem.menu.model.select.morph.titleモーフを選択(&O)m
+'nanoem.menu.model.select.bone.keyframesB選択ボーンから該当ボーンのキーフレームを選択/
+(nanoem.menu.model.select.morph.eye.title目9
+,nanoem.menu.model.select.morph.eyebrow.title	まゆ毛5
+(nanoem.menu.model.select.morph.lip.title	リップ7
+*nanoem.menu.model.select.morph.other.title	その他1
+$nanoem.menu.model.select.morph.title	モーフL
+*nanoem.menu.model.select.expand-all-tracks全てのトラックを展開W
+,nanoem.menu.model.select.collapse-all-tracks'全てのトラックを折りたたみ<
+ nanoem.menu.model.measure-heightモデルの身長測定D
+nanoem.menu.model.validation$モデルデータの検証を実行5
+"nanoem.menu.model.edit-mode.select選択モード5
+"nanoem.menu.model.edit-mode.rotate回転モード3
+ nanoem.menu.model.edit-mode.move移動モードB
+nanoem.menu.model.reset.bone.x X 軸の移動分をリセットB
+nanoem.menu.model.reset.bone.y Y 軸の移動分をリセットB
+nanoem.menu.model.reset.bone.z Z 軸の移動分をリセットD
+(nanoem.menu.model.reset.bone.orientation回転量をリセットJ
+ nanoem.menu.model.set-morph.zero&モーフウェイトを 0.0 にするJ
+ nanoem.menu.model.set-morph.half&モーフウェイトを 0.5 にするI
+nanoem.menu.model.set-morph.one&モーフウェイトを 1.0 にするN
+"nanoem.menu.model.enable.add-blend(加算ブレンドを有効にする(&A)R
+#nanoem.menu.model.enable.shadow-map+シャドウマップを有効にする(&S)@
+ nanoem.menu.model.enable.visible表示を有効にする(&V)F
+#nanoem.menu.model.register-keyframeキーフレームを登録(&R)O
+!nanoem.menu.model.remove-keyframe*選択されたキーフレームを削除5
+"nanoem.menu.model.preference.titleモデル設定�
+;nanoem.menu.model.preference.enable.compute-shader-skinningHコンピュートシェーダによるスキニングを有効にするW
+2nanoem.menu.model.preference.enable.show-all-bones!全てのボーンを表示するN
+5nanoem.menu.model.preference.enable.show-rigid-bodies剛体を表示するQ
+/nanoem.menu.model.preference.enable.show-jointsジョイントを表示するT
+5nanoem.menu.model.preference.enable.show-vertex-faces頂点の面を表示するU
+6nanoem.menu.model.preference.enable.show-vertex-points頂点の点を表示するz
+:nanoem.menu.model.preference.enable.vertex-shader-skinning<頂点シェーダによるスキニングを有効にする)
+nanoem.menu.model.edgeエッジ設定'
+nanoem.menu.model.resetリセットK
+nanoem.menu.model.delete-active(現在選択中のモデルを削除(&D)(
+nanoem.menu.model.titleモデル(&M)L
+'nanoem.menu.accessory.draw-order-dialog!描画順ダイアログを開く>
+"nanoem.menu.accessory.select.titleアクセサリを選択J
+'nanoem.menu.accessory.register-keyframeキーフレームを登録(&R)S
+%nanoem.menu.accessory.remove-keyframe*選択されたキーフレームを削除R
+&nanoem.menu.accessory.enable.add-blend(加算ブレンドを有効にする(&A)F
+#nanoem.menu.accessory.enable.shadow地面影を有効にする(&S)D
+$nanoem.menu.accessory.enable.visible表示を有効にする(&V)+
+nanoem.menu.accessory.resetリセット`
+&nanoem.menu.accessory.convert-to-model6現在選択中のアクセサリをモデルに変換U
+#nanoem.menu.accessory.delete-active.現在選択中のアクセサリを削除(&D)2
+nanoem.menu.accessory.titleアクセサリ(&A)T
+2nanoem.menu.project.motion.shift-keyframes-forward現在のフレームを削除O
+3nanoem.menu.project.motion.shift-keyframes-backward空フレームを挿入1
+ nanoem.menu.project.motion.reset初期化(&I)3
+ nanoem.menu.project.motion.titleモーション3
+nanoem.menu.project.titleプロジェクト(&P)(
+nanoem.menu.window.maximize	最大化(
+nanoem.menu.window.minimize	最小化$
+nanoem.menu.window.restore復元?
+nanoem.menu.window.fullscreenフルスクリーンにする/
+nanoem.menu.window.titleウィンドウ(&W)7
+nanoem.menu.help.onlineオンラインヘルプ(&O).
+nanoem.menu.help.update更新を確認(&U)3
+nanoem.menu.help.homepageホームページ(&H)1
+nanoem.menu.help.aboutnanoem について(&A)'
+nanoem.menu.help.titleヘルプ(&H),
+nanoem.menu.edit.bone.titleボーン(&B)*
+nanoem.menu.edit.camera.title	カメラ-
+nanoem.menu.edit.morph.titleモーフ(&O)G
+nanoem.menu.edit.bone.parameter$数値入力ダイアログを開く@
+'nanoem.menu.edit.bone.reset-orientation角度をリセットB
+ nanoem.menu.edit.bone.correction補正ダイアログを開くH
+nanoem.menu.edit.bone.bias*バイアス指定ダイアログを開くI
+!nanoem.menu.edit.camera.parameter$数値入力ダイアログを開く<
+#nanoem.menu.edit.camera.reset-angle角度をリセットD
+"nanoem.menu.edit.camera.correction補正ダイアログを開くC
+!nanoem.menu.edit.morph.correction補正ダイアログを開くZ
+/nanoem.menu.edit.morph.remove-all-keyframes.lip'唇のキーフレームを全て削除Z
+/nanoem.menu.edit.morph.remove-all-keyframes.eye'目のキーフレームを全て削除a
+3nanoem.menu.edit.morph.remove-all-keyframes.eyebrow*まゆのキーフレームを全て削除L
+'nanoem.menu.edit.morph.reset-all-morphs!全てのモーフをリセット[
+*nanoem.menu.edit.morph.register-all-morphs-全てのモーフをキーフレーム登録.
+nanoem.menu.macos.aboutnanoem について*
+nanoem.menu.macos.preferences	設定...'
+nanoem.menu.macos.settings	設定...*
+nanoem.menu.macos.hidenanoem を隠す-
+nanoem.menu.macos.hide-allほかを隠す-
+nanoem.menu.macos.show-allすべて表示*
+nanoem.menu.macos.quitnanoem を終了.
+!nanoem.menu.macos.window.minimize	最小化*
+nanoem.menu.macos.window.zoom	ズームJ
++nanoem.menu.macos.window.bring-all-to-frontすべてを手前に移動(
+nanoem.project.track.camera	カメラ$
+nanoem.project.track.light照明'
+nanoem.project.track.model	モデル9
+ nanoem.project.track.self-shadowセルフシャドウ>
+nanoem.project.track.select-all全てのキーフレーム6
+#nanoem.project.track.selected-bones選択ボーン7
+$nanoem.project.track.selected-morphs選択モーフ5
+nanoem.project.track.all-morphs全てのモーフ)
+nanoem.project.track.none（なし）W
+"nanoem.error.convert-to-nmm.reason1nmm 形式への変換は対応していません�
+/nanoem.error.convert-to-nmm.recovery-suggestion�メニューの「ヘルプ」にある「nanoem Online Manual」から「アプリケーションのメニュー」の「保存」の項目を参照してください�
+ nanoem.error.project.load.reason]データが破損しているため、プロジェクトの読み込みに失敗しました{
+ nanoem.error.project.save.reasonW不完全なデータが保存されようとしたため保存が中断されました�
+-nanoem.error.project.save.recovery-suggestionQ保存先に異常がないかを確認してから再度保存してください�
+0nanoem.error.plugin.model.no-active-model.reasonNプラグインの実行対象となるモデルが選択されていませんe
+=nanoem.error.plugin.model.no-active-model.recovery-suggestion$モデルを選択してくださいk
+nanoem.error.model.dirty.reasonHキーフレーム未登録のボーンまたはモーフがあります�
+,nanoem.error.model.dirty.recovery-suggestion�未登録のボーンまたはモーフをキーフレーム登録するかフレーム移動してリセットしてくださいj
+-nanoem.error.effect.material-not-found.reason9エフェクトに割り当てる材質がありませんt
+1nanoem.error.effect.model-effect-not-found.reason?エフェクトに割り当てるモデルが存在しません�
+.nanoem.error.effect.offscreen-not-found.reasonQオフスクリーンエフェクトに割り当てる対象が存在しません�
+-nanoem.error.effect.invalid-attachment.reasonoエフェクトに割り当てるモデルまたはオフスクリーンの対象が設定されていません�
+:nanoem.error.effect.invalid-attachment.recovery-suggestion�メニューの「編集」＞「エフェクト設定ウィンドウを開く」からモデルの材質あるいはオフスクリーンの対象を設定してからエフェクトを読み込ませてくださいm
+$nanoem.error.motion.not-model.reasonE読み込まれたモーションはモデル用ではありません�
+/nanoem.error.motion.not-camera-and-light.reasonQ読み込まれたモーションはカメラ及び照明用ではありません�
+*nanoem.error.motion.no-active-model.reasonWモデルモーションを読み込むためのモデルが選択されていません_
+7nanoem.error.motion.no-active-model.recovery-suggestion$モデルを選択してくださいw
+%nanoem.error.project.new-model.reasonN新規モデルを作成するにはプロジェクトの保存が必要です�
+&nanoem.error.project.open-model.reasonWモデル編集ダイアログを開くにはプロジェクトの保存が必要です`
+ nanoem.project.diagnostics.title<プロジェクトの一部ファイルの読み込み失敗�
+'nanoem.project.diagnostics.message.mainrプロジェクトの読み込みは成功しましたが、一部のファイルが読み込めませんでした�
+,nanoem.project.diagnostics.message.not-foundQ次のファイルが見つかりません。移動した可能性があります�
+2nanoem.project.diagnostics.message.digest-mismatchQ次のファイルは保存時から変更があったため読み込めません\
+%nanoem.motion.model.diagnostics.title3読み込まれたモデルモーションの警告�
+'nanoem.motion.model.diagnostics.message�モデルモーションの読み込みに成功しましたが、「%s」のために作られており以下のボーンあるいはモーフが不足しているため正常に動作しない可能性がありますV
+1nanoem.motion.model.diagnostics.all-missing-bones!不足しているボーン一覧W
+2nanoem.motion.model.diagnostics.all-missing-morphs!不足しているモーフ一覧B
+!nanoem.model.measure-height.title「%s」の身長の近似値t
+#nanoem.model.measure-height.messageMモデル「%s」の身長の近似値は %.2f センチメートルです。>
+#nanoem.model.validator.result.title「%s」の検証結果\
+%nanoem.model.validator.result.success3検証した結果問題はありませんでしたd
+%nanoem.model.validator.result.failure;検証した結果 %zu 件の問題が見つかりましたI
+*nanoem.model.validator.primitive.float-nan非数値が存在しますI
+*nanoem.model.validator.primitive.float-inf無限値が存在しますJ
+.nanoem.model.validator.vertex.model.name.emptyモデル名が空ですY
+1nanoem.model.validator.vertex.model.comment.empty$モデルのコメントが空ですN
+,nanoem.model.validator.vertex.normal.invalid頂点の法線が不正です^
+*nanoem.model.validator.vertex.texcoord.oob0頂点のテクスチャ座標が範囲外ですg
+'nanoem.model.validator.vertex.bone.null<頂点に対応するボーンが設定されていませんv
+3nanoem.model.validator.vertex.weight.not-normalized?頂点のボーンウェイトが正規化されていませんL
+*nanoem.model.validator.vertex.type.invalid頂点の種別が不正ですW
+,nanoem.model.validator.face.not-triangulated'面が三角形になっていませんU
+'nanoem.model.validator.face.vertex.null*面の頂点が設定されていませんQ
+&nanoem.model.validator.face.vertex.oob'面が頂点の範囲外にあります\
++nanoem.model.validator.face.vertex.not-used-頂点が面から参照されていませんU
+*nanoem.model.validator.material.name.empty'材質名が設定されていませんT
+/nanoem.model.validator.material.name.duplicated!材質名が重複していますe
+1nanoem.model.validator.material.ambient.color.oob0材質の環境光色が範囲外にありますe
+1nanoem.model.validator.material.diffuse.color.oob0材質の拡散光色が範囲外にありますv
+3nanoem.model.validator.material.diffuse.opacity.oob?材質の拡散光色の不透明度が範囲外にありますc
+2nanoem.model.validator.material.specular.color.oob-材質の鏡面色が範囲外にありますb
+.nanoem.model.validator.material.edge.color.oob0材質のエッジ色が範囲外にありますs
+0nanoem.model.validator.material.edge.opacity.oob?材質のエッジ色の不透明度が範囲外にあります�
+9nanoem.model.validator.material.texture.diffuse.not-foundH材質の拡散光のテクスチャファイルが見つかりません�
+<nanoem.model.validator.material.texture.sphere-map.not-foundQ材質のスフィアマップテクスチャファイルが見つかりません�
+6nanoem.model.validator.material.texture.toon.not-foundH材質のトゥーンテクスチャファイルが見つかりません�
+-nanoem.model.validator.material.face.not-fill`全材質が参照するインデックスが対応する面の数よりも少ない状態です�
+-nanoem.model.validator.material.face.overflow]全材質が参照するインデックスが対応する面の数よりも多い状態ですY
+)nanoem.model.validator.bone.name.too-long,ボーン名が15バイトを超えてますT
+&nanoem.model.validator.bone.name.empty*ボーン名が設定されていませんS
++nanoem.model.validator.bone.name.duplicated$ボーン名が重複しています|
+3nanoem.model.validator.bone.transform-before-parentE親子関係の問題から親ボーンより先に変形されますZ
+)nanoem.model.validator.bone.inherent.null-付与ボーンが設定されていません�
+<nanoem.model.validator.bone.inherent.transform-before-parentK親子関係の問題から付与親ボーンより先に変形されます�
+>nanoem.model.validator.bone.constraint.transform-before-parentS親子関係の問題からIKターゲットボーンより先に変形されますc
+5nanoem.model.validator.bone.fixed-axis.not-normalized*固定軸が正規化されていませんZ
+*nanoem.model.validator.morph.name.too-long,モーフ名が15バイトを超えてますU
+'nanoem.model.validator.morph.name.empty*モーフ名が設定されていませんT
+,nanoem.model.validator.morph.name.duplicated$モーフ名が重複していますU
+'nanoem.model.validator.label.name.empty*表示枠名が設定されていませんT
+,nanoem.model.validator.label.name.duplicated$表示枠名が重複しています;
+"nanoem.model.validator.label.empty表示枠が空ですk
+.nanoem.model.validator.label.not-assigned-bone9ボーンが表示枠に割り当てられていませんl
+/nanoem.model.validator.label.not-assigned-morph9モーフが表示枠に割り当てられていませんe
++nanoem.model.validator.label.item.bone.null6表示枠内のボーンが設定されていませんf
+,nanoem.model.validator.label.item.morph.null6表示枠内のモーフが設定されていませんW
+,nanoem.model.validator.rigid-body.name.empty'剛体名が設定されていませんV
+1nanoem.model.validator.rigid-body.name.duplicated!剛体名が重複していますk
++nanoem.model.validator.rigid-body.bone.null<剛体に対応するボーンが設定されていません[
+'nanoem.model.validator.joint.name.empty0ジョイント名が設定されていませんZ
+,nanoem.model.validator.joint.name.duplicated*ジョイント名が重複していますy
+.nanoem.model.validator.joint.rigid-body-a.nullGジョイントに対応する剛体 (A) が設定されていませんy
+.nanoem.model.validator.joint.rigid-body-b.nullGジョイントに対応する剛体 (B) が設定されていませんb
++nanoem.model.validator.soft-body.name.empty3ソフトボディ名が設定されていませんa
+0nanoem.model.validator.soft-body.name.duplicated-ソフトボディ名が重複していますw
+.nanoem.model.validator.soft-body.material.nullEソフトボディに対応する材質が設定されていません
+nanoem.status.SUCCESS成功I
+!nanoem.status.ERROR_MALLOC_FAILED$メモリ確保に失敗しましたJ
+"nanoem.status.ERROR_REALLOC_FAILED$メモリ確保に失敗しました@
+nanoem.status.ERROR_NULL_OBJECTNULL 参照がされましたI
+nanoem.status.ERROR_BUFFER_END'バッファが終端に達してますp
+0nanoem.status.ERROR_DECODE_UNICODE_STRING_FAILED<ユニコード文字列のデコードに失敗しましたs
+0nanoem.status.ERROR_ENCODE_UNICODE_STRING_FAILED?ユニコード文字列のエンコードに失敗しましたG
+%nanoem.status.ERROR_INVALID_SIGNATURE不正なシグネチャですI
+*nanoem.status.ERROR_MODEL_VERTEX_CORRUPTED頂点が破損してます\
+(nanoem.status.ERROR_MODEL_FACE_CORRUPTED0面（インデックス）が破損してますK
+,nanoem.status.ERROR_MODEL_MATERIAL_CORRUPTED材質が破損してますJ
+(nanoem.status.ERROR_MODEL_BONE_CORRUPTEDボーンが破損してますP
+.nanoem.status.ERROR_MODEL_CONSTRAINT_CORRUPTEDIK 制約が破損してますY
++nanoem.status.ERROR_MODEL_TEXTURE_CORRUPTED*テクスチャ参照が破損してますK
+)nanoem.status.ERROR_MODEL_MORPH_CORRUPTEDモーフが破損してますK
+)nanoem.status.ERROR_MODEL_LABEL_CORRUPTED表示枠が破損してますM
+.nanoem.status.ERROR_MODEL_RIGID_BODY_CORRUPTED剛体が破損してますQ
+)nanoem.status.ERROR_MODEL_JOINT_CORRUPTED$ジョイントが破損してますU
+)nanoem.status.ERROR_PMD_ENGLISH_CORRUPTED(PMD の英語情報が破損してますV
+'nanoem.status.ERROR_PMX_INFO_CORRUPUTED+PMX のメタデータが破損してますi
+2nanoem.status.ERROR_MOTION_BONE_KEYFRAME_CORRUPTED3ボーンのキーフレームが破損してますk
+4nanoem.status.ERROR_MOTION_CAMERA_KEYFRAME_CORRUPTED3カメラのキーフレームが破損してますg
+3nanoem.status.ERROR_MOTION_LIGHT_KEYFRAME_CORRUPTED0照明のキーフレームが破損してますj
+3nanoem.status.ERROR_MOTION_MODEL_KEYFRAME_CORRUPTED3モデルのキーフレームが破損してますj
+3nanoem.status.ERROR_MOTION_MORPH_KEYFRAME_CORRUPTED3モーフのキーフレームが破損してます|
+9nanoem.status.ERROR_MOTION_SELF_SHADOW_KEYFRAME_CORRUPTED?セルフシャドウのキーフレームが破損してますz
+7nanoem.status.ERROR_MOTION_BONE_KEYFRAME_ALREADY_EXISTS?ボーンのキーフレームがすでに存在していますi
+2nanoem.status.ERROR_MOTION_BONE_KEYFRAME_NOT_FOUND3ボーンのキーフレームが存在しません|
+9nanoem.status.ERROR_MOTION_CAMERA_KEYFRAME_ALREADY_EXISTS?カメラのキーフレームがすでに存在していますk
+4nanoem.status.ERROR_MOTION_CAMERA_KEYFRAME_NOT_FOUND3カメラのキーフレームが存在しませんx
+8nanoem.status.ERROR_MOTION_LIGHT_KEYFRAME_ALREADY_EXISTS<照明のキーフレームがすでに存在していますg
+3nanoem.status.ERROR_MOTION_LIGHT_KEYFRAME_NOT_FOUND0照明のキーフレームが存在しませんr
+/nanoem.status.ERROR_MOTION_FRAME_ALREADY_EXISTS?モデルのキーフレームがすでに存在していますj
+3nanoem.status.ERROR_MOTION_MODEL_KEYFRAME_NOT_FOUND3モデルのキーフレームが存在しません{
+8nanoem.status.ERROR_MOTION_MORPH_KEYFRAME_ALREADY_EXISTS?モーフのキーフレームがすでに存在していますj
+3nanoem.status.ERROR_MOTION_MORPH_KEYFRAME_NOT_FOUND3モーフのキーフレームが存在しません�
+>nanoem.status.ERROR_MOTION_SELF_SHADOW_KEYFRAME_ALREADY_EXISTSKセルフシャドウのキーフレームがすでに存在しています|
+9nanoem.status.ERROR_MOTION_SELF_SHADOW_KEYFRAME_NOT_FOUND?セルフシャドウのキーフレームが存在しません�
+<nanoem.status.ERROR_MOTION_ACCESSORY_KEYFRAME_ALREADY_EXISTSEアクセサリのキーフレームがすでに存在していますt
+7nanoem.status.ERROR_MOTION_ACCESSORY_KEYFRAME_NOT_FOUND9アクセサリのキーフレームが存在しません�
+3nanoem.status.ERROR_EFFECT_PARAMETER_ALREADY_EXISTSTエフェクトパラメータのキーフレームがすでに存在していますz
+.nanoem.status.ERROR_EFFECT_PARAMETER_NOT_FOUNDHエフェクトパラメータのキーフレームが存在しませんs
+9nanoem.status.ERROR_MODEL_CONSTRAINT_STATE_ALREADY_EXISTS6IK キーフレームがすでに存在していますb
+4nanoem.status.ERROR_MODEL_CONSTRAINT_STATE_NOT_FOUND*IK キーフレームが存在しませんy
+0nanoem.status.ERROR_MODEL_BINDING_ALREADY_EXISTSE外部親モデルキーフレームがすでに存在していますh
++nanoem.status.ERROR_MODEL_BINDING_NOT_FOUND9外部親モデルキーフレームが存在しませんZ
+/nanoem.status.ERROR_MODEL_VERTEX_ALREADY_EXISTS'頂点がすでに存在していますI
+*nanoem.status.ERROR_MODEL_VERTEX_NOT_FOUND頂点が存在しません\
+1nanoem.status.ERROR_MODEL_MATERIAL_ALREADY_EXISTS'材質がすでに存在していますK
+,nanoem.status.ERROR_MODEL_MATERIAL_NOT_FOUND材質が存在しませんO
+-nanoem.status.ERROR_MODEL_BONE_ALREADY_EXISTSボーンが存在しませんJ
+(nanoem.status.ERROR_MODEL_BONE_NOT_FOUNDボーンが存在しませんU
+3nanoem.status.ERROR_MODEL_CONSTRAINT_ALREADY_EXISTSIK 制約が存在しませんP
+.nanoem.status.ERROR_MODEL_CONSTRAINT_NOT_FOUNDIK 制約が存在しませんb
+4nanoem.status.ERROR_MODEL_CONSTRAINT_JOINT_NOT_FOUND*IK 制約のボーンが存在しませんj
+0nanoem.status.ERROR_MODEL_TEXTURE_ALREADY_EXISTS6テクスチャ参照がすでに存在していますY
++nanoem.status.ERROR_MODEL_TEXTURE_NOT_FOUND*テクスチャ参照が存在しません\
+.nanoem.status.ERROR_MODEL_MORPH_ALREADY_EXISTS*モーフがすでに存在していますK
+)nanoem.status.ERROR_MODEL_MORPH_NOT_FOUNDモーフが存在しませんU
+-nanoem.status.ERROR_MODEL_MORPH_TYPE_MISMATCH$モーフ種別が一致しません_
+.nanoem.status.ERROR_MODEL_MORPH_BONE_NOT_FOUND-モーフ（ボーン）が存在しませんb
+.nanoem.status.ERROR_MODEL_MORPH_FLIP_NOT_FOUND0モーフ（フリップ）が存在しませんc
+/nanoem.status.ERROR_MODEL_MORPH_GROUP_NOT_FOUND0モーフ（グループ）が存在しませんh
+1nanoem.status.ERROR_MODEL_MORPH_IMPULSE_NOT_FOUND3モーフ（インパルス）が存在しません`
+2nanoem.status.ERROR_MODEL_MORPH_MATERIAL_NOT_FOUND*モーフ（材質）が存在しませんV
+,nanoem.status.ERROR_MODEL_MORPH_UV_NOT_FOUND&モーフ（UV）が存在しません^
+0nanoem.status.ERROR_MODEL_MORPH_VERTEX_NOT_FOUND*モーフ（頂点）が存在しません\
+.nanoem.status.ERROR_MODEL_LABEL_ALREADY_EXISTS*表示枠がすでに存在していますK
+)nanoem.status.ERROR_MODEL_LABEL_NOT_FOUND表示枠が存在しませんY
+.nanoem.status.ERROR_MODEL_LABEL_ITEM_NOT_FOUND'表示枠の中身が存在しません^
+3nanoem.status.ERROR_MODEL_RIGID_BODY_ALREADY_EXISTS'剛体がすでに存在していますM
+.nanoem.status.ERROR_MODEL_RIGID_BODY_NOT_FOUND剛体が存在しませんb
+.nanoem.status.ERROR_MODEL_JOINT_ALREADY_EXISTS0ジョイントがすでに存在していますQ
+)nanoem.status.ERROR_MODEL_JOINT_NOT_FOUND$ジョイントが存在しません_
+.nanoem.status.ERROR_MODEL_VERSION_INCOMPATIBLE-モデルのバージョンが非互換ですi
+5nanoem.status.ERROR_DOCUMENT_ACCESSORY_ALREADY_EXISTS0アクセサリがすでに存在していますX
+0nanoem.status.ERROR_DOCUMENT_ACCESSORY_NOT_FOUND$アクセサリが存在しません�
+>nanoem.status.ERROR_DOCUMENT_ACCESSORY_KEYFRAME_ALREADY_EXISTSEアクセサリのキーフレームがすでに存在していますv
+9nanoem.status.ERROR_DOCUMENT_ACCESSORY_KEYFRAME_NOT_FOUND9アクセサリのキーフレームが存在しません~
+;nanoem.status.ERROR_DOCUMENT_CAMERA_KEYFRAME_ALREADY_EXISTS?カメラのキーフレームがすでに存在していますm
+6nanoem.status.ERROR_DOCUMENT_CAMERA_KEYFRAME_NOT_FOUND3カメラのキーフレームが存在しません�
+<nanoem.status.ERROR_DOCUMENT_GRAVITY_KEYFRAME_ALREADY_EXISTSB物理演算のキーフレームがすでに存在していますq
+7nanoem.status.ERROR_DOCUMENT_GRAVITY_KEYFRAME_NOT_FOUND6物理演算のキーフレームが存在しませんz
+:nanoem.status.ERROR_DOCUMENT_LIGHT_KEYFRAME_ALREADY_EXISTS<照明のキーフレームがすでに存在していますi
+5nanoem.status.ERROR_DOCUMENT_LIGHT_KEYFRAME_NOT_FOUND0照明のキーフレームが存在しません_
+1nanoem.status.ERROR_DOCUMENT_MODEL_ALREADY_EXISTS*モデルがすでに存在していますN
+,nanoem.status.ERROR_DOCUMENT_MODEL_NOT_FOUNDモデルが存在しません�
+?nanoem.status.ERROR_DOCUMENT_MODEL_BONE_KEYFRAME_ALREADY_EXISTS?ボーンのキーフレームがすでに存在していますq
+:nanoem.status.ERROR_DOCUMENT_MODEL_BONE_KEYFRAME_NOT_FOUND3ボーンのキーフレームが存在しませんs
+<nanoem.status.ERROR_DOCUMENT_MODEL_BONE_STATE_ALREADY_EXISTS3ボーンの状態がすでに存在していますb
+7nanoem.status.ERROR_DOCUMENT_MODEL_BONE_STATE_NOT_FOUND'ボーンの状態が存在しません|
+Bnanoem.status.ERROR_DOCUMENT_MODEL_CONSTRAINT_STATE_ALREADY_EXISTS6IK ボーンの状態がすでに存在していますk
+=nanoem.status.ERROR_DOCUMENT_MODEL_CONSTRAINT_STATE_NOT_FOUND*IK ボーンの状態が存在しません�
+@nanoem.status.ERROR_DOCUMENT_MODEL_MODEL_KEYFRAME_ALREADY_EXISTS?モーフのキーフレームがすでに存在していますr
+;nanoem.status.ERROR_DOCUMENT_MODEL_MODEL_KEYFRAME_NOT_FOUND3モデルのキーフレームが存在しません�
+@nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_KEYFRAME_ALREADY_EXISTS?モーフのキーフレームがすでに存在していますr
+;nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_KEYFRAME_NOT_FOUND3モーフのキーフレームが存在しませんt
+=nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_STATE_ALREADY_EXISTS3モーフの状態がすでに存在していますc
+8nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_STATE_NOT_FOUND'モーフの状態が存在しませんz
+@nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_ALREADY_EXISTS6モデルの外部親がすでに存在していますi
+;nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_NOT_FOUND*モーフの外部親が存在しません�
+Fnanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_STATE_ALREADY_EXISTS?モデルの外部親の状態がすでに存在していますx
+Ananoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_STATE_NOT_FOUND3モーフの外部親の状態が存在しません�
+@nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_ALREADY_EXISTSKセルフシャドウのキーフレームがすでに存在しています~
+;nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_NOT_FOUND?セルフシャドウのキーフレームが存在しませんd
+0nanoem.status.ERROR_DOCUMENT_ACCESSORY_CORRUPTED0アクセサリデータが破損していますy
+9nanoem.status.ERROR_DOCUMENT_ACCESSORY_KEYFRAME_CORRUPTED<アクセサリのキーフレームが破損していますv
+?nanoem.status.ERROR_DOCUMENT_ACCESSORY_OUTSIDE_PARENT_CORRUPTED3アクセサリの外部親が破損しています[
+-nanoem.status.ERROR_DOCUMENT_CAMERA_CORRUPTED*カメラデータが破損していますp
+6nanoem.status.ERROR_DOCUMENT_CAMERA_KEYFRAME_CORRUPTED6カメラのキーフレームが破損しています_
+.nanoem.status.ERROR_DOCUMENT_GRAVITY_CORRUPTED-物理演算データが破損していますt
+7nanoem.status.ERROR_DOCUMENT_GRAVITY_KEYFRAME_CORRUPTED9物理演算のキーフレームが破損していますW
+,nanoem.status.ERROR_DOCUMENT_LIGHT_CORRUPTED'照明データが破損していますl
+5nanoem.status.ERROR_DOCUMENT_LIGHT_KEYFRAME_CORRUPTED3照明のキーフレームが破損していますZ
+,nanoem.status.ERROR_DOCUMENT_MODEL_CORRUPTED*モデルデータが破損していますo
+5nanoem.status.ERROR_DOCUMENT_MODEL_KEYFRAME_CORRUPTED6モデルのキーフレームが破損していますt
+:nanoem.status.ERROR_DOCUMENT_MODEL_BONE_KEYFRAME_CORRUPTED6ボーンのキーフレームが破損していますe
+7nanoem.status.ERROR_DOCUMENT_MODEL_BONE_STATE_CORRUPTED*ボーンの状態が破損していますn
+=nanoem.status.ERROR_DOCUMENT_MODEL_CONSTRAINT_STATE_CORRUPTED-IK ボーンの状態が破損していますu
+;nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_KEYFRAME_CORRUPTED6モーフのキーフレームが破損していますf
+8nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_STATE_CORRUPTED*モーフの状態が破損していますl
+;nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_CORRUPTED-モデルの外部親が破損していますl
+2nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_CORRUPTED6セルフシャドウデータが破損しています�
+;nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_CORRUPTEDBセルフシャドウのキーフレームが破損しています
+ށF
 nanoem.gui.unimplemented*Currently Unavailable due to unimplemented
 nanoem.gui.cameraCamera 
 nanoem.gui.keyframe.copyCopy
@@ -328,7 +1529,12 @@ Rigid Body+
 3nanoem.gui.window.preference.project.language.titleLanguage@
 5nanoem.gui.window.preference.project.language.englishEnglishA
 6nanoem.gui.window.preference.project.language.japaneseJapanseV
-@nanoem.gui.window.preference.project.language.simplified-chineseSimplified Chinese8
+@nanoem.gui.window.preference.project.language.simplified-chineseSimplified ChineseP
+9nanoem.gui.window.preference.project.model-language.titleModel Name LanguageS
+=nanoem.gui.window.preference.project.model-language.follow-uiFollow UI LanguageH
+<nanoem.gui.window.preference.project.model-language.japaneseJapaneseF
+;nanoem.gui.window.preference.project.model-language.englishEnglish^
+Fnanoem.gui.window.preference.project.model-language.chinese-dictionaryChinese (Dictionary)8
 +nanoem.gui.window.preference.grid.size.cell	Cell Size=
 +nanoem.gui.window.preference.grid.size.gridNumber of CellI
 1nanoem.gui.window.preference.file-path-mode.titleFile Path in ProjectE
@@ -1217,1203 +2423,7 @@ Ananoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_STATE_NOT_FOUND'Model outsid
 ;nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_CORRUPTED%The model outside parent is corruptedS
 2nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_CORRUPTEDSelf shadow data is corruptedd
 ;nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_CORRUPTED%The self shadow keyframe is corrupted
-��@
-nanoem.gui.unimplemented$未実装のため現在利用不可
-nanoem.gui.camera	カメラ%
-nanoem.gui.keyframe.copy	コピー'
-nanoem.gui.keyframe.cut切り取り"
-nanoem.gui.keyframe.end#終了)
-nanoem.gui.keyframe.pasteペースト7
-!nanoem.gui.keyframe.inverse-paste反転ペースト$
-nanoem.gui.keyframe.remove削除#
-nanoem.gui.keyframe.scale拡大$
-nanoem.gui.keyframe.select選択.
-!nanoem.gui.keyframe.select-column	列選択$
-nanoem.gui.keyframe.start#開始$
-nanoem.gui.effectエフェクト7
-nanoem.gui.effect.reloadエフェクトの再読込3
- nanoem.gui.panel.accessory.titleアクセサリ/
-nanoem.gui.panel.accessory.none（なし）0
-$nanoem.gui.panel.accessory.bone.none(なし)+
-!nanoem.gui.panel.accessory.delete削除+
-!nanoem.gui.panel.accessory.ground地面)
-nanoem.gui.panel.accessory.load読込+
-nanoem.gui.panel.accessory.none(なし)2
-"nanoem.gui.panel.accessory.opacity不透明度0
-&nanoem.gui.panel.accessory.orientation回転-
-#nanoem.gui.panel.accessory.register登録-
- nanoem.gui.panel.accessory.scale	拡大率0
-&nanoem.gui.panel.accessory.translation移動,
-"nanoem.gui.panel.accessory.visible表示*
-nanoem.gui.panel.accessory.op	外部親(
-nanoem.gui.panel.bone.title	ボーン'
-nanoem.gui.panel.bone.copy	コピー=
-*nanoem.gui.panel.bone.label.selection-mode選択モード$
-nanoem.gui.panel.bone.move移動+
-nanoem.gui.panel.bone.pasteペースト9
-#nanoem.gui.panel.bone.inverse-paste反転ペースト2
-(nanoem.gui.panel.bone.physics-simulation物理(
-nanoem.gui.panel.bone.register登録&
-nanoem.gui.panel.bone.rotate回転&
-nanoem.gui.panel.bone.select選択-
- nanoem.gui.panel.bone.select.all	全選択-
- nanoem.gui.panel.bone.select.box	箱選択/
-"nanoem.gui.panel.bone.select.dirty	未登録*
-nanoem.gui.panel.camera.title	カメラ<
-)nanoem.gui.panel.camera.following-to-boneボーン追従-
-!nanoem.gui.panel.camera.bone.none(なし)(
-nanoem.gui.panel.camera.fov	視野角3
-"nanoem.gui.panel.camera.fov.format視野角: %d*
-nanoem.gui.panel.camera.reset	初期化*
-nanoem.gui.panel.camera.label	カメラ.
-"nanoem.gui.panel.camera.model.none(なし)?
-#nanoem.gui.panel.camera.perspectiveパースペクティブ*
- nanoem.gui.panel.camera.register登録4
-$nanoem.gui.panel.interpolation.title補間曲線8
-(nanoem.gui.panel.interpolation.automatic自動補間9
-/nanoem.gui.panel.interpolation.bone.orientation回転A
-1nanoem.gui.panel.interpolation.bone.translation.x移動(X軸)A
-1nanoem.gui.panel.interpolation.bone.translation.y移動(Y軸)A
-1nanoem.gui.panel.interpolation.bone.translation.z移動(Z軸)>
-.nanoem.gui.panel.interpolation.camera.distance視野距離6
-)nanoem.gui.panel.interpolation.camera.fov	視野角;
-1nanoem.gui.panel.interpolation.camera.orientation回転C
-3nanoem.gui.panel.interpolation.camera.translation.x移動(X軸)C
-3nanoem.gui.panel.interpolation.camera.translation.y移動(Y軸)C
-3nanoem.gui.panel.interpolation.camera.translation.z移動(Z軸)0
-#nanoem.gui.panel.interpolation.copy	コピー5
-%nanoem.gui.panel.interpolation.linear線形補間4
-$nanoem.gui.panel.interpolation.pasteペースト&
-nanoem.gui.panel.light.title照明#
-nanoem.gui.panel.light.color色*
- nanoem.gui.panel.light.direction方向)
-nanoem.gui.panel.light.reset	初期化;
-"nanoem.gui.panel.light.self-shadowセルフシャドウ)
-nanoem.gui.panel.light.register登録)
-nanoem.gui.panel.model.title	モデル*
- nanoem.gui.panel.model.blend-add加算-
-&nanoem.gui.panel.model.blend-add.short加B
-nanoem.gui.panel.model.default カメラ/照明/アクセサリ'
-nanoem.gui.panel.model.delete削除%
-nanoem.gui.panel.model.load読込,
-%nanoem.gui.panel.model.outside-parent外)
-nanoem.gui.panel.model.register登録6
-nanoem.gui.panel.model.shadowセルフシャドウ*
-#nanoem.gui.panel.model.shadow.short影(
-nanoem.gui.panel.model.visible表示+
-$nanoem.gui.panel.model.visible.short表2
-&nanoem.gui.panel.model.constraint.none(なし))
-nanoem.gui.panel.morph.title	モーフ'
-nanoem.gui.panel.morph.none(なし)!
-nanoem.gui.panel.morph.eye目-
-#nanoem.gui.panel.morph.eye.register登録(
-nanoem.gui.panel.morph.eyebrowまゆ1
-'nanoem.gui.panel.morph.eyebrow.register登録'
-nanoem.gui.panel.morph.lip	リップ-
-#nanoem.gui.panel.morph.lip.register登録)
-nanoem.gui.panel.morph.other	その他/
-%nanoem.gui.panel.morph.other.register登録.
-nanoem.gui.panel.morph.weight#ウェイト:
-$nanoem.gui.panel.morph.weight.formatウェイト: %.2f%
-nanoem.gui.panel.play.title再生$
-nanoem.gui.panel.play.end#終了'
-nanoem.gui.panel.play.loop	ループ+
-nanoem.gui.panel.play.pause一時停止$
-nanoem.gui.panel.play.play再生&
-nanoem.gui.panel.play.resume再開&
-nanoem.gui.panel.play.start#開始'
-nanoem.gui.panel.play.volume#音量3
-#nanoem.gui.panel.play.volume.format音量: %d%%6
-nanoem.gui.panel.shadow.titleセルフシャドウ+
- nanoem.gui.panel.shadow.distance#距離.
-nanoem.gui.panel.shadow.mode-1モード１.
-nanoem.gui.panel.shadow.mode-2モード２&
-nanoem.gui.panel.shadow.noneなし*
- nanoem.gui.panel.shadow.register登録(
-nanoem.gui.panel.view.title	ビュー$
-nanoem.gui.panel.view.back背面&
-nanoem.gui.panel.view.bottom底面,
-nanoem.gui.panel.view.followフォロー.
-!nanoem.gui.panel.view.follow.bone	ボーン/
-"nanoem.gui.panel.view.follow.model	モデル%
-nanoem.gui.panel.view.front前面$
-nanoem.gui.panel.view.left左面%
-nanoem.gui.panel.view.right右面"
-nanoem.gui.panel.view.up上面5
-+nanoem.gui.panel.model.edit.operation.title操作E
-2nanoem.gui.panel.model.edit.operation.action.titleアクションF
-9nanoem.gui.panel.model.edit.operation.action.camera.title	カメラF
-<nanoem.gui.panel.model.edit.operation.action.selection.title選択^
-Enanoem.gui.panel.model.edit.operation.action.create-parent-bone.title親ボーンの作成d
-Enanoem.gui.panel.model.edit.operation.action.create-target-bone.title表示先ボーンの作成e
-Fnanoem.gui.panel.model.edit.operation.action.paint-vertex-weight.title頂点ウェイトを塗るq
-Lnanoem.gui.panel.model.edit.operation.action.create-material-primitive.title!材質プリミティブの作成U
-Knanoem.gui.panel.model.edit.operation.action.create-material-primitive.cone円錐X
-Knanoem.gui.panel.model.edit.operation.action.create-material-primitive.cube	立方体Y
-Onanoem.gui.panel.model.edit.operation.action.create-material-primitive.cylinder円筒W
-Mnanoem.gui.panel.model.edit.operation.action.create-material-primitive.sphere球体\
-Lnanoem.gui.panel.model.edit.operation.action.create-material-primitive.torusトーラスj
-]nanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.translation	移動量g
-Znanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.rotation	回転量g
-Wnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.scaleスケールo
-Xnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.slices円周分割数: %do
-Xnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.stacks高さ分割数: %dh
-Xnanoem.gui.panel.model.edit.operation.action.create-material-primitive.parameters.radius内径: %.1fH
-5nanoem.gui.panel.model.edit.operation.selection.title選択モード@
-6nanoem.gui.panel.model.edit.operation.selection.circle円形C
-9nanoem.gui.panel.model.edit.operation.selection.rectangle矩形<
-5nanoem.gui.panel.model.edit.operation.selection.point点4
-'nanoem.gui.panel.model.edit.gizmo.title	ギズモA
-1nanoem.gui.panel.model.edit.gizmo.operation.title操作種別?
-5nanoem.gui.panel.model.edit.gizmo.operation.translate移動<
-2nanoem.gui.panel.model.edit.gizmo.operation.rotate回転A
-1nanoem.gui.panel.model.edit.gizmo.operation.scaleスケールB
-2nanoem.gui.panel.model.edit.gizmo.coordinate.title座標種別F
-3nanoem.gui.panel.model.edit.gizmo.coordinate.globalグローバルE
-2nanoem.gui.panel.model.edit.gizmo.coordinate.localグローバルP
-.nanoem.gui.panel.model.edit.weight-paint.title頂点ウェイトペイントK
-5nanoem.gui.panel.model.edit.weight-paint.painter-typeペイント種別V
-@nanoem.gui.panel.model.edit.weight-paint.painter-type.base-brushベースブラシR
-?nanoem.gui.panel.model.edit.weight-paint.painter-type.air-brushエアブラシD
-4nanoem.gui.panel.model.edit.weight-paint.vertex-type頂点種別:
--nanoem.gui.panel.model.edit.weight-paint.bone	ボーン?
-/nanoem.gui.panel.model.edit.weight-paint.radius半径: %.3f>
-.nanoem.gui.panel.model.edit.weight-paint.delta差分: %.3f?
-2nanoem.gui.panel.model.edit.weight-paint.normalize	正規化S
-@nanoem.gui.panel.model.edit.weight-paint.automatic-normalization自動正規化
-nanoem.gui.redoやり直し)
-nanoem.gui.timelineタイムライン
-nanoem.gui.undo元に戻す/
-nanoem.gui.viewport.titleビューポートB
-#nanoem.gui.viewport.model-with-boneビューポート - %s: %s1
-$nanoem.gui.viewport.parameter.camera	カメラ4
-*nanoem.gui.viewport.parameter.camera.angle角度=
--nanoem.gui.viewport.parameter.camera.distance視野距離9
-,nanoem.gui.viewport.parameter.camera.look-at	注視点0
-#nanoem.gui.viewport.parameter.model	モデル9
-/nanoem.gui.viewport.parameter.model.orientation回転9
-/nanoem.gui.viewport.parameter.model.translation移動5
-%nanoem.gui.window.interpolation.title補間曲線6
-nanoem.gui.window.op.model外部親（モデル）M
-(nanoem.gui.window.op.model.register.bone!ボーンキーフレーム登録<
-)nanoem.gui.window.op.model.register.model外部親登録:
-'nanoem.gui.window.op.model.subject.bone対象ボーン8
-,nanoem.gui.window.op.model.subject.bone.none(なし)?
-&nanoem.gui.window.op.model.target.bone接続先親ボーン7
-+nanoem.gui.window.op.model.target.bone.none(なし)@
-'nanoem.gui.window.op.model.target.model接続先親モデル8
-,nanoem.gui.window.op.model.target.model.none(なし)a
-3nanoem.gui.window.op.model.subject.bone.translation*対象ボーンの位置（自動計算）a
-3nanoem.gui.window.op.model.subject.bone.orientation*対象ボーンの回転（自動計算）@
-nanoem.gui.window.op.accessory外部親（アクセサリ）@
--nanoem.gui.window.op.accessory.register.model外部親登録@
-*nanoem.gui.window.op.accessory.target.bone接続先ボーン;
-/nanoem.gui.window.op.accessory.target.bone.none(なし)A
-+nanoem.gui.window.op.accessory.target.model接続先モデル<
-0nanoem.gui.window.op.accessory.target.model.none(地面):
-'nanoem.gui.window.op.accessory.register外部親登録9
- nanoem.gui.window.op.self-shadowセルフシャドウ8
-+nanoem.gui.window.op.self-shadow.mode.title	モード:
-*nanoem.gui.window.op.self-shadow.mode.none（なし）P
-+nanoem.gui.window.op.self-shadow.mode.type1!モード１（バランス型）P
-+nanoem.gui.window.op.self-shadow.mode.type2!モード２（近接重視型）9
-/nanoem.gui.window.op.self-shadow.distance.title距離8
-+nanoem.gui.window.op.self-shadow.initialize	初期化3
-)nanoem.gui.window.op.self-shadow.register登録E
-&nanoem.gui.window.bone.parameter.title数値入力（ボーン）6
-,nanoem.gui.window.bone.parameter.translation移動6
-,nanoem.gui.window.bone.parameter.orientation回転G
-(nanoem.gui.window.camera.parameter.title数値入力（カメラ）7
-*nanoem.gui.window.camera.parameter.look-at	注視点2
-(nanoem.gui.window.camera.parameter.angle角度;
-+nanoem.gui.window.camera.parameter.distance視野距離@
-'nanoem.gui.window.bone.correction.title補正（ボーン）7
--nanoem.gui.window.bone.correction.translation移動7
--nanoem.gui.window.bone.correction.orientation回転B
-)nanoem.gui.window.camera.correction.title補正（カメラ）8
-+nanoem.gui.window.camera.correction.look-at	注視点3
-)nanoem.gui.window.camera.correction.angle角度<
-,nanoem.gui.window.camera.correction.distance視野距離A
-(nanoem.gui.window.morph.correction.title補正（モーフ）9
-)nanoem.gui.window.morph.correction.weightウェイトD
-(nanoem.gui.window.project.viewport.titleビューポート設定O
--nanoem.gui.window.project.viewport.size.title出力サイズ (幅 / 高さ)M
-.nanoem.gui.window.project.viewport.size.presetプリセットから設定@
-3nanoem.gui.window.project.viewport.size.preset.from	選択...A
-.nanoem.gui.window.project.viewport.color.title出力背景色V
-4nanoem.gui.window.project.viewport.transparent.title透過背景を有効にするY
-.nanoem.gui.window.project.order.drawable.title'モデル・アクセサリの描画順H
-/nanoem.gui.window.project.order.transform.titleモデルの変形順>
-.nanoem.gui.window.project.physics-engine.title物理演算B
-5nanoem.gui.window.project.physics-engine.acceleration	加速度<
-2nanoem.gui.window.project.physics-engine.direction方向U
-9nanoem.gui.window.project.physics-engine.time-step-factor時間ステップ係数A
-.nanoem.gui.window.project.physics-engine.noiseノイズ係数R
-6nanoem.gui.window.project.physics-engine.noise.enabledノイズを付加する7
-'nanoem.gui.window.preference.tab.global全体設定D
-(nanoem.gui.window.preference.tab.projectプロジェクト設定;
-(nanoem.gui.window.preference.tab.specialスペシャルc
-;nanoem.gui.window.preference.special.application-preference$アプリケーション環境設定<
-/nanoem.gui.window.preference.special.initialize	初期化S
-4nanoem.gui.window.preference.special.undo-soft-limitアンドゥソフト制限W
-5nanoem.gui.window.preference.special.buffer-pool-sizeバッファプールサイズV
-4nanoem.gui.window.preference.special.image-pool-sizeイメージプールサイズZ
-5nanoem.gui.window.preference.special.shader-pool-size!シェーダープールサイズO
-3nanoem.gui.window.preference.special.pass-pool-sizeパスプールサイズ_
-7nanoem.gui.window.preference.special.pipeline-pool-size$パイプラインプールサイズc
-8nanoem.gui.window.preference.special.uniform-buffer-size'ユニフォームバッファサイズ5
-"nanoem.gui.window.model.edge.titleエッジ設定2
-"nanoem.gui.window.model.edge.colorエッジ色1
-!nanoem.gui.window.model.edge.sizeエッジ幅J
-%nanoem.gui.window.model.edge.register!キーフレームを登録する9
-&nanoem.gui.window.project.effect.titleエフェクト9
-&nanoem.gui.window.project.effect.titleエフェクトG
-.nanoem.gui.window.project.effect.tab.offscreenオフスクリーン7
-*nanoem.gui.window.project.effect.tab.model	モデルA
-.nanoem.gui.window.project.effect.tab.parameterパラメータK
-2nanoem.gui.window.project.effect.offscreen.default（デフォルト）?
-/nanoem.gui.window.project.effect.offscreen.none（なし）w
-:nanoem.gui.window.project.effect.offscreen.display-texture9レンダーターゲットテクスチャを表示する>
-.nanoem.gui.window.project.effect.material.none（なし）Y
-1nanoem.gui.window.project.effect.parameter.reload$エフェクトをリロードするf
-2nanoem.gui.window.project.effect.parameter.inspect0パラメータのデバッグを有効にする3
-)nanoem.gui.window.project.effect.emd.load読込3
-)nanoem.gui.window.project.effect.emd.save保存*
-nanoem.gui.window.model.title	モデル-
-#nanoem.gui.window.model.tab.measure測定2
-"nanoem.gui.window.model.tab.systemシステム,
-"nanoem.gui.window.model.tab.vertex頂点'
- nanoem.gui.window.model.tab.face面C
-$nanoem.gui.window.model.tab.material材質（マテリアル）-
- nanoem.gui.window.model.tab.bone	ボーン:
-!nanoem.gui.window.model.tab.morphモーフ（表情）=
-!nanoem.gui.window.model.tab.label表示枠（ラベル）0
-&nanoem.gui.window.model.tab.rigid-body剛体4
-!nanoem.gui.window.model.tab.jointジョイント;
-%nanoem.gui.window.model.tab.soft-bodyソフトボディ-
-#nanoem.gui.window.model.menu.vertex頂点(
-!nanoem.gui.window.model.menu.face面/
-%nanoem.gui.window.model.menu.material材質.
-!nanoem.gui.window.model.menu.bone	ボーン/
-"nanoem.gui.window.model.menu.morph	モーフ<
-&nanoem.gui.window.model.menu.type.boneボーンモーフ@
-'nanoem.gui.window.model.menu.type.groupグループモーフ=
-*nanoem.gui.window.model.menu.type.material材質モーフE
-)nanoem.gui.window.model.menu.type.textureテクスチャモーフ;
-$nanoem.gui.window.model.menu.type.uv拡張 UV モーフ;
-(nanoem.gui.window.model.menu.type.vertex頂点モーフ?
-&nanoem.gui.window.model.menu.type.flipフリップモーフE
-)nanoem.gui.window.model.menu.type.impulseインパルスモーフ/
-"nanoem.gui.window.model.menu.label	表示枠1
-'nanoem.gui.window.model.menu.rigid-body剛体5
-"nanoem.gui.window.model.menu.jointジョイント<
-&nanoem.gui.window.model.menu.soft-bodyソフトボディD
-"nanoem.gui.window.preference.titleアプリケーション設定n
-,nanoem.gui.window.preference.global.renderer>レンダラ ※ 変更後要アプリケーション再起動O
-0nanoem.gui.window.preference.global.color-formatカラーフォーマットE
-6nanoem.gui.window.preference.global.color-format.rgba8RGBA8 (SDR)I
-8nanoem.gui.window.preference.global.color-format.rgb10a2RGB10A2 (HDR)H
-8nanoem.gui.window.preference.global.color-format.rgba16fRGBA16 (HDR)I
-'nanoem.gui.window.preference.global.fps編集時フレームレート>
-1nanoem.gui.window.preference.global.fps.unlimited	無制限4
-*nanoem.gui.window.preference.global.fps.3030 FPS4
-*nanoem.gui.window.preference.global.fps.6060 FPS<
-,nanoem.gui.window.preference.global.fps.auto自動設定v
-3nanoem.gui.window.preference.viewport.high-dpi.mode?起動時の高解像度ビューポートを有効にするかH
-8nanoem.gui.window.preference.viewport.high-dpi.mode.auto自動設定K
-;nanoem.gui.window.preference.viewport.high-dpi.mode.enabled常に有効L
-<nanoem.gui.window.preference.viewport.high-dpi.mode.disabled常に無効{
-8nanoem.gui.window.preference.global.editing-model.enable?モデル編集機能を有効にする（実験的な機能）I
-3nanoem.gui.window.preference.global.analytics.titleアクセス解析\
-4nanoem.gui.window.preference.global.analytics.enable$アクセス解析を有効にするd
-3nanoem.gui.window.preference.global.analytics.reset-アクセス解析用の UUID をリセットh
-7nanoem.gui.window.preference.global.crash-report.enable-クラッシュレポートを有効にする�
-;nanoem.gui.window.preference.global.analytics.reset.cautionR※ 変更を反映するにはアプリケーションの再起動が必要ですb
-.nanoem.gui.window.preference.global.sda.enable0モデル描画の負荷分散を有効にするL
-6nanoem.gui.window.preference.global.system-informationシステム情報:
-'nanoem.gui.window.preference.grid.title地面軸設定=
-3nanoem.gui.window.preference.project.language.title言語?
-5nanoem.gui.window.preference.project.language.english英語C
-6nanoem.gui.window.preference.project.language.japanese	日本語V
-@nanoem.gui.window.preference.project.language.simplified-chinese簡体字中国語J
-+nanoem.gui.window.preference.grid.size.cell地面軸セルの大きさJ
-+nanoem.gui.window.preference.grid.size.grid地面軸セルの表示数Y
-1nanoem.gui.window.preference.file-path-mode.title$保存時のファイルパス設定D
-4nanoem.gui.window.preference.file-path-mode.absolute絶対パスD
-4nanoem.gui.window.preference.file-path-mode.relative相対パス1
-$nanoem.gui.model.edit.measure.vertex	頂点数,
-"nanoem.gui.model.edit.measure.face面数3
-&nanoem.gui.model.edit.measure.material	材質数;
-%nanoem.gui.model.edit.measure.textureテクスチャ数2
-"nanoem.gui.model.edit.measure.boneボーン数:
-(nanoem.gui.model.edit.measure.constraintIKボーン数3
-#nanoem.gui.model.edit.measure.morphモーフ数3
-#nanoem.gui.model.edit.measure.label表情枠数5
-(nanoem.gui.model.edit.measure.rigid-body	剛体数9
-#nanoem.gui.model.edit.measure.jointジョイント数@
-'nanoem.gui.model.edit.measure.soft-bodyソフトボディ数F
--nanoem.gui.model.edit.measure.transform.title一括モデル変形7
--nanoem.gui.model.edit.measure.transform.apply適用=
--nanoem.gui.model.edit.measure.transform.resetリセットM
-:nanoem.gui.model.edit.measure.transform.height-based.title身長ベースa
-6nanoem.gui.model.edit.measure.transform.height-based.a'(A): MMD におけるモデルの身長m
-6nanoem.gui.model.edit.measure.transform.height-based.b3(B): MMD におけるセンチメートルの単位c
-6nanoem.gui.model.edit.measure.transform.height-based.c)(C): 補正用途のセンチメートル}
-;nanoem.gui.model.edit.measure.transform.height-based.result>センチメートル単位のモデルの身長 = (A / B) + CN
-Ananoem.gui.model.edit.measure.transform.height-based.scale-factor	拡大率K
-;nanoem.gui.model.edit.measure.transform.numeric-input.title数値入力+
-!nanoem.gui.model.edit.system.name名前4
-$nanoem.gui.model.edit.system.commentコメント>
-%nanoem.gui.model.edit.system.encoding文字エンコード1
- nanoem.gui.model.edit.system.uva追加 UV 数3
-#nanoem.gui.model.edit.vertex.origin頂点座標3
-#nanoem.gui.model.edit.vertex.normal法線座標1
-%nanoem.gui.model.edit.vertex.texcoordUV座標C
-!nanoem.gui.model.edit.vertex.type頂点種別と影響ボーン3
-#nanoem.gui.model.edit.vertex.weightウェイト/
-#nanoem.gui.model.edit.vertex.sdef.cSDEF (C)1
-$nanoem.gui.model.edit.vertex.sdef.r0	SDEF (R0)1
-$nanoem.gui.model.edit.vertex.sdef.r1	SDEF (R1)5
-%nanoem.gui.model.edit.vertex.material所属材質1
-!nanoem.gui.model.edit.vertex.edgeエッジ幅2
- nanoem.gui.model.edit.vertex.uva拡張UV座標E
-,nanoem.gui.model.edit.material.name.japanese名称（日本語）A
-+nanoem.gui.model.edit.material.name.english名称（英語）T
-,nanoem.gui.model.edit.material.ambient.color$環境光色（アンビエント）T
-,nanoem.gui.model.edit.material.diffuse.color$拡散光色（ディフューズ）G
-.nanoem.gui.model.edit.material.diffuse.opacity拡散光の透明度U
--nanoem.gui.model.edit.material.specular.color$鏡面光色（スペキュラー）=
--nanoem.gui.model.edit.material.specular.power鏡面強度J
-4nanoem.gui.model.edit.material.specular.power.format鏡面強度: %.2f6
-)nanoem.gui.model.edit.material.edge.title	エッジ9
-)nanoem.gui.model.edit.material.edge.colorエッジ色G
-+nanoem.gui.model.edit.material.edge.opacityエッジ色の透明度8
-(nanoem.gui.model.edit.material.edge.sizeエッジ幅E
-/nanoem.gui.model.edit.material.edge.size.formatエッジ幅: %.2fI
--nanoem.gui.model.edit.material.primitive.typeプリミティブ種別L
--nanoem.gui.model.edit.material.spheremap.typeスフィアマップ種別?
-,nanoem.gui.model.edit.material.texture.titleテクスチャF
--nanoem.gui.model.edit.material.arbitrary-area任意ユーザ領域J
-.nanoem.gui.model.edit.material.texture.diffuse拡散光テクスチャU
--nanoem.gui.model.edit.material.texture.sphere$スフィアマップテクスチャJ
-+nanoem.gui.model.edit.material.texture.toonトゥーンテクスチャX
-6nanoem.gui.model.edit.material.texture.display-uv-meshUV メッシュを表示する<
-)nanoem.gui.model.edit.material.propertiesプロパティX
-3nanoem.gui.model.edit.material.property.shared-toon!共有トゥーンテクスチャ_
-7nanoem.gui.model.edit.material.property.disable-culling$カリング無効（両面描画）R
-6nanoem.gui.model.edit.material.property.casting-shadow地面影の投影対象c
-;nanoem.gui.model.edit.material.property.casting-self-shadow$セルフシャドウの投影対象L
-3nanoem.gui.model.edit.material.property.self-shadowセルフシャドウ9
-,nanoem.gui.model.edit.material.property.edge	エッジG
-4nanoem.gui.model.edit.material.property.vertex-color頂点カラーG
-.nanoem.gui.model.edit.material.primitive.point点（ポイント）C
--nanoem.gui.model.edit.material.primitive.line線（ライン）V
-1nanoem.gui.model.edit.material.primitive.triangle!三角（トライアングル）<
-2nanoem.gui.model.edit.material.spheremap.type.noneなし;
-1nanoem.gui.model.edit.material.spheremap.type.add加算@
-6nanoem.gui.model.edit.material.spheremap.type.multiply乗算R
-9nanoem.gui.model.edit.material.spheremap.type.sub-textureサブテクスチャA
-(nanoem.gui.model.edit.bone.name.japanese名称（日本語）=
-'nanoem.gui.model.edit.bone.name.english名称（英語）1
-!nanoem.gui.model.edit.bone.origin原点座標1
-!nanoem.gui.model.edit.bone.parent親ボーンA
-+nanoem.gui.model.edit.bone.destination.bone接続先ボーンF
--nanoem.gui.model.edit.bone.destination.origin接続先原点座標0
- nanoem.gui.model.edit.bone.stage変形階層8
-%nanoem.gui.model.edit.bone.propertiesプロパティ2
-"nanoem.gui.model.edit.bone.movable移動可能5
-%nanoem.gui.model.edit.bone.rotateable回転可能,
-"nanoem.gui.model.edit.bone.visible可視:
-*nanoem.gui.model.edit.bone.user-handleable操作可能:
--nanoem.gui.model.edit.bone.inverse-kinematics	IK 制約M
-.nanoem.gui.model.edit.bone.constraint.effectorIK ターゲットボーン?
-,nanoem.gui.model.edit.bone.constraint.targetIK 元ボーン5
-+nanoem.gui.model.edit.bone.constraint.angle角度E
-,nanoem.gui.model.edit.bone.constraint.jointsIK リンクボーン:
-0nanoem.gui.model.edit.bone.constraint.joints.add追加=
-3nanoem.gui.model.edit.bone.constraint.joints.remove削除Y
-7nanoem.gui.model.edit.bone.constraint.joint.angle-limit角度制限を有効にするM
-=nanoem.gui.model.edit.bone.constraint.joint.angle-limit.lower角度下限M
-=nanoem.gui.model.edit.bone.constraint.joint.angle-limit.upper角度上限?
-/nanoem.gui.model.edit.bone.constraint.iteration試行回数<
-)nanoem.gui.model.edit.bone.inherent.title付与ボーン?
-/nanoem.gui.model.edit.bone.inherent.translation移動付与?
-/nanoem.gui.model.edit.bone.inherent.orientation回転付与E
-/nanoem.gui.model.edit.bone.inherent.parent-bone付与親ボーン<
-/nanoem.gui.model.edit.bone.inherent.coefficient	付与率6
-)nanoem.gui.model.edit.bone.has-fixed-axis	固定軸8
-+nanoem.gui.model.edit.bone.fixed-axis.title	固定軸<
-)nanoem.gui.model.edit.bone.has-local-axesローカル軸>
-+nanoem.gui.model.edit.bone.local-axes.titleローカル軸>
-'nanoem.gui.model.edit.bone.local-axis.xローカル軸 (X)>
-'nanoem.gui.model.edit.bone.local-axis.zローカル軸 (Z)?
-)nanoem.gui.model.edit.bone.inherent.localローカル付与R
-9nanoem.gui.model.edit.bone.affected-by-physics-simulation物理演算後計算B
-)nanoem.gui.model.edit.morph.name.japanese名称（日本語）>
-(nanoem.gui.model.edit.morph.name.english名称（英語）4
-$nanoem.gui.model.edit.morph.categoryカテゴリ*
- nanoem.gui.model.edit.morph.type種別?
-)nanoem.gui.model.edit.morph.category.baseシステム予約/
-(nanoem.gui.model.edit.morph.category.eye目6
-,nanoem.gui.model.edit.morph.category.eyebrowまゆ5
-(nanoem.gui.model.edit.morph.category.lip	リップ7
-*nanoem.gui.model.edit.morph.category.other	その他6
-,nanoem.gui.model.edit.morph.category.unknown不明2
-%nanoem.gui.model.edit.morph.type.bone	ボーン5
-%nanoem.gui.model.edit.morph.type.flipフリップ6
-&nanoem.gui.model.edit.morph.type.groupグループ;
-(nanoem.gui.model.edit.morph.type.impulseインパルス3
-)nanoem.gui.model.edit.morph.type.material材質;
-(nanoem.gui.model.edit.morph.type.textureテクスチャ3
-%nanoem.gui.model.edit.morph.type.uva1
-拡張 UV13
-%nanoem.gui.model.edit.morph.type.uva2
-拡張 UV23
-%nanoem.gui.model.edit.morph.type.uva3
-拡張 UV33
-%nanoem.gui.model.edit.morph.type.uva4
-拡張 UV41
-'nanoem.gui.model.edit.morph.type.vertex頂点2
-(nanoem.gui.model.edit.morph.type.unknown不明9
-,nanoem.gui.model.edit.morph.bone.translation	移動量9
-,nanoem.gui.model.edit.morph.bone.orientation	回転量.
-$nanoem.gui.model.edit.morph.bone.add追加1
-'nanoem.gui.model.edit.morph.bone.remove削除7
-'nanoem.gui.model.edit.morph.flip.weightウェイト.
-$nanoem.gui.model.edit.morph.flip.add追加1
-'nanoem.gui.model.edit.morph.flip.remove削除8
-(nanoem.gui.model.edit.morph.group.weightウェイト/
-%nanoem.gui.model.edit.morph.group.add追加2
-(nanoem.gui.model.edit.morph.group.remove削除@
-*nanoem.gui.model.edit.morph.impulse.torqueトルク（力）K
-,nanoem.gui.model.edit.morph.impulse.velocityベロシティ（速度）N
-)nanoem.gui.model.edit.morph.impulse.local!ローカル軸を有効にする1
-'nanoem.gui.model.edit.morph.impulse.add追加4
-*nanoem.gui.model.edit.morph.impulse.remove削除>
-.nanoem.gui.model.edit.morph.material.operation動作種別B
-2nanoem.gui.model.edit.morph.material.ambient.color環境光色B
-2nanoem.gui.model.edit.morph.material.diffuse.color拡散光色C
-3nanoem.gui.model.edit.morph.material.specular.color鏡面光色C
-3nanoem.gui.model.edit.morph.material.specular.power鏡面強度?
-/nanoem.gui.model.edit.morph.material.edge.colorエッジ色>
-.nanoem.gui.model.edit.morph.material.edge.sizeエッジ幅Z
-2nanoem.gui.model.edit.morph.material.blend.diffuse$拡散光テクスチャブレンドi
-5nanoem.gui.model.edit.morph.material.blend.sphere-map0スフィアマップテクスチャブレンドZ
-/nanoem.gui.model.edit.morph.material.blend.toon'トゥーンテクスチャブレンド2
-(nanoem.gui.model.edit.morph.material.add追加5
-+nanoem.gui.model.edit.morph.material.remove削除4
-'nanoem.gui.model.edit.morph.uv.position	UV 座標5
-+nanoem.gui.model.edit.morph.vertex.position位置B
-)nanoem.gui.model.edit.label.name.japanese名称（日本語）>
-(nanoem.gui.model.edit.label.name.english名称（英語）0
-#nanoem.gui.model.edit.label.special	特殊枠G
-.nanoem.gui.model.edit.rigid-body.name.japanese名称（日本語）C
--nanoem.gui.model.edit.rigid-body.name.english名称（英語）8
-%nanoem.gui.model.edit.rigid-body.bone接続ボーンH
-,nanoem.gui.model.edit.rigid-body.object-typeオブジェクト種別;
-+nanoem.gui.model.edit.rigid-body.shape-type形状種別7
-'nanoem.gui.model.edit.rigid-body.origin原点座標6
-,nanoem.gui.model.edit.rigid-body.orientation回転A
-+nanoem.gui.model.edit.rigid-body.shape.size形状の大きさ/
-%nanoem.gui.model.edit.rigid-body.mass質量?
-/nanoem.gui.model.edit.rigid-body.linear-damping移動減衰@
-0nanoem.gui.model.edit.rigid-body.angular-damping回転減衰9
-)nanoem.gui.model.edit.rigid-body.friction摩擦係数<
-,nanoem.gui.model.edit.rigid-body.restitution反発係数F
-0nanoem.gui.model.edit.rigid-body.collision.group衝突グループB
-/nanoem.gui.model.edit.rigid-body.collision.mask衝突マスクS
-4nanoem.gui.model.edit.rigid-body.object-type.dynamic演算結果を全て反映L
-6nanoem.gui.model.edit.rigid-body.object-type.kinematic回転のみ反映F
-3nanoem.gui.model.edit.rigid-body.object-type.staticボーン連動>
-4nanoem.gui.model.edit.rigid-body.object-type.unknown不明6
-/nanoem.gui.model.edit.rigid-body.shape-type.box箱C
-3nanoem.gui.model.edit.rigid-body.shape-type.capsuleカプセル<
-2nanoem.gui.model.edit.rigid-body.shape-type.sphere球体=
-3nanoem.gui.model.edit.rigid-body.shape-type.unknown不明B
-)nanoem.gui.model.edit.joint.name.japanese名称（日本語）>
-(nanoem.gui.model.edit.joint.name.english名称（英語）<
-(nanoem.gui.model.edit.joint.rigid-body.a接続剛体 (A)<
-(nanoem.gui.model.edit.joint.rigid-body.b接続剛体 (B)2
-"nanoem.gui.model.edit.joint.origin原点座標1
-'nanoem.gui.model.edit.joint.orientation回転8
-(nanoem.gui.model.edit.joint.linear.upper移動上限8
-(nanoem.gui.model.edit.joint.linear.lower移動下限<
-,nanoem.gui.model.edit.joint.linear.stiffness移動剛性9
-)nanoem.gui.model.edit.joint.angular.upper回転上限9
-)nanoem.gui.model.edit.joint.angular.lower回転下限=
--nanoem.gui.model.edit.joint.angular.stiffness回転剛性2
-(nanoem.gui.model.edit.soft-body.material材質:
-*nanoem.gui.model.edit.soft-body.shape-type形状種別I
-3nanoem.gui.model.edit.soft-body.shape-type.tri-mesh三角メッシュ<
-/nanoem.gui.model.edit.soft-body.shape-type.rope	ロープK
-/nanoem.gui.model.edit.soft-body.aero-model-typeエアロモデル種別X
-<nanoem.gui.model.edit.soft-body.aero-model-type.vertex-point頂点（ポイント）V
-@nanoem.gui.model.edit.soft-body.aero-model-type.vertex-two-sided頂点（両面）V
-@nanoem.gui.model.edit.soft-body.aero-model-type.vertex-one-sided頂点（片面）Q
->nanoem.gui.model.edit.soft-body.aero-model-type.face-two-sided面（両面）Q
->nanoem.gui.model.edit.soft-body.aero-model-type.face-one-sided面（方面）:
-*nanoem.gui.model.edit.soft-body.total-mass合計質量F
-0nanoem.gui.model.edit.soft-body.collision-margin衝突マージンJ
-2nanoem.gui.model.edit.soft-body.collision-group-id衝突グループIDS
-4nanoem.gui.model.edit.soft-body.collision-group-mask衝突グループマスクX
-:nanoem.gui.model.edit.soft-body.velocity-correction-factorVelocity Correction FactorJ
-3nanoem.gui.model.edit.soft-body.damping-coefficientDamping CoefficientD
-0nanoem.gui.model.edit.soft-body.drag-coefficientDrag CoefficientD
-0nanoem.gui.model.edit.soft-body.lift-coefficientLift CoefficientL
-4nanoem.gui.model.edit.soft-body.pressure-coefficientPressure Coefficientb
-?nanoem.gui.model.edit.soft-body.volume-conversation-coefficientVolume Conversation Coefficient\
-<nanoem.gui.model.edit.soft-body.dynamic-friction-coefficientDynamic Friction CoefficientV
-9nanoem.gui.model.edit.soft-body.pose-matching-coefficientPose Matching CoefficientP
-6nanoem.gui.model.edit.soft-body.rigid-contact-hardnessRigid Contact HardnessT
-8nanoem.gui.model.edit.soft-body.kinetic-contact-hardnessKinetic Contact HardnessN
-5nanoem.gui.model.edit.soft-body.soft-contact-hardnessSoft Contact HardnessB
-/nanoem.gui.model.edit.soft-body.anchor-hardnessAnchor HardnessT
-8nanoem.gui.model.edit.soft-body.soft-vs-kinetic-hardnessSoft vs Kinetic HardnessP
-6nanoem.gui.model.edit.soft-body.soft-vs-rigid-hardnessSoft vs Rigid HardnessN
-5nanoem.gui.model.edit.soft-body.soft-vs-soft-hardnessSoft vs Soft Hardness^
-=nanoem.gui.model.edit.soft-body.soft-vs-kinetic-impulse-splitSoft vs Kinetic Impulse SplitZ
-;nanoem.gui.model.edit.soft-body.soft-vs-rigid-impulse-splitSoft vs Rigid Impulse SplitX
-:nanoem.gui.model.edit.soft-body.soft-vs-soft-impulse-splitSoft vs Soft Impulse Split\
-<nanoem.gui.model.edit.soft-body.linear-stiffness-coefficientLinear Stiffness Coefficient^
-=nanoem.gui.model.edit.soft-body.angular-stiffness-coefficientAngular Stiffness Coefficient\
-<nanoem.gui.model.edit.soft-body.volume-stiffness-coefficientVolume Stiffness Coefficient\
-<nanoem.gui.model.edit.soft-body.bending-constraints-distanceBending Constraints Distance@
--nanoem.gui.model.edit.soft-body.cluster-countクラスタ数X
-:nanoem.gui.model.edit.soft-body.velocity-solver-iterationsVelocity Solver IterationsX
-:nanoem.gui.model.edit.soft-body.position-solver-iterationsPosition Solver IterationsR
-7nanoem.gui.model.edit.soft-body.drift-solver-iterationsDrift Solver IterationsV
-9nanoem.gui.model.edit.soft-body.cluster-solver-iterationsCluster Solver IterationsY
-;nanoem.gui.model.edit.soft-body.bending-constraints-enabledEnable Bending ConstraintsR
-0nanoem.gui.model.edit.soft-body.clusters-enabledクラスタを有効にする]
-=nanoem.gui.model.edit.soft-body.randomize-constraints-enabledEnable Randomize Constraints(
-nanoem.gui.model.editモデル編集*
- nanoem.gui.model.edit.info.title情報,
-"nanoem.gui.model.edit.vertex.title頂点C
-$nanoem.gui.model.edit.material.title材質（マテリアル）-
- nanoem.gui.model.edit.bone.title	ボーン:
-!nanoem.gui.model.edit.morph.titleモーフ（表情）=
-!nanoem.gui.model.edit.label.title表示枠（ラベル）0
-&nanoem.gui.model.edit.rigid-body.title剛体4
-!nanoem.gui.model.edit.joint.titleジョイント,
-"nanoem.gui.model.edit.window.apply適用6
-#nanoem.gui.model.edit.window.cancelキャンセル=
--nanoem.gui.model.edit.action.insert.new.title新規追加8
-+nanoem.gui.model.edit.action.insert.at-last	最後尾a
-6nanoem.gui.model.edit.action.insert.new.after-selected'選択したオブジェクトの後ろD
-.nanoem.gui.model.edit.action.insert.copy.titleコピーを追加@
-0nanoem.gui.model.edit.action.insert.copy.at-next対象の次6
-,nanoem.gui.model.edit.action.selection.title選択=
-*nanoem.gui.model.edit.action.masking.titleマスキングT
-8nanoem.gui.model.edit.action.selection.vertex.enable-all全ての頂点を選択d
-9nanoem.gui.model.edit.action.selection.vertex.disable-all'選択された全ての頂点を解除n
-@nanoem.gui.model.edit.action.selection.vertex.enable-all-by-type*次の種類に該当する頂点を選択r
->nanoem.gui.model.edit.action.selection.vertex.enable-all-faces0選択された頂点が含まれる面を選択y
-Bnanoem.gui.model.edit.action.selection.vertex.enable-all-materials3選択された頂点が含まれる材質を選択�
-Fnanoem.gui.model.edit.action.selection.vertex.enable-all-vertex-morphs<選択された頂点が含まれる頂点モーフを選択�
-Gnanoem.gui.model.edit.action.selection.vertex.enable-all-texture-morphsE選択された頂点が含まれるテクスチャモーフを選択j
-6nanoem.gui.model.edit.action.masking.vertex.enable-all0選択された全ての頂点をマスキングt
-7nanoem.gui.model.edit.action.masking.vertex.disable-all9選択された全ての頂点のマスキングを解除j
-6nanoem.gui.model.edit.action.masking.vertex.invert-all0全ての頂点のマスキング状態を反転O
-6nanoem.gui.model.edit.action.selection.face.enable-all全ての面を選択t
-@nanoem.gui.model.edit.action.selection.face.enable-all-materials0選択された面が含まれる材質を選択_
-7nanoem.gui.model.edit.action.selection.face.disable-all$選択された全ての面を解除e
-4nanoem.gui.model.edit.action.masking.face.enable-all-選択された全ての面をマスキングo
-5nanoem.gui.model.edit.action.masking.face.disable-all6選択された全ての面のマスキングを解除e
-4nanoem.gui.model.edit.action.masking.face.invert-all-全ての面のマスキング状態を反転V
-:nanoem.gui.model.edit.action.selection.material.enable-all全ての材質を選択f
-;nanoem.gui.model.edit.action.selection.material.disable-all'選択された全ての材質を解除�
-@nanoem.gui.model.edit.action.selection.material.enable-all-bonesE選択された材質に含まれる全てのボーンを選択する�
-@nanoem.gui.model.edit.action.selection.material.enable-all-faces?選択された材質に含まれる全ての面を選択する�
-Cnanoem.gui.model.edit.action.selection.material.enable-all-verticesB選択された材質に含まれる全ての頂点を選択するl
-8nanoem.gui.model.edit.action.masking.material.enable-all0選択された全ての材質をマスキングv
-9nanoem.gui.model.edit.action.masking.material.disable-all9選択された全ての材質のマスキングを解除l
-8nanoem.gui.model.edit.action.masking.material.invert-all0全ての材質のマスキング状態を反転U
-6nanoem.gui.model.edit.action.selection.bone.enable-all全てのボーンを選択y
-?nanoem.gui.model.edit.action.selection.bone.enable-all-vertices6選択されたボーンが含まれる頂点を選択�
-=nanoem.gui.model.edit.action.selection.bone.enable-all-morphsB選択されたボーンが含まれるボーンモーフを選択}
-Cnanoem.gui.model.edit.action.selection.bone.enable-all-rigid-bodies6選択されたボーンが含まれる剛体を選択c
->nanoem.gui.model.edit.action.selection.bone.enable-all-visible!全ての表示ボーンを選択l
-Ananoem.gui.model.edit.action.selection.bone.enable-all-rotateable'全ての回転可能ボーンを選択i
->nanoem.gui.model.edit.action.selection.bone.enable-all-movable'全ての移動可能ボーンを選択a
-<nanoem.gui.model.edit.action.selection.bone.enable-symmetric!左右対称のボーンを選択e
-7nanoem.gui.model.edit.action.selection.bone.disable-all*選択された全てのボーンを解除k
-4nanoem.gui.model.edit.action.masking.bone.enable-all3選択された全てのボーンをマスキングr
->nanoem.gui.model.edit.action.masking.bone.enable-all-invisible0非表示の全てのボーンをマスキングu
-5nanoem.gui.model.edit.action.masking.bone.disable-all<選択された全てのボーンのマスキングを解除k
-4nanoem.gui.model.edit.action.masking.bone.invert-all3全てのボーンのマスキング状態を反転V
-7nanoem.gui.model.edit.action.selection.morph.enable-all全てのモーフを選択f
-8nanoem.gui.model.edit.action.selection.morph.disable-all*選択された全てのモーフを解除�
-9nanoem.gui.model.edit.action.selection.morph.children-allW選択されたモーフから該当する全てのモデルオブジェクトを選択V
-7nanoem.gui.model.edit.action.selection.label.enable-all全ての表示枠を選択f
-8nanoem.gui.model.edit.action.selection.label.disable-all*選択された全ての表示枠を解除�
-9nanoem.gui.model.edit.action.selection.label.children-allW選択された表示枠から該当する全てのボーンまたはモーフを選択X
-<nanoem.gui.model.edit.action.selection.rigid-body.enable-all全ての剛体を選択�
-Bnanoem.gui.model.edit.action.selection.rigid-body.enable-all-bonesB選択された剛体から該当する全てのボーンを選択d
-Bnanoem.gui.model.edit.action.selection.rigid-body.enable-symmetric左右対称の剛体を選択h
-=nanoem.gui.model.edit.action.selection.rigid-body.disable-all'選択された全ての剛体を解除n
-:nanoem.gui.model.edit.action.masking.rigid-body.enable-all0選択された全ての剛体をマスキングx
-;nanoem.gui.model.edit.action.masking.rigid-body.disable-all9選択された全ての剛体のマスキングを解除n
-:nanoem.gui.model.edit.action.masking.rigid-body.invert-all0全ての剛体のマスキング状態を反転\
-7nanoem.gui.model.edit.action.selection.joint.enable-all!全てのジョイントを選択�
-=nanoem.gui.model.edit.action.selection.joint.enable-all-bonesK選択されたジョイントから該当する全てのボーンを選択�
-Dnanoem.gui.model.edit.action.selection.joint.enable-all-rigid-bodiesH選択されたジョイントから該当する全ての剛体を選択h
-=nanoem.gui.model.edit.action.selection.joint.enable-symmetric'左右対称のジョイントを選択l
-8nanoem.gui.model.edit.action.selection.joint.disable-all0選択された全てのジョイントを解除r
-5nanoem.gui.model.edit.action.masking.joint.enable-all9選択された全てのジョイントをマスキング|
-6nanoem.gui.model.edit.action.masking.joint.disable-allB選択された全てのジョイントのマスキングを解除r
-5nanoem.gui.model.edit.action.masking.joint.invert-all9全てのジョイントのマスキング状態を反転c
-;nanoem.gui.model.edit.action.selection.soft-body.enable-all$全てのソフトボディを選択s
-<nanoem.gui.model.edit.action.selection.soft-body.disable-all3選択された全てのソフトボディを解除f
-/nanoem.gui.model.edit.action.vertex.create-bone3選択された頂点の中心にボーンを追加h
-4nanoem.gui.model.edit.action.vertex.add-vertex-morph0選択された頂点を頂点モーフに追加r
-5nanoem.gui.model.edit.action.vertex.add-texture-morph9選択された頂点をテクスチャモーフに追加F
-0nanoem.gui.model.edit.action.vertex.weight.titleウェイト転送Q
-/nanoem.gui.model.edit.action.vertex.weight.loadファイルから読み込みH
-/nanoem.gui.model.edit.action.vertex.weight.saveファイルに保存S
-7nanoem.gui.model.edit.action.vertex.weight.dialog.titleウェイト転送結果y
-9nanoem.gui.model.edit.action.vertex.weight.dialog.message<%u (対象頂点数 %u) の頂点が適用されました。l
-5nanoem.gui.model.edit.action.material.copy-from-model3次のモデルにある材質からコピーするh
-5nanoem.gui.model.edit.action.material.create-from-obj/ファイル (.obj) から材質を作成するl
-8nanoem.gui.model.edit.action.material.add-material-morph0選択された材質を材質モーフに追加G
-+nanoem.gui.model.edit.action.material.merge材質をマージする^
-9nanoem.gui.model.edit.action.material.texture.diffuse.set!拡散光テクスチャを設定c
-;nanoem.gui.model.edit.action.material.texture.diffuse.clear$拡散光テクスチャをクリアl
-;nanoem.gui.model.edit.action.material.texture.spheremap.set-スフィアマップテクスチャを設定q
-=nanoem.gui.model.edit.action.material.texture.spheremap.clear0スフィアマップテクスチャをクリア^
-6nanoem.gui.model.edit.action.material.texture.toon.set$トゥーンテクスチャを設定c
-8nanoem.gui.model.edit.action.material.texture.toon.clear'トゥーンテクスチャをクリア^
-4nanoem.gui.model.edit.action.bone.create.destination&「%s」の接続先ボーンを作成L
-0nanoem.gui.model.edit.action.bone.create.staging多段ボーンを作成a
-7nanoem.gui.model.edit.action.bone.create.staging.parent&「%s」の親ボーンとして作成`
-6nanoem.gui.model.edit.action.bone.create.staging.child&「%s」の子ボーンとして作成l
-7nanoem.gui.model.edit.action.bone.add-constraint-joints1選択されたボーンを IK ボーンに追加\
-+nanoem.gui.model.edit.action.bone.add-label-選択されたボーンを表示枠に追加j
-0nanoem.gui.model.edit.action.bone.add-bone-morph6選択されたボーンをボーンモーフに追加I
--nanoem.gui.model.edit.action.bone.axis.parent親ボーンから設定F
--nanoem.gui.model.edit.action.bone.axis.target接続先から設定L
--nanoem.gui.model.edit.action.bone.axis.select次のボーンから設定^
--nanoem.gui.model.edit.action.bone.axis.global-次の方向のグローバル軸から設定x
->nanoem.gui.model.edit.action.morph.create-bone-morph-from-file6ポーズファイルからボーンモーフを作成w
-@nanoem.gui.model.edit.action.morph.create-vertex-morph-from-file3モデルファイルから頂点モーフを作成]
-,nanoem.gui.model.edit.action.morph.add-label-選択されたモーフを表示枠に追加o
-2nanoem.gui.model.edit.action.morph.add-group-morph9選択されたモーフをグループモーフに追加n
-1nanoem.gui.model.edit.action.morph.add-flip-morph9選択されたモーフをフリップモーフに追加{
-Ananoem.gui.model.edit.action.rigid-body.create-intermediate-joint6ふたつの剛体から中間ジョイントを作成v
-9nanoem.gui.model.edit.action.rigid-body.add-impulse-morph9選択された剛体をインパルスモーフに追加D
-(nanoem.gui.model.edit.batch.apply.vertex%u 頂点を一括適用F
-*nanoem.gui.model.edit.batch.apply.material%u 材質を一括適用E
-&nanoem.gui.model.edit.batch.apply.bone%u ボーンを一括適用F
-'nanoem.gui.model.edit.batch.apply.morph%u モーフを一括適用H
-,nanoem.gui.model.edit.batch.apply.rigid-body%u 剛体を一括適用L
-'nanoem.gui.model.edit.batch.apply.joint!%u ジョイントを一括適用S
-+nanoem.gui.model.edit.batch.apply.soft-body$%u ソフトボディを一括適用X
-'nanoem.gui.model.edit.batch.copy.vertex-次の頂点からパラメータをコピーZ
-)nanoem.gui.model.edit.batch.copy.material-次の材質からパラメータをコピーY
-%nanoem.gui.model.edit.batch.copy.bone0次のボーンからパラメータをコピーZ
-&nanoem.gui.model.edit.batch.copy.morph0次のモーフからパラメータをコピー\
-+nanoem.gui.model.edit.batch.copy.rigid-body-次の剛体からパラメータをコピー`
-&nanoem.gui.model.edit.batch.copy.joint6次のジョイントからパラメータをコピーg
-*nanoem.gui.model.edit.batch.copy.soft-body9次のソフトボディからパラメータをコピー+
-nanoem.versionnanoem のバージョン+
-!nanoem.window.dialog.buttons.save保存.
-$nanoem.window.dialog.buttons.discard破棄6
-#nanoem.window.dialog.buttons.cancelキャンセル_
-.nanoem.window.confirm-before-new-project.title-プロジェクトは変更されています�
-0nanoem.window.confirm-before-new-project.messagec新しいプロジェクトを作成する前に現在のプロジェクトを保存しますか？`
-/nanoem.window.confirm-before-open-project.title-プロジェクトは変更されています�
-1nanoem.window.confirm-before-open-project.message]新しいプロジェクトを開く前に現在のプロジェクトを保存しますか？d
-3nanoem.window.confirm-before-exit-application.title-プロジェクトは変更されています�
-5nanoem.window.confirm-before-exit-application.message`アプリケーションを終了する前に現在のプロジェクトを保存しますか？c
-2nanoem.window.confirm-before-exporting-image.title-プロジェクトは変更されています�
-4nanoem.window.confirm-before-exporting-image.messageN画像を出力する前に現在のプロジェクトを保存しますか？c
-2nanoem.window.confirm-before-exporting-video.title-プロジェクトは変更されています�
-4nanoem.window.confirm-before-exporting-video.messageN動画を出力する前に現在のプロジェクトを保存しますか？C
-*nanoem.window.confirm-editing-model.button編集機能有効化�
-+nanoem.window.confirm-editing-model.messagef当該モデルの利用規約を確認済みの上でモデル編集機能を有効にしますか？T
-)nanoem.window.confirm-editing-model.title'モデル編集機能有効化の確認8
-"nanoem.window.dialog.capture-image画像出力設定8
-"nanoem.window.dialog.capture-video動画出力設定�
-4nanoem.window.dialog.capture-video.caution.exportingb* 出力中はアスペクト比が崩れることがありますが、終了後元に戻ります�
-1nanoem.window.dialog.capture-video.caution.retina�* 高解像度モードで出力するとクラッシュする問題があるため、一度終了して Finder から「低解像度モードで開く」をチェックしてから出力してください�
-8nanoem.window.dialog.capture-video.caution.uncancellable�* 出力中はキャンセル出来ません（アプリケーション終了させた場合は終了直前までが出力されます）�
-5nanoem.window.dialog.capture-video.caution.resolutionn* 画面解像度を超える出力は出来ません（超える場合は縮小されて出力されます）�
-/nanoem.window.dialog.deleting-accessory.messageN一度削除すると戻せません。アクセサリを削除しますか？O
--nanoem.window.dialog.deleting-accessory.titleアクセサリ削除の確認�
-1nanoem.window.dialog.converting-accessory.message�変換するとアクセサリが削除されてモデルとして追加されます。アクセサリをモデルに変換しますか？]
-/nanoem.window.dialog.converting-accessory.title*アクセサリのモデル変換の確認w
-+nanoem.window.dialog.deleting-model.messageH一度削除すると戻せません。モデルを削除しますか？E
-)nanoem.window.dialog.deleting-model.titleモデル削除の確認�
-3nanoem.window.dialog.enabling-effect-plugin.message�エフェクトプラグイン無効状態のまま fx 形式のファイル読み込もうとしました。エフェクトプラグインを有効にしますか？e
-1nanoem.window.dialog.enabling-effect-plugin.title0エフェクトプラグイン有効化の確認[
-*nanoem.window.dialog.error.decoding.reason-音源または動画のデコードに失敗�
-7nanoem.window.dialog.error.decoding.recovery-suggestion�別の音源または動画ファイルを指定するか、入力可能な音源または動画形式に変換してから指定してくださいO
-*nanoem.window.dialog.error.encoding.reason!動画のエンコードに失敗�
-7nanoem.window.dialog.error.encoding.recovery-suggestionZもう一度動画出力をやり直すか、別の動画形式で出力してください�
-;nanoem.window.dialog.error.no-such-file.recovery-suggestion{%s が移動したことが原因かもしれません。ファイルを移動前のパスにコピーしてください。�
-5nanoem.window.dialog.error.file-content-digest.reasonZ%s がプロジェクト保存時と違う内容となってるため読み込めませんo
-)nanoem.window.dialog.error.message.reasonBエラーが発生しました。内容は以下のとおりですy
-6nanoem.window.dialog.error.message.recovery-suggestion?以下の方法でエラーが解決するかもしれません3
- nanoem.window.dialog.error.titleエラー発生Z
-'nanoem.window.dialog.redo.confirm.title/REDO ログファイルが見つかりました�
-)nanoem.window.dialog.redo.confirm.message�前回のクラッシュによる REDO ログがあります。REDO ログからクラッシュ直前までのリカバリを行いますか？8
-(nanoem.window.dialog.redo.progress.title作業中...`
-*nanoem.window.dialog.redo.progress.message2REDO ログから作業状態をリカバリ中...`
-*nanoem.window.dialog.redo.progress.message2REDO ログから作業状態をリカバリ中...>
-+nanoem.window.dialog.export.resolution-size出力解像度J
-(nanoem.window.dialog.export.sample-levelアンチエイリアス設定]
-&nanoem.window.dialog.export.image.seek3現在のフレーム位置で画像を出力するQ
-)nanoem.window.dialog.export.image.seek.at$画像出力するフレーム位置K
-,nanoem.window.dialog.export.same-as-viewportビューポートと同じk
-1nanoem.window.dialog.export.viewport-aspect-ratio6ビューポートのアスペクト比を維持するd
-6nanoem.window.dialog.export.prevent-frame-misalighment*フレームズレ抑止を有効にするg
-6nanoem.window.dialog.export.video.capture-video.native-OS 付属のエンコーダを有効にする@
-'nanoem.window.dialog.export.audio.codec音声コーデック@
-'nanoem.window.dialog.export.video.codec動画コーデックG
-(nanoem.window.dialog.export.video.format動画のピクセル形式E
-)nanoem.window.dialog.export.video.profile動画プロファイル7
-'nanoem.window.dialog.export.video.range出力範囲)
-nanoem.dialog.filename.untitled無題.
-nanoem.dialog.capture.title動画出力中f
-nanoem.dialog.capture.messageE動画出力中です。完了までしばらくお待ち下さい...F
-!nanoem.dialog.progress.exit.title!アプリケーション終了中i
-#nanoem.dialog.progress.exit.messageBアプリケーションが終了するまでお待ち下さい...=
-!nanoem.dialog.progress.load.titleファイルを読込中Z
-#nanoem.dialog.progress.load.message3ファイルの読込完了までお待ち下さい=
-!nanoem.dialog.progress.save.titleファイルを保存中Z
-#nanoem.dialog.progress.save.message3ファイルの保存完了までお待ち下さいO
-!nanoem.dialog.progress.bake.title*モデルモーションの焼き込み中x
-#nanoem.dialog.progress.bake.messageQ全てのモデルに対するモーションの焼き込みをしています...E
-&nanoem.window.effect.%p.render-targetsレンダーターゲットc
-/nanoem.window.effect.offscreen-render-target.%d0オフスクリーンレンダーターゲットD
-%nanoem.window.effect.render-target.%dレンダーターゲットC
-$nanoem.window.progress.capture-image%s に画像を出力中...L
-$nanoem.window.progress.capture-video$%s に動画を出力中... (%u FPS)/
-nanoem.window.scheme.finderFinder で開く?
-!nanoem.window.title.confirm.modelモデル「%s」の確認*
-nanoem.menu.file.titleファイル(&F)<
-nanoem.menu.file.new.project新規プロジェクト(&N)-
-nanoem.menu.file.new.model新規モデル8
-nanoem.menu.file.openプロジェクトを開く(&O).
-nanoem.menu.file.import.modelモデル(&M)8
-!nanoem.menu.file.import.accessoryアクセサリ(&A)6
-nanoem.menu.file.import.poseモデルポーズ(&P)D
-$nanoem.menu.file.import.motion.modelモデルモーション(&O)E
-%nanoem.menu.file.import.motion.cameraカメラモーション(&C)A
-$nanoem.menu.file.import.motion.light照明モーション(&L);
-$nanoem.menu.file.import.motion.titleモーション(&M)+
-nanoem.menu.file.import.audio
-音源(&U)1
-nanoem.menu.file.import.video背景動画(&V)+
-nanoem.menu.file.import.title
-開く(&I)8
-nanoem.menu.file.saveプロジェクトを保存(&S)4
-nanoem.menu.file.save-as名前をつけて保存6
-nanoem.menu.file.export.poseモデルポーズ(&P)D
-$nanoem.menu.file.export.motion.modelモデルモーション(&O)E
-%nanoem.menu.file.export.motion.cameraカメラモーション(&C)A
-$nanoem.menu.file.export.motion.light照明モーション(&L)*
-nanoem.menu.file.export.model	モデル+
-nanoem.menu.file.export.image
-画像(&I)+
-nanoem.menu.file.export.video
-動画(&V)1
-nanoem.menu.file.export.title書き出し(&E)#
-nanoem.menu.file.exit
-終了(&X))
-nanoem.menu.edit.undo元に戻す(&U))
-nanoem.menu.edit.redoやり直し(&R)$
-nanoem.menu.edit.cut切り取り&
-nanoem.menu.edit.copyコピー(&C)*
-nanoem.menu.edit.paste貼り付け(&P)9
-nanoem.menu.edit.plugin.modelモデルプラグイン@
-nanoem.menu.edit.plugin.motionモーションプラグインO
-nanoem.menu.edit.window.effect-エフェクト設定ウィンドウを開くH
-nanoem.menu.edit.window.model'モデル編集ウィンドウを開くQ
-%nanoem.menu.edit.select-all-keyframes(全てのキーフレームを選択(&A)%
-nanoem.menu.edit.preference設定$
-nanoem.menu.edit.title
-編集(&E)&
-nanoem.menu.project.play
-再生(&P)&
-nanoem.menu.project.stop
-停止(&S)P
-nanoem.menu.project.viewport0ビューポート設定ダイアログを開くC
-nanoem.menu.project.order.draw!描画順ダイアログを開くH
-#nanoem.menu.project.order.transform!変形順ダイアログを開くU
-#nanoem.menu.project.viewport.detach.ビューポートウィンドウを分離(&D)H
-nanoem.menu.project.enable.loop%ループ再生を有効にする(&L)B
-nanoem.menu.project.enable.grid地面軸を有効にする(&G)G
-(nanoem.menu.project.enable.ground-shadow地面影を有効にするJ
-!nanoem.menu.project.enable.effect%エフェクトを有効にする(&E)k
-3nanoem.menu.project.enable.high-resolution-viewport4高解像度ビューポートを有効にする(&H)~
-2nanoem.menu.project.enable.compute-shader-skinningHコンピュートシェーダによるスキニングを有効にするq
-1nanoem.menu.project.enable.vertex-shader-skinning<頂点シェーダによるスキニングを有効にする0
-nanoem.menu.project.msaa.x16最高 (MSAAx16)+
-nanoem.menu.project.msaa.x8高 (MSAAx8)1
-nanoem.menu.project.msaa.x4やや高 (MSAAx4).
-nanoem.menu.project.msaa.x2普通 (MSAAx2)+
-!nanoem.menu.project.msaa.disabled無効@
-nanoem.menu.project.msaa.titleアンチエイリアス設定E
-5nanoem.menu.project.physics-simulation.enable.anytime常時有効H
-5nanoem.menu.project.physics-simulation.enable.playing再生時のみN
-5nanoem.menu.project.physics-simulation.enable.tracingトレースモード9
-/nanoem.menu.project.physics-simulation.disabled無効D
-4nanoem.menu.project.physics-simulation.configuration演算設定b
-+nanoem.menu.project.physics-simulation.bake3全てのモデルのモーションを焼き込むr
-,nanoem.menu.project.physics-simulation.bake2B全てのモデルのモーションを焼き込む（IK 含む）Q
-;nanoem.menu.project.physics-simulation.enable.drawing.titleデバッグ描画O
-?nanoem.menu.project.physics-simulation.enable.drawing.wireframeワイヤーB
-:nanoem.menu.project.physics-simulation.enable.drawing.aabbAABBQ
-Dnanoem.menu.project.physics-simulation.enable.drawing.contact-points	接続点]
-Ananoem.menu.project.physics-simulation.enable.drawing.constraintsコンストレイントV
-Fnanoem.menu.project.physics-simulation.enable.drawing.constraint-limit制約角度<
-,nanoem.menu.project.physics-simulation.title物理演算.
-!nanoem.menu.project.fps.unlimited	無制限#
-nanoem.menu.project.fps.6060FPS#
-nanoem.menu.project.fps.3030FPS?
-nanoem.menu.project.fps.title再生時フレームレート2
-nanoem.menu.project.clear.audio音源を消去8
-nanoem.menu.project.clear.video背景動画を消去X
-&nanoem.menu.project.enable.fps-counter.FPS カウンターの表示を有効にするn
-.nanoem.menu.project.enable.performance-monitor<パフォーマンスモニターの表示を有効にする/
-nanoem.menu.camera.toggleモードを切替'
-nanoem.menu.camera.preset.top上面%
-nanoem.menu.camera.preset.left左&
-nanoem.menu.camera.preset.right右*
- nanoem.menu.camera.preset.bottom底面)
-nanoem.menu.camera.preset.front前面(
-nanoem.menu.camera.preset.back背面>
-nanoem.menu.camera.preset.titleプリセットから選択G
-$nanoem.menu.camera.register-keyframeキーフレームを登録(&R)A
-"nanoem.menu.camera.remove-keyframeキーフレームを削除)
-nanoem.menu.camera.reset初期化(&I))
-nanoem.menu.camera.titleカメラ(&C).
-nanoem.menu.light.toggleモードを切替F
-#nanoem.menu.light.register-keyframeキーフレームを登録(&R)@
-!nanoem.menu.light.remove-keyframeキーフレームを削除(
-nanoem.menu.light.reset初期化(&I)%
-nanoem.menu.light.title
-照明(&L)@
-#nanoem.menu.light.self-shadow.titleセルフシャドウ(&S)/
-%nanoem.menu.light.self-shadow.disable無効O
-*nanoem.menu.light.self-shadow.enable.mode1!モード１（バランス型）O
-*nanoem.menu.light.self-shadow.enable.mode2!モード２（近接重視型）O
-/nanoem.menu.light.self-shadow.register-keyframeキーフレーム登録(&R)I
--nanoem.menu.light.self-shadow.remove-keyframeキーフレーム削除4
-#nanoem.menu.light.self-shadow.reset初期化(&I)8
-nanoem.menu.model.select.titleモデルを選択(&M)=
-#nanoem.menu.model.select.bone.titleボーンを選択(&B)>
-$nanoem.menu.model.select.morph.titleモーフを選択(&O)m
-'nanoem.menu.model.select.bone.keyframesB選択ボーンから該当ボーンのキーフレームを選択/
-(nanoem.menu.model.select.morph.eye.title目9
-,nanoem.menu.model.select.morph.eyebrow.title	まゆ毛5
-(nanoem.menu.model.select.morph.lip.title	リップ7
-*nanoem.menu.model.select.morph.other.title	その他1
-$nanoem.menu.model.select.morph.title	モーフL
-*nanoem.menu.model.select.expand-all-tracks全てのトラックを展開W
-,nanoem.menu.model.select.collapse-all-tracks'全てのトラックを折りたたみ<
- nanoem.menu.model.measure-heightモデルの身長測定D
-nanoem.menu.model.validation$モデルデータの検証を実行5
-"nanoem.menu.model.edit-mode.select選択モード5
-"nanoem.menu.model.edit-mode.rotate回転モード3
- nanoem.menu.model.edit-mode.move移動モードB
-nanoem.menu.model.reset.bone.x X 軸の移動分をリセットB
-nanoem.menu.model.reset.bone.y Y 軸の移動分をリセットB
-nanoem.menu.model.reset.bone.z Z 軸の移動分をリセットD
-(nanoem.menu.model.reset.bone.orientation回転量をリセットJ
- nanoem.menu.model.set-morph.zero&モーフウェイトを 0.0 にするJ
- nanoem.menu.model.set-morph.half&モーフウェイトを 0.5 にするI
-nanoem.menu.model.set-morph.one&モーフウェイトを 1.0 にするN
-"nanoem.menu.model.enable.add-blend(加算ブレンドを有効にする(&A)R
-#nanoem.menu.model.enable.shadow-map+シャドウマップを有効にする(&S)@
- nanoem.menu.model.enable.visible表示を有効にする(&V)F
-#nanoem.menu.model.register-keyframeキーフレームを登録(&R)O
-!nanoem.menu.model.remove-keyframe*選択されたキーフレームを削除5
-"nanoem.menu.model.preference.titleモデル設定�
-;nanoem.menu.model.preference.enable.compute-shader-skinningHコンピュートシェーダによるスキニングを有効にするW
-2nanoem.menu.model.preference.enable.show-all-bones!全てのボーンを表示するN
-5nanoem.menu.model.preference.enable.show-rigid-bodies剛体を表示するQ
-/nanoem.menu.model.preference.enable.show-jointsジョイントを表示するT
-5nanoem.menu.model.preference.enable.show-vertex-faces頂点の面を表示するU
-6nanoem.menu.model.preference.enable.show-vertex-points頂点の点を表示するz
-:nanoem.menu.model.preference.enable.vertex-shader-skinning<頂点シェーダによるスキニングを有効にする)
-nanoem.menu.model.edgeエッジ設定'
-nanoem.menu.model.resetリセットK
-nanoem.menu.model.delete-active(現在選択中のモデルを削除(&D)(
-nanoem.menu.model.titleモデル(&M)L
-'nanoem.menu.accessory.draw-order-dialog!描画順ダイアログを開く>
-"nanoem.menu.accessory.select.titleアクセサリを選択J
-'nanoem.menu.accessory.register-keyframeキーフレームを登録(&R)S
-%nanoem.menu.accessory.remove-keyframe*選択されたキーフレームを削除R
-&nanoem.menu.accessory.enable.add-blend(加算ブレンドを有効にする(&A)F
-#nanoem.menu.accessory.enable.shadow地面影を有効にする(&S)D
-$nanoem.menu.accessory.enable.visible表示を有効にする(&V)+
-nanoem.menu.accessory.resetリセット`
-&nanoem.menu.accessory.convert-to-model6現在選択中のアクセサリをモデルに変換U
-#nanoem.menu.accessory.delete-active.現在選択中のアクセサリを削除(&D)2
-nanoem.menu.accessory.titleアクセサリ(&A)T
-2nanoem.menu.project.motion.shift-keyframes-forward現在のフレームを削除O
-3nanoem.menu.project.motion.shift-keyframes-backward空フレームを挿入1
- nanoem.menu.project.motion.reset初期化(&I)3
- nanoem.menu.project.motion.titleモーション3
-nanoem.menu.project.titleプロジェクト(&P)(
-nanoem.menu.window.maximize	最大化(
-nanoem.menu.window.minimize	最小化$
-nanoem.menu.window.restore復元?
-nanoem.menu.window.fullscreenフルスクリーンにする/
-nanoem.menu.window.titleウィンドウ(&W)7
-nanoem.menu.help.onlineオンラインヘルプ(&O).
-nanoem.menu.help.update更新を確認(&U)3
-nanoem.menu.help.homepageホームページ(&H)1
-nanoem.menu.help.aboutnanoem について(&A)'
-nanoem.menu.help.titleヘルプ(&H),
-nanoem.menu.edit.bone.titleボーン(&B)*
-nanoem.menu.edit.camera.title	カメラ-
-nanoem.menu.edit.morph.titleモーフ(&O)G
-nanoem.menu.edit.bone.parameter$数値入力ダイアログを開く@
-'nanoem.menu.edit.bone.reset-orientation角度をリセットB
- nanoem.menu.edit.bone.correction補正ダイアログを開くH
-nanoem.menu.edit.bone.bias*バイアス指定ダイアログを開くI
-!nanoem.menu.edit.camera.parameter$数値入力ダイアログを開く<
-#nanoem.menu.edit.camera.reset-angle角度をリセットD
-"nanoem.menu.edit.camera.correction補正ダイアログを開くC
-!nanoem.menu.edit.morph.correction補正ダイアログを開くZ
-/nanoem.menu.edit.morph.remove-all-keyframes.lip'唇のキーフレームを全て削除Z
-/nanoem.menu.edit.morph.remove-all-keyframes.eye'目のキーフレームを全て削除a
-3nanoem.menu.edit.morph.remove-all-keyframes.eyebrow*まゆのキーフレームを全て削除L
-'nanoem.menu.edit.morph.reset-all-morphs!全てのモーフをリセット[
-*nanoem.menu.edit.morph.register-all-morphs-全てのモーフをキーフレーム登録.
-nanoem.menu.macos.aboutnanoem について*
-nanoem.menu.macos.preferences	設定...'
-nanoem.menu.macos.settings	設定...*
-nanoem.menu.macos.hidenanoem を隠す-
-nanoem.menu.macos.hide-allほかを隠す-
-nanoem.menu.macos.show-allすべて表示*
-nanoem.menu.macos.quitnanoem を終了.
-!nanoem.menu.macos.window.minimize	最小化*
-nanoem.menu.macos.window.zoom	ズームJ
-+nanoem.menu.macos.window.bring-all-to-frontすべてを手前に移動(
-nanoem.project.track.camera	カメラ$
-nanoem.project.track.light照明'
-nanoem.project.track.model	モデル9
- nanoem.project.track.self-shadowセルフシャドウ>
-nanoem.project.track.select-all全てのキーフレーム6
-#nanoem.project.track.selected-bones選択ボーン7
-$nanoem.project.track.selected-morphs選択モーフ5
-nanoem.project.track.all-morphs全てのモーフ)
-nanoem.project.track.none（なし）W
-"nanoem.error.convert-to-nmm.reason1nmm 形式への変換は対応していません�
-/nanoem.error.convert-to-nmm.recovery-suggestion�メニューの「ヘルプ」にある「nanoem Online Manual」から「アプリケーションのメニュー」の「保存」の項目を参照してください�
- nanoem.error.project.load.reason]データが破損しているため、プロジェクトの読み込みに失敗しました{
- nanoem.error.project.save.reasonW不完全なデータが保存されようとしたため保存が中断されました�
--nanoem.error.project.save.recovery-suggestionQ保存先に異常がないかを確認してから再度保存してください�
-0nanoem.error.plugin.model.no-active-model.reasonNプラグインの実行対象となるモデルが選択されていませんe
-=nanoem.error.plugin.model.no-active-model.recovery-suggestion$モデルを選択してくださいk
-nanoem.error.model.dirty.reasonHキーフレーム未登録のボーンまたはモーフがあります�
-,nanoem.error.model.dirty.recovery-suggestion�未登録のボーンまたはモーフをキーフレーム登録するかフレーム移動してリセットしてくださいj
--nanoem.error.effect.material-not-found.reason9エフェクトに割り当てる材質がありませんt
-1nanoem.error.effect.model-effect-not-found.reason?エフェクトに割り当てるモデルが存在しません�
-.nanoem.error.effect.offscreen-not-found.reasonQオフスクリーンエフェクトに割り当てる対象が存在しません�
--nanoem.error.effect.invalid-attachment.reasonoエフェクトに割り当てるモデルまたはオフスクリーンの対象が設定されていません�
-:nanoem.error.effect.invalid-attachment.recovery-suggestion�メニューの「編集」＞「エフェクト設定ウィンドウを開く」からモデルの材質あるいはオフスクリーンの対象を設定してからエフェクトを読み込ませてくださいm
-$nanoem.error.motion.not-model.reasonE読み込まれたモーションはモデル用ではありません�
-/nanoem.error.motion.not-camera-and-light.reasonQ読み込まれたモーションはカメラ及び照明用ではありません�
-*nanoem.error.motion.no-active-model.reasonWモデルモーションを読み込むためのモデルが選択されていません_
-7nanoem.error.motion.no-active-model.recovery-suggestion$モデルを選択してくださいw
-%nanoem.error.project.new-model.reasonN新規モデルを作成するにはプロジェクトの保存が必要です�
-&nanoem.error.project.open-model.reasonWモデル編集ダイアログを開くにはプロジェクトの保存が必要です`
- nanoem.project.diagnostics.title<プロジェクトの一部ファイルの読み込み失敗�
-'nanoem.project.diagnostics.message.mainrプロジェクトの読み込みは成功しましたが、一部のファイルが読み込めませんでした�
-,nanoem.project.diagnostics.message.not-foundQ次のファイルが見つかりません。移動した可能性があります�
-2nanoem.project.diagnostics.message.digest-mismatchQ次のファイルは保存時から変更があったため読み込めません\
-%nanoem.motion.model.diagnostics.title3読み込まれたモデルモーションの警告�
-'nanoem.motion.model.diagnostics.message�モデルモーションの読み込みに成功しましたが、「%s」のために作られており以下のボーンあるいはモーフが不足しているため正常に動作しない可能性がありますV
-1nanoem.motion.model.diagnostics.all-missing-bones!不足しているボーン一覧W
-2nanoem.motion.model.diagnostics.all-missing-morphs!不足しているモーフ一覧B
-!nanoem.model.measure-height.title「%s」の身長の近似値t
-#nanoem.model.measure-height.messageMモデル「%s」の身長の近似値は %.2f センチメートルです。>
-#nanoem.model.validator.result.title「%s」の検証結果\
-%nanoem.model.validator.result.success3検証した結果問題はありませんでしたd
-%nanoem.model.validator.result.failure;検証した結果 %zu 件の問題が見つかりましたI
-*nanoem.model.validator.primitive.float-nan非数値が存在しますI
-*nanoem.model.validator.primitive.float-inf無限値が存在しますJ
-.nanoem.model.validator.vertex.model.name.emptyモデル名が空ですY
-1nanoem.model.validator.vertex.model.comment.empty$モデルのコメントが空ですN
-,nanoem.model.validator.vertex.normal.invalid頂点の法線が不正です^
-*nanoem.model.validator.vertex.texcoord.oob0頂点のテクスチャ座標が範囲外ですg
-'nanoem.model.validator.vertex.bone.null<頂点に対応するボーンが設定されていませんv
-3nanoem.model.validator.vertex.weight.not-normalized?頂点のボーンウェイトが正規化されていませんL
-*nanoem.model.validator.vertex.type.invalid頂点の種別が不正ですW
-,nanoem.model.validator.face.not-triangulated'面が三角形になっていませんU
-'nanoem.model.validator.face.vertex.null*面の頂点が設定されていませんQ
-&nanoem.model.validator.face.vertex.oob'面が頂点の範囲外にあります\
-+nanoem.model.validator.face.vertex.not-used-頂点が面から参照されていませんU
-*nanoem.model.validator.material.name.empty'材質名が設定されていませんT
-/nanoem.model.validator.material.name.duplicated!材質名が重複していますe
-1nanoem.model.validator.material.ambient.color.oob0材質の環境光色が範囲外にありますe
-1nanoem.model.validator.material.diffuse.color.oob0材質の拡散光色が範囲外にありますv
-3nanoem.model.validator.material.diffuse.opacity.oob?材質の拡散光色の不透明度が範囲外にありますc
-2nanoem.model.validator.material.specular.color.oob-材質の鏡面色が範囲外にありますb
-.nanoem.model.validator.material.edge.color.oob0材質のエッジ色が範囲外にありますs
-0nanoem.model.validator.material.edge.opacity.oob?材質のエッジ色の不透明度が範囲外にあります�
-9nanoem.model.validator.material.texture.diffuse.not-foundH材質の拡散光のテクスチャファイルが見つかりません�
-<nanoem.model.validator.material.texture.sphere-map.not-foundQ材質のスフィアマップテクスチャファイルが見つかりません�
-6nanoem.model.validator.material.texture.toon.not-foundH材質のトゥーンテクスチャファイルが見つかりません�
--nanoem.model.validator.material.face.not-fill`全材質が参照するインデックスが対応する面の数よりも少ない状態です�
--nanoem.model.validator.material.face.overflow]全材質が参照するインデックスが対応する面の数よりも多い状態ですY
-)nanoem.model.validator.bone.name.too-long,ボーン名が15バイトを超えてますT
-&nanoem.model.validator.bone.name.empty*ボーン名が設定されていませんS
-+nanoem.model.validator.bone.name.duplicated$ボーン名が重複しています|
-3nanoem.model.validator.bone.transform-before-parentE親子関係の問題から親ボーンより先に変形されますZ
-)nanoem.model.validator.bone.inherent.null-付与ボーンが設定されていません�
-<nanoem.model.validator.bone.inherent.transform-before-parentK親子関係の問題から付与親ボーンより先に変形されます�
->nanoem.model.validator.bone.constraint.transform-before-parentS親子関係の問題からIKターゲットボーンより先に変形されますc
-5nanoem.model.validator.bone.fixed-axis.not-normalized*固定軸が正規化されていませんZ
-*nanoem.model.validator.morph.name.too-long,モーフ名が15バイトを超えてますU
-'nanoem.model.validator.morph.name.empty*モーフ名が設定されていませんT
-,nanoem.model.validator.morph.name.duplicated$モーフ名が重複していますU
-'nanoem.model.validator.label.name.empty*表示枠名が設定されていませんT
-,nanoem.model.validator.label.name.duplicated$表示枠名が重複しています;
-"nanoem.model.validator.label.empty表示枠が空ですk
-.nanoem.model.validator.label.not-assigned-bone9ボーンが表示枠に割り当てられていませんl
-/nanoem.model.validator.label.not-assigned-morph9モーフが表示枠に割り当てられていませんe
-+nanoem.model.validator.label.item.bone.null6表示枠内のボーンが設定されていませんf
-,nanoem.model.validator.label.item.morph.null6表示枠内のモーフが設定されていませんW
-,nanoem.model.validator.rigid-body.name.empty'剛体名が設定されていませんV
-1nanoem.model.validator.rigid-body.name.duplicated!剛体名が重複していますk
-+nanoem.model.validator.rigid-body.bone.null<剛体に対応するボーンが設定されていません[
-'nanoem.model.validator.joint.name.empty0ジョイント名が設定されていませんZ
-,nanoem.model.validator.joint.name.duplicated*ジョイント名が重複していますy
-.nanoem.model.validator.joint.rigid-body-a.nullGジョイントに対応する剛体 (A) が設定されていませんy
-.nanoem.model.validator.joint.rigid-body-b.nullGジョイントに対応する剛体 (B) が設定されていませんb
-+nanoem.model.validator.soft-body.name.empty3ソフトボディ名が設定されていませんa
-0nanoem.model.validator.soft-body.name.duplicated-ソフトボディ名が重複していますw
-.nanoem.model.validator.soft-body.material.nullEソフトボディに対応する材質が設定されていません
-nanoem.status.SUCCESS成功I
-!nanoem.status.ERROR_MALLOC_FAILED$メモリ確保に失敗しましたJ
-"nanoem.status.ERROR_REALLOC_FAILED$メモリ確保に失敗しました@
-nanoem.status.ERROR_NULL_OBJECTNULL 参照がされましたI
-nanoem.status.ERROR_BUFFER_END'バッファが終端に達してますp
-0nanoem.status.ERROR_DECODE_UNICODE_STRING_FAILED<ユニコード文字列のデコードに失敗しましたs
-0nanoem.status.ERROR_ENCODE_UNICODE_STRING_FAILED?ユニコード文字列のエンコードに失敗しましたG
-%nanoem.status.ERROR_INVALID_SIGNATURE不正なシグネチャですI
-*nanoem.status.ERROR_MODEL_VERTEX_CORRUPTED頂点が破損してます\
-(nanoem.status.ERROR_MODEL_FACE_CORRUPTED0面（インデックス）が破損してますK
-,nanoem.status.ERROR_MODEL_MATERIAL_CORRUPTED材質が破損してますJ
-(nanoem.status.ERROR_MODEL_BONE_CORRUPTEDボーンが破損してますP
-.nanoem.status.ERROR_MODEL_CONSTRAINT_CORRUPTEDIK 制約が破損してますY
-+nanoem.status.ERROR_MODEL_TEXTURE_CORRUPTED*テクスチャ参照が破損してますK
-)nanoem.status.ERROR_MODEL_MORPH_CORRUPTEDモーフが破損してますK
-)nanoem.status.ERROR_MODEL_LABEL_CORRUPTED表示枠が破損してますM
-.nanoem.status.ERROR_MODEL_RIGID_BODY_CORRUPTED剛体が破損してますQ
-)nanoem.status.ERROR_MODEL_JOINT_CORRUPTED$ジョイントが破損してますU
-)nanoem.status.ERROR_PMD_ENGLISH_CORRUPTED(PMD の英語情報が破損してますV
-'nanoem.status.ERROR_PMX_INFO_CORRUPUTED+PMX のメタデータが破損してますi
-2nanoem.status.ERROR_MOTION_BONE_KEYFRAME_CORRUPTED3ボーンのキーフレームが破損してますk
-4nanoem.status.ERROR_MOTION_CAMERA_KEYFRAME_CORRUPTED3カメラのキーフレームが破損してますg
-3nanoem.status.ERROR_MOTION_LIGHT_KEYFRAME_CORRUPTED0照明のキーフレームが破損してますj
-3nanoem.status.ERROR_MOTION_MODEL_KEYFRAME_CORRUPTED3モデルのキーフレームが破損してますj
-3nanoem.status.ERROR_MOTION_MORPH_KEYFRAME_CORRUPTED3モーフのキーフレームが破損してます|
-9nanoem.status.ERROR_MOTION_SELF_SHADOW_KEYFRAME_CORRUPTED?セルフシャドウのキーフレームが破損してますz
-7nanoem.status.ERROR_MOTION_BONE_KEYFRAME_ALREADY_EXISTS?ボーンのキーフレームがすでに存在していますi
-2nanoem.status.ERROR_MOTION_BONE_KEYFRAME_NOT_FOUND3ボーンのキーフレームが存在しません|
-9nanoem.status.ERROR_MOTION_CAMERA_KEYFRAME_ALREADY_EXISTS?カメラのキーフレームがすでに存在していますk
-4nanoem.status.ERROR_MOTION_CAMERA_KEYFRAME_NOT_FOUND3カメラのキーフレームが存在しませんx
-8nanoem.status.ERROR_MOTION_LIGHT_KEYFRAME_ALREADY_EXISTS<照明のキーフレームがすでに存在していますg
-3nanoem.status.ERROR_MOTION_LIGHT_KEYFRAME_NOT_FOUND0照明のキーフレームが存在しませんr
-/nanoem.status.ERROR_MOTION_FRAME_ALREADY_EXISTS?モデルのキーフレームがすでに存在していますj
-3nanoem.status.ERROR_MOTION_MODEL_KEYFRAME_NOT_FOUND3モデルのキーフレームが存在しません{
-8nanoem.status.ERROR_MOTION_MORPH_KEYFRAME_ALREADY_EXISTS?モーフのキーフレームがすでに存在していますj
-3nanoem.status.ERROR_MOTION_MORPH_KEYFRAME_NOT_FOUND3モーフのキーフレームが存在しません�
->nanoem.status.ERROR_MOTION_SELF_SHADOW_KEYFRAME_ALREADY_EXISTSKセルフシャドウのキーフレームがすでに存在しています|
-9nanoem.status.ERROR_MOTION_SELF_SHADOW_KEYFRAME_NOT_FOUND?セルフシャドウのキーフレームが存在しません�
-<nanoem.status.ERROR_MOTION_ACCESSORY_KEYFRAME_ALREADY_EXISTSEアクセサリのキーフレームがすでに存在していますt
-7nanoem.status.ERROR_MOTION_ACCESSORY_KEYFRAME_NOT_FOUND9アクセサリのキーフレームが存在しません�
-3nanoem.status.ERROR_EFFECT_PARAMETER_ALREADY_EXISTSTエフェクトパラメータのキーフレームがすでに存在していますz
-.nanoem.status.ERROR_EFFECT_PARAMETER_NOT_FOUNDHエフェクトパラメータのキーフレームが存在しませんs
-9nanoem.status.ERROR_MODEL_CONSTRAINT_STATE_ALREADY_EXISTS6IK キーフレームがすでに存在していますb
-4nanoem.status.ERROR_MODEL_CONSTRAINT_STATE_NOT_FOUND*IK キーフレームが存在しませんy
-0nanoem.status.ERROR_MODEL_BINDING_ALREADY_EXISTSE外部親モデルキーフレームがすでに存在していますh
-+nanoem.status.ERROR_MODEL_BINDING_NOT_FOUND9外部親モデルキーフレームが存在しませんZ
-/nanoem.status.ERROR_MODEL_VERTEX_ALREADY_EXISTS'頂点がすでに存在していますI
-*nanoem.status.ERROR_MODEL_VERTEX_NOT_FOUND頂点が存在しません\
-1nanoem.status.ERROR_MODEL_MATERIAL_ALREADY_EXISTS'材質がすでに存在していますK
-,nanoem.status.ERROR_MODEL_MATERIAL_NOT_FOUND材質が存在しませんO
--nanoem.status.ERROR_MODEL_BONE_ALREADY_EXISTSボーンが存在しませんJ
-(nanoem.status.ERROR_MODEL_BONE_NOT_FOUNDボーンが存在しませんU
-3nanoem.status.ERROR_MODEL_CONSTRAINT_ALREADY_EXISTSIK 制約が存在しませんP
-.nanoem.status.ERROR_MODEL_CONSTRAINT_NOT_FOUNDIK 制約が存在しませんb
-4nanoem.status.ERROR_MODEL_CONSTRAINT_JOINT_NOT_FOUND*IK 制約のボーンが存在しませんj
-0nanoem.status.ERROR_MODEL_TEXTURE_ALREADY_EXISTS6テクスチャ参照がすでに存在していますY
-+nanoem.status.ERROR_MODEL_TEXTURE_NOT_FOUND*テクスチャ参照が存在しません\
-.nanoem.status.ERROR_MODEL_MORPH_ALREADY_EXISTS*モーフがすでに存在していますK
-)nanoem.status.ERROR_MODEL_MORPH_NOT_FOUNDモーフが存在しませんU
--nanoem.status.ERROR_MODEL_MORPH_TYPE_MISMATCH$モーフ種別が一致しません_
-.nanoem.status.ERROR_MODEL_MORPH_BONE_NOT_FOUND-モーフ（ボーン）が存在しませんb
-.nanoem.status.ERROR_MODEL_MORPH_FLIP_NOT_FOUND0モーフ（フリップ）が存在しませんc
-/nanoem.status.ERROR_MODEL_MORPH_GROUP_NOT_FOUND0モーフ（グループ）が存在しませんh
-1nanoem.status.ERROR_MODEL_MORPH_IMPULSE_NOT_FOUND3モーフ（インパルス）が存在しません`
-2nanoem.status.ERROR_MODEL_MORPH_MATERIAL_NOT_FOUND*モーフ（材質）が存在しませんV
-,nanoem.status.ERROR_MODEL_MORPH_UV_NOT_FOUND&モーフ（UV）が存在しません^
-0nanoem.status.ERROR_MODEL_MORPH_VERTEX_NOT_FOUND*モーフ（頂点）が存在しません\
-.nanoem.status.ERROR_MODEL_LABEL_ALREADY_EXISTS*表示枠がすでに存在していますK
-)nanoem.status.ERROR_MODEL_LABEL_NOT_FOUND表示枠が存在しませんY
-.nanoem.status.ERROR_MODEL_LABEL_ITEM_NOT_FOUND'表示枠の中身が存在しません^
-3nanoem.status.ERROR_MODEL_RIGID_BODY_ALREADY_EXISTS'剛体がすでに存在していますM
-.nanoem.status.ERROR_MODEL_RIGID_BODY_NOT_FOUND剛体が存在しませんb
-.nanoem.status.ERROR_MODEL_JOINT_ALREADY_EXISTS0ジョイントがすでに存在していますQ
-)nanoem.status.ERROR_MODEL_JOINT_NOT_FOUND$ジョイントが存在しません_
-.nanoem.status.ERROR_MODEL_VERSION_INCOMPATIBLE-モデルのバージョンが非互換ですi
-5nanoem.status.ERROR_DOCUMENT_ACCESSORY_ALREADY_EXISTS0アクセサリがすでに存在していますX
-0nanoem.status.ERROR_DOCUMENT_ACCESSORY_NOT_FOUND$アクセサリが存在しません�
->nanoem.status.ERROR_DOCUMENT_ACCESSORY_KEYFRAME_ALREADY_EXISTSEアクセサリのキーフレームがすでに存在していますv
-9nanoem.status.ERROR_DOCUMENT_ACCESSORY_KEYFRAME_NOT_FOUND9アクセサリのキーフレームが存在しません~
-;nanoem.status.ERROR_DOCUMENT_CAMERA_KEYFRAME_ALREADY_EXISTS?カメラのキーフレームがすでに存在していますm
-6nanoem.status.ERROR_DOCUMENT_CAMERA_KEYFRAME_NOT_FOUND3カメラのキーフレームが存在しません�
-<nanoem.status.ERROR_DOCUMENT_GRAVITY_KEYFRAME_ALREADY_EXISTSB物理演算のキーフレームがすでに存在していますq
-7nanoem.status.ERROR_DOCUMENT_GRAVITY_KEYFRAME_NOT_FOUND6物理演算のキーフレームが存在しませんz
-:nanoem.status.ERROR_DOCUMENT_LIGHT_KEYFRAME_ALREADY_EXISTS<照明のキーフレームがすでに存在していますi
-5nanoem.status.ERROR_DOCUMENT_LIGHT_KEYFRAME_NOT_FOUND0照明のキーフレームが存在しません_
-1nanoem.status.ERROR_DOCUMENT_MODEL_ALREADY_EXISTS*モデルがすでに存在していますN
-,nanoem.status.ERROR_DOCUMENT_MODEL_NOT_FOUNDモデルが存在しません�
-?nanoem.status.ERROR_DOCUMENT_MODEL_BONE_KEYFRAME_ALREADY_EXISTS?ボーンのキーフレームがすでに存在していますq
-:nanoem.status.ERROR_DOCUMENT_MODEL_BONE_KEYFRAME_NOT_FOUND3ボーンのキーフレームが存在しませんs
-<nanoem.status.ERROR_DOCUMENT_MODEL_BONE_STATE_ALREADY_EXISTS3ボーンの状態がすでに存在していますb
-7nanoem.status.ERROR_DOCUMENT_MODEL_BONE_STATE_NOT_FOUND'ボーンの状態が存在しません|
-Bnanoem.status.ERROR_DOCUMENT_MODEL_CONSTRAINT_STATE_ALREADY_EXISTS6IK ボーンの状態がすでに存在していますk
-=nanoem.status.ERROR_DOCUMENT_MODEL_CONSTRAINT_STATE_NOT_FOUND*IK ボーンの状態が存在しません�
-@nanoem.status.ERROR_DOCUMENT_MODEL_MODEL_KEYFRAME_ALREADY_EXISTS?モーフのキーフレームがすでに存在していますr
-;nanoem.status.ERROR_DOCUMENT_MODEL_MODEL_KEYFRAME_NOT_FOUND3モデルのキーフレームが存在しません�
-@nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_KEYFRAME_ALREADY_EXISTS?モーフのキーフレームがすでに存在していますr
-;nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_KEYFRAME_NOT_FOUND3モーフのキーフレームが存在しませんt
-=nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_STATE_ALREADY_EXISTS3モーフの状態がすでに存在していますc
-8nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_STATE_NOT_FOUND'モーフの状態が存在しませんz
-@nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_ALREADY_EXISTS6モデルの外部親がすでに存在していますi
-;nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_NOT_FOUND*モーフの外部親が存在しません�
-Fnanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_STATE_ALREADY_EXISTS?モデルの外部親の状態がすでに存在していますx
-Ananoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_STATE_NOT_FOUND3モーフの外部親の状態が存在しません�
-@nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_ALREADY_EXISTSKセルフシャドウのキーフレームがすでに存在しています~
-;nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_NOT_FOUND?セルフシャドウのキーフレームが存在しませんd
-0nanoem.status.ERROR_DOCUMENT_ACCESSORY_CORRUPTED0アクセサリデータが破損していますy
-9nanoem.status.ERROR_DOCUMENT_ACCESSORY_KEYFRAME_CORRUPTED<アクセサリのキーフレームが破損していますv
-?nanoem.status.ERROR_DOCUMENT_ACCESSORY_OUTSIDE_PARENT_CORRUPTED3アクセサリの外部親が破損しています[
--nanoem.status.ERROR_DOCUMENT_CAMERA_CORRUPTED*カメラデータが破損していますp
-6nanoem.status.ERROR_DOCUMENT_CAMERA_KEYFRAME_CORRUPTED6カメラのキーフレームが破損しています_
-.nanoem.status.ERROR_DOCUMENT_GRAVITY_CORRUPTED-物理演算データが破損していますt
-7nanoem.status.ERROR_DOCUMENT_GRAVITY_KEYFRAME_CORRUPTED9物理演算のキーフレームが破損していますW
-,nanoem.status.ERROR_DOCUMENT_LIGHT_CORRUPTED'照明データが破損していますl
-5nanoem.status.ERROR_DOCUMENT_LIGHT_KEYFRAME_CORRUPTED3照明のキーフレームが破損していますZ
-,nanoem.status.ERROR_DOCUMENT_MODEL_CORRUPTED*モデルデータが破損していますo
-5nanoem.status.ERROR_DOCUMENT_MODEL_KEYFRAME_CORRUPTED6モデルのキーフレームが破損していますt
-:nanoem.status.ERROR_DOCUMENT_MODEL_BONE_KEYFRAME_CORRUPTED6ボーンのキーフレームが破損していますe
-7nanoem.status.ERROR_DOCUMENT_MODEL_BONE_STATE_CORRUPTED*ボーンの状態が破損していますn
-=nanoem.status.ERROR_DOCUMENT_MODEL_CONSTRAINT_STATE_CORRUPTED-IK ボーンの状態が破損していますu
-;nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_KEYFRAME_CORRUPTED6モーフのキーフレームが破損していますf
-8nanoem.status.ERROR_DOCUMENT_MODEL_MORPH_STATE_CORRUPTED*モーフの状態が破損していますl
-;nanoem.status.ERROR_DOCUMENT_MODEL_OUTSIDE_PARENT_CORRUPTED-モデルの外部親が破損していますl
-2nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_CORRUPTED6セルフシャドウデータが破損しています�
-;nanoem.status.ERROR_DOCUMENT_SELF_SHADOW_KEYFRAME_CORRUPTEDBセルフシャドウのキーフレームが破損しています
-��7
+��7
 nanoem.gui.unimplemented未实现，当前不可用
 nanoem.gui.camera相机"
 nanoem.gui.keyframe.copy复制!
@@ -2731,7 +2741,12 @@ $nanoem.gui.window.model.menu.type.uv附加 UV 变形8
 3nanoem.gui.window.preference.project.language.title语言?
 5nanoem.gui.window.preference.project.language.english英语@
 6nanoem.gui.window.preference.project.language.japanese日语P
-@nanoem.gui.window.preference.project.language.simplified-chinese简体中文;
+@nanoem.gui.window.preference.project.language.simplified-chinese简体中文R
+9nanoem.gui.window.preference.project.model-language.title模型名显示语言S
+=nanoem.gui.window.preference.project.model-language.follow-ui跟随界面语言F
+<nanoem.gui.window.preference.project.model-language.japanese日语E
+;nanoem.gui.window.preference.project.model-language.english英语\
+Fnanoem.gui.window.preference.project.model-language.chinese-dictionary中文（词典）;
 +nanoem.gui.window.preference.grid.size.cell单元大小;
 +nanoem.gui.window.preference.grid.size.grid网格数量M
 1nanoem.gui.window.preference.file-path-mode.title项目中的文件路径D

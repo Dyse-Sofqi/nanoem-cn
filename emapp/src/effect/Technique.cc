@@ -444,8 +444,8 @@ Technique::overrideObjectPipelineDescription(
         SG_INSERT_MARKERF(
             "effect::Technique::overrideObjectPipelineDescription(primitiveType=%d)", body.primitive_type);
     }
-    overrideColorState(drawable, pd, m_pipelineDescription.colors[0], body.colors[0]);
-    overrideDepthState(pd, m_pipelineDescription.depth, body.depth);
+    overrideColorState(drawable, pd, m_pipelineDescription.colors[0], body.colors[0], true);
+    overrideDepthState(pd, m_pipelineDescription.depth, body.depth, true);
     overrideStencilState(pd, m_pipelineDescription.stencil, body.stencil);
     m_effect->overridePipelineDescription(body, Effect::kScriptClassTypeObject);
     SG_POP_GROUP();
@@ -471,8 +471,8 @@ Technique::overrideScenePipelineDescription(
     ld.attrs[5] = sg_vertex_attr_desc { 0, offsetof(sg::QuadVertexUnit, m_texcoord), SG_VERTEXFORMAT_FLOAT2 };
     ld.attrs[6] = sg_vertex_attr_desc { 0, offsetof(sg::QuadVertexUnit, m_texcoord), SG_VERTEXFORMAT_FLOAT2 };
     ld.attrs[7] = sg_vertex_attr_desc { 0, offsetof(sg::QuadVertexUnit, m_position), SG_VERTEXFORMAT_FLOAT2 };
-    overrideColorState(drawable, pd, m_pipelineDescription.colors[0], body.colors[0]);
-    overrideDepthState(pd, m_pipelineDescription.depth, body.depth);
+    overrideColorState(drawable, pd, m_pipelineDescription.colors[0], body.colors[0], false);
+    overrideDepthState(pd, m_pipelineDescription.depth, body.depth, false);
     overrideStencilState(pd, m_pipelineDescription.stencil, body.stencil);
     m_effect->overridePipelineDescription(body, Effect::kScriptClassTypeScene);
 }
@@ -546,13 +546,33 @@ Technique::mutablePipelineDescription() NANOEM_DECL_NOEXCEPT
 
 void
 Technique::overrideColorState(const IDrawable *drawable, const PipelineDescriptor &pd, const sg_color_state &csrc,
-    sg_color_state &cdst) NANOEM_DECL_NOEXCEPT
+    sg_color_state &cdst, bool isObjectPass) const NANOEM_DECL_NOEXCEPT
 {
     const sg_blend_state &src = csrc.blend;
     sg_blend_state &dst = cdst.blend;
     const bool hasBlendEnabled = pd.m_hasBlendEnabled;
     if (!hasBlendEnabled) {
-        dst.enabled = true;
+        /* MMD+MME 语义：pass 未声明混合状态时继承当前材质状态——不透明材质不混合，
+           半透明材质（模型不透明度或材质漫反射 alpha < 1）才启用 alpha 混合。
+           后处理（scene class）pass 保持原有默认值（开混合）。 */
+        dst.enabled = isObjectPass ? m_effect->isCurrentDrawableTranslucent() : true;
+#if defined(NANOEM_ENABLE_LOGGING)
+        /* TEMPORARY DIAGNOSTIC: 记录混合决策 */
+        {
+            static tinystl::unordered_set<String, TinySTLAllocator> diagnosedBlend;
+            String key(nameConstString());
+            key.append("/");
+            key.append(m_passType.c_str());
+            if (diagnosedBlend.find(key) == diagnosedBlend.end()) {
+                diagnosedBlend.insert(key);
+                EMLOG_INFO("effectdiag: blend technique={} passType={} objectPass={} translucent={} -> enabled={} "
+                           "srcFactor={} dstFactor={}",
+                    nameConstString(), m_passType.c_str(), isObjectPass ? 1 : 0,
+                    m_effect->isCurrentDrawableTranslucent() ? 1 : 0, dst.enabled ? 1 : 0, int(dst.src_factor_rgb),
+                    int(dst.dst_factor_rgb));
+            }
+        }
+#endif /* NANOEM_ENABLE_LOGGING */
     }
     SG_INSERT_MARKERF("effect::Technique::overrideColorState(enabled=%s, wasSet=%s)",
         EnumStringifyUtils::toString(dst.enabled), EnumStringifyUtils::toString(hasBlendEnabled));
@@ -608,8 +628,8 @@ Technique::overrideColorState(const IDrawable *drawable, const PipelineDescripto
 }
 
 void
-Technique::overrideDepthState(
-    const PipelineDescriptor &pd, const sg_depth_state &src, sg_depth_state &dst) NANOEM_DECL_NOEXCEPT
+Technique::overrideDepthState(const PipelineDescriptor &pd, const sg_depth_state &src, sg_depth_state &dst,
+    bool isObjectPass) NANOEM_DECL_NOEXCEPT
 {
     const bool hasDepthCompareFunc = pd.m_hasDepthCompareFunc;
     if (!hasDepthCompareFunc) {
@@ -620,7 +640,19 @@ Technique::overrideDepthState(
         EnumStringifyUtils::toString(dst.compare), EnumStringifyUtils::toString(hasDepthCompareFunc));
     const bool hasDepthWriteEnabled = pd.m_hasDepthWriteEnabled;
     if (!hasDepthWriteEnabled) {
-        dst.write_enabled = src.write_enabled;
+        /* MMD 语义：未声明 ZWriteEnable 的对象 pass 继承 MMD 材质的深度写入（默认开启），
+           否则模型自身无法遮挡自身，会表现为「透出背景」。后处理 pass 保持原默认值。 */
+        dst.write_enabled = isObjectPass ? true : src.write_enabled;
+#if defined(NANOEM_ENABLE_LOGGING)
+        {
+            static bool diagnosedDepthWrite = false;
+            if (!diagnosedDepthWrite) {
+                diagnosedDepthWrite = true;
+                EMLOG_INFO("effectdiag: depthWrite objectPass={} -> writeEnabled={}", isObjectPass ? 1 : 0,
+                    dst.write_enabled ? 1 : 0);
+            }
+        }
+#endif /* NANOEM_ENABLE_LOGGING */
     }
     SG_INSERT_MARKERF("effect::Technique::overrideDepthState(depthWriteEnabled=%s, wasSet=%s)",
         EnumStringifyUtils::toString(dst.write_enabled), EnumStringifyUtils::toString(hasDepthWriteEnabled));

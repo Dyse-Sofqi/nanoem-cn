@@ -75,6 +75,8 @@ public:
     void setEffectCacheEnabled(bool value);
     int language() const NANOEM_DECL_NOEXCEPT;
     void setLanguage(int value);
+    int modelLanguage() const NANOEM_DECL_NOEXCEPT;
+    void setModelLanguage(int value);
 
 private:
     const char *readString(const char *key, const char *defaultValue) const NANOEM_DECL_NOEXCEPT;

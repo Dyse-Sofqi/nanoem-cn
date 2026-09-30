@@ -72,6 +72,18 @@ createLastError(Error &error)
     error = Error(msg.data(), err, Error::kDomainTypeOS);
 }
 
+static inline uint32_t
+roundPixelValue(float value)
+{
+    return value > 0.0f ? static_cast<uint32_t>(value + 0.5f) : 0;
+}
+
+static inline int32_t
+roundLogicalValue(float value)
+{
+    return value >= 0.0f ? static_cast<int32_t>(value + 0.5f) : static_cast<int32_t>(value - 0.5f);
+}
+
 } /* namespace anonymous */
 
 MainWindow::MainWindow(const bx::CommandLine *cmd, const Preference *preference,
@@ -119,7 +131,7 @@ MainWindow::MainWindow(const bx::CommandLine *cmd, const Preference *preference,
             { FVIRTKEY | FCONTROL, '.', ApplicationMenuBuilder::kMenuItemTypeProjectStop } };
         m_accelerators = CreateAcceleratorTableW(accelerators, BX_COUNTOF(accelerators));
         m_devicePixelRatio = devicePixelRatio;
-        RECT windowRect = { 0, 0, LONG(rect.z * devicePixelRatio), LONG(rect.w * devicePixelRatio) };
+        RECT windowRect = { 0, 0, LONG(rect.z * devicePixelRatio + 0.5f), LONG(rect.w * devicePixelRatio + 0.5f) };
         AdjustWindowRectEx(&windowRect, WS_OVERLAPPEDWINDOW, TRUE, 0);
         m_menuHandle = CreateMenu();
         const ApplicationPreference preference(m_service);
@@ -544,7 +556,8 @@ MainWindow::handleWindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
             const LONG width = rect->right - rect->left, height = rect->bottom - rect->top;
             const nanoem_f32_t devicePixelRatio = LOWORD(wparam) / Win32ThreadedApplicationService::kStandardDPIValue,
                                invertDevicePixelRatio = 1.0f / devicePixelRatio;
-            const Vector2UI32 newSize(width * invertDevicePixelRatio, height * invertDevicePixelRatio);
+            const Vector2UI32 newSize(roundPixelValue(width * invertDevicePixelRatio),
+                roundPixelValue(height * invertDevicePixelRatio));
             self->m_devicePixelRatio = devicePixelRatio;
             self->m_client->sendChangeDevicePixelRatioMessage(devicePixelRatio);
             self->m_client->sendResizeWindowMessage(newSize);
@@ -1534,7 +1547,8 @@ MainWindow::handleWindowConstraint(HWND hwnd, LPMINMAXINFO info)
 {
     if (hwnd == m_windowHandle) {
         const Vector2UI32 &windowSize = ThreadedApplicationService::minimumRequiredWindowSize();
-        RECT windowRect = { 0, 0, LONG(windowSize.x * m_devicePixelRatio), LONG(windowSize.y * m_devicePixelRatio) };
+        RECT windowRect = { 0, 0, LONG(windowSize.x * m_devicePixelRatio + 0.5f),
+            LONG(windowSize.y * m_devicePixelRatio + 0.5f) };
         AdjustWindowRectEx(&windowRect, WS_OVERLAPPEDWINDOW, FALSE, 0);
         info->ptMinTrackSize.x = windowRect.right - windowRect.left;
         info->ptMinTrackSize.y = windowRect.bottom - windowRect.top;
@@ -1632,7 +1646,8 @@ MainWindow::handleWindowDestroy(HWND hwnd)
 void
 MainWindow::handleMouseDown(HWND hwnd, const Vector2SI32 &coord, int type)
 {
-    const Vector2SI32 logicalPosition(Vector2(coord) * invertedDevicePixelRatio());
+    const nanoem_f32_t scale = invertedDevicePixelRatio();
+    const Vector2SI32 logicalPosition(roundLogicalValue(coord.x * scale), roundLogicalValue(coord.y * scale));
     const int modifiers = cursorModifiers();
     SetCapture(hwnd);
     m_client->sendScreenCursorPressMessage(devicePixelScreenPosition(hwnd, coord), type, modifiers);
@@ -1645,7 +1660,8 @@ MainWindow::handleMouseDown(HWND hwnd, const Vector2SI32 &coord, int type)
 void
 MainWindow::handleMouseMove(HWND hwnd, const Vector2SI32 &coord, int type)
 {
-    const Vector2SI32 logicalPosition(Vector2(coord) * invertedDevicePixelRatio());
+    const nanoem_f32_t scale = invertedDevicePixelRatio();
+    const Vector2SI32 logicalPosition(roundLogicalValue(coord.x * scale), roundLogicalValue(coord.y * scale));
     const int modifiers = cursorModifiers();
     Vector2SI32 delta(0);
     m_client->sendScreenCursorMoveMessage(devicePixelScreenPosition(hwnd, coord), type, modifiers);
@@ -1665,7 +1681,8 @@ MainWindow::handleMouseMove(HWND hwnd, const Vector2SI32 &coord, int type)
 void
 MainWindow::handleMouseUp(HWND hwnd, const Vector2SI32 &coord, int type)
 {
-    const Vector2SI32 logicalPosition(Vector2(coord) * invertedDevicePixelRatio());
+    const nanoem_f32_t scale = invertedDevicePixelRatio();
+    const Vector2SI32 logicalPosition(roundLogicalValue(coord.x * scale), roundLogicalValue(coord.y * scale));
     const int modifiers = cursorModifiers();
     if (!isCursorHidden()) {
         ReleaseCapture();
@@ -2119,7 +2136,8 @@ MainWindow::setupDirectXRenderer(HWND windowHandle, int width, int height, bool 
                     if (!EnumUtils::isEnabled(adapterItemDesc.Flags, DXGI_ADAPTER_FLAG_SOFTWARE) &&
                         adapterItemDesc.AdapterLuid.HighPart == adapterDesc.AdapterLuid.HighPart &&
                         adapterItemDesc.AdapterLuid.LowPart == adapterDesc.AdapterLuid.LowPart) {
-                        isLowPower = true;
+                        /* treat an adapter without dedicated VRAM (i.e. integrated GPU) as low power */
+                        isLowPower = adapterItemDesc.DedicatedVideoMemory < 512 * 1024 * 1024;
                         break;
                     }
                 }
@@ -2579,7 +2597,9 @@ MainWindow::disableCursor(const Vector2SI32 &logicalCursorPosition)
 {
     POINT devicePoint;
     lockCursor(&devicePoint);
-    setLastLogicalCursorPosition(Vector2(devicePoint.x, devicePoint.y) * invertedDevicePixelRatio());
+    const nanoem_f32_t scale = invertedDevicePixelRatio();
+    setLastLogicalCursorPosition(
+        Vector2SI32(roundLogicalValue(devicePoint.x * scale), roundLogicalValue(devicePoint.y * scale)));
     m_virtualLogicalCursorPosition = logicalCursorPosition;
     m_restoreHiddenLogicalCursorPosition = logicalCursorPosition;
     m_disabledCursorState = kDisabledCursorStateInitial;
@@ -2639,8 +2659,9 @@ MainWindow::recenterCursor()
     if (isCursorHidden()) {
         POINT deviceCenterPoint;
         getWindowCenterPoint(&deviceCenterPoint);
+        const nanoem_f32_t scale = invertedDevicePixelRatio();
         const Vector2SI32 logicalCenterPoint(
-            Vector2(deviceCenterPoint.x, deviceCenterPoint.y) * invertedDevicePixelRatio());
+            roundLogicalValue(deviceCenterPoint.x * scale), roundLogicalValue(deviceCenterPoint.y * scale));
         if (lastLogicalCursorPosition() != logicalCenterPoint) {
             setCursorPosition(deviceCenterPoint);
             setLastLogicalCursorPosition(logicalCenterPoint);
@@ -2666,7 +2687,8 @@ MainWindow::resizeWindow()
     RECT rect;
     GetClientRect(m_windowHandle, &rect);
     const nanoem_f32_t dpr = invertedDevicePixelRatio();
-    const Vector2UI32 logicalWindowSize((rect.right - rect.left) * dpr, (rect.bottom - rect.top) * dpr);
+    const Vector2UI32 logicalWindowSize(roundPixelValue((rect.right - rect.left) * dpr),
+        roundPixelValue((rect.bottom - rect.top) * dpr));
     resizeWindow(logicalWindowSize);
 }
 

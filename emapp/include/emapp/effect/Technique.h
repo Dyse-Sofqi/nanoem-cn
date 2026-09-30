@@ -63,10 +63,12 @@ private:
         bool m_exists;
     };
 
-    static void overrideColorState(const IDrawable *drawable, const PipelineDescriptor &pd, const sg_color_state &src,
-        sg_color_state &dst) NANOEM_DECL_NOEXCEPT;
-    static void overrideDepthState(
-        const PipelineDescriptor &pd, const sg_depth_state &src, sg_depth_state &dst) NANOEM_DECL_NOEXCEPT;
+    /*! isObjectPass 为 true 时按 MMD 语义处理未声明的状态（对象材质默认写深度，
+        半透明材质默认开混合）；为 false 时保持后处理（scene class）原有的默认值。 */
+    void overrideColorState(const IDrawable *drawable, const PipelineDescriptor &pd, const sg_color_state &src,
+        sg_color_state &dst, bool isObjectPass) const NANOEM_DECL_NOEXCEPT;
+    static void overrideDepthState(const PipelineDescriptor &pd, const sg_depth_state &src, sg_depth_state &dst,
+        bool isObjectPass) NANOEM_DECL_NOEXCEPT;
     static void overrideStencilState(
         const PipelineDescriptor &pd, const sg_stencil_state &src, sg_stencil_state &dst) NANOEM_DECL_NOEXCEPT;
     static void overrideStencilFaceState(const PipelineDescriptor::Stencil &sd, const sg_stencil_face_state &src,

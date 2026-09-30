@@ -222,7 +222,8 @@ CameraLookAtState::CameraLookAtState(Project *project, ICamera *camera, const Ve
 void
 CameraLookAtState::transform(const Vector2SI32 &logicalCursorPosition)
 {
-    const Vector3 delta(cursorDelta(logicalCursorPosition) * Vector2(1, -1), 0);
+    /* nanoem-cn: MMD-style "grab" convention -- the scene follows the drag direction */
+    const Vector3 delta(cursorDelta(logicalCursorPosition) * Vector2(-1, 1), 0);
     Matrix4x4 viewMatrix, projectionMatrix;
     ICamera *camera = activeCamera();
     camera->getViewTransform(viewMatrix, projectionMatrix);

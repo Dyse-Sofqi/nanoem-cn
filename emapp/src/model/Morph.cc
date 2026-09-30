@@ -6,6 +6,7 @@
 
 #include "emapp/model/Morph.h"
 
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Constants.h"
 #include "emapp/Motion.h"
 #include "emapp/StringUtils.h"
@@ -44,6 +45,7 @@ Morph::resetLanguage(
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

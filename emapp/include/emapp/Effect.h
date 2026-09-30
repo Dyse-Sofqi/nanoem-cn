@@ -200,6 +200,11 @@ public:
     void setEdgeParameters(const nanoem_model_material_t *materialPtr, nanoem_f32_t edgeSize, effect::Pass *pass);
     void setShadowParameters(const ILight *light, const ICamera *camera, const Matrix4x4 &world, effect::Pass *pass);
     void setShadowMapParameters(const ShadowCamera *shadowCamera, const Matrix4x4 &world, effect::Pass *pass);
+    /*! 当前绘制的对象是否按 MMD 语义视为半透明（模型整体不透明度或材质透明度 < 1）。
+
+        效果 pass 未声明 AlphaBlendEnable / ZWriteEnable 时以此决定默认的混合与深度写入状态，
+        对应 MMD+MME 中「未声明的状态继承当前材质状态」的行为。 */
+    bool isCurrentDrawableTranslucent() const NANOEM_DECL_NOEXCEPT;
 
 private:
     typedef void (*SemanticParameterHandler)(
@@ -510,6 +515,7 @@ private:
     bool m_initializeGlobal;
     bool m_hasScriptExternal;
     bool m_needsBehaviorCompatibility;
+    bool m_currentDrawableTranslucent;
 };
 
 } /* namespace nanoem */

@@ -1322,7 +1322,7 @@ ImGuiWindow::initialize(nanoem_f32_t windowDevicePixelRatio, nanoem_f32_t viewpo
     io.IniFilename = nullptr;
     io.LogFilename = nullptr;
     io.ConfigWindowsMoveFromTitleBarOnly = true;
-    io.FontGlobalScale = windowDevicePixelRatio;
+    io.FontGlobalScale = 1.0f;
     io.DisplayFramebufferScale = ImVec2(windowDevicePixelRatio, windowDevicePixelRatio);
     io.BackendFlags |= ImGuiBackendFlags_RendererHasVtxOffset;
     ImGui::StyleColorsDark(&m_style);
@@ -1413,7 +1413,7 @@ ImGuiWindow::initialize(nanoem_f32_t windowDevicePixelRatio, nanoem_f32_t viewpo
     nanoem_assert(sg::query_pipeline_state(pipeline) == SG_RESOURCESTATE_VALID, "pipeline buffer must be valid");
     SG_LABEL_PIPELINE(pipeline, label);
     m_pipelines.insert(tinystl::make_pair(key, pipeline));
-    const nanoem_f32_t pointSize = kFontSize;
+    const nanoem_f32_t pointSize = kFontSize * windowDevicePixelRatio;
     setFontPointSize(pointSize);
     if (BaseApplicationClient *client = m_applicationPtr->menubarApplicationClient()) {
         IEventPublisher *eventPublisher = m_applicationPtr->eventPublisher();

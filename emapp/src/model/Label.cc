@@ -6,6 +6,7 @@
 
 #include "emapp/model/Label.h"
 
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/StringUtils.h"
 #include "emapp/private/CommonInclude.h"
 
@@ -44,6 +45,7 @@ Label::resetLanguage(
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 int

@@ -9,6 +9,7 @@
 #include "emapp/Constants.h"
 #include "emapp/EnumUtils.h"
 #include "emapp/Model.h"
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Motion.h"
 #include "emapp/Project.h"
 #include "emapp/StringUtils.h"
@@ -126,6 +127,7 @@ Bone::resetLanguage(
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

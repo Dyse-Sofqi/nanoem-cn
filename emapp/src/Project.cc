@@ -29,6 +29,7 @@
 #include "emapp/ImageLoader.h"
 #include "emapp/ListUtils.h"
 #include "emapp/Model.h"
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/ModelProgramBundle.h"
 #include "emapp/PerspectiveCamera.h"
 #include "emapp/PhysicsEngine.h"
@@ -1235,6 +1236,13 @@ Project::Project(const Injector &injector)
     , m_filePathMode(kFilePathModeRelative)
     , m_baseDuration(kMinimumBaseDuration)
     , m_language(m_translator->language())
+    , m_modelLanguage(injector.m_modelLanguage == kModelNameLanguageJapanese
+                          ? kModelNameLanguageJapanese
+                          : injector.m_modelLanguage == kModelNameLanguageEnglish
+                                ? kModelNameLanguageEnglish
+                                : injector.m_modelLanguage == kModelNameLanguageChineseDictionary
+                                      ? kModelNameLanguageChineseDictionary
+                                      : kModelNameLanguageFollowUI)
     , m_uniformViewportLayoutRect(Vector4UI16(0), Vector4UI16(0))
     , m_uniformViewportImageSize(kDefaultViewportImageSize, kDefaultViewportImageSize)
     , m_backgroundVideoRect(0)
@@ -1294,6 +1302,28 @@ Project::Project(const Injector &injector)
     setBezierCurveAdjustmentEnabled(true);
     setPreferredMotionFPS(60, false);
     m_physicsEngine->initialize(injector.m_dllPath);
+    {
+        const char *preferencePath = nullptr;
+        if (m_applicationConfiguration != nullptr) {
+            preferencePath = json_object_dotget_string(
+                json_object(m_applicationConfiguration), "win32.preference.path");
+        }
+        String userDictionaryPath;
+        if (preferencePath != nullptr && *preferencePath != '\0') {
+            const char *slash = nullptr;
+            for (const char *p = preferencePath; *p != '\0'; p++) {
+                if (*p == '/' || *p == '\\') {
+                    slash = p;
+                }
+            }
+            if (slash != nullptr) {
+                userDictionaryPath = String(preferencePath, static_cast<nanoem_rsize_t>(slash - preferencePath + 1));
+                userDictionaryPath.append("model_names_user.tsv");
+            }
+        }
+        ModelNameDictionary::load(userDictionaryPath.c_str(), m_translator);
+        ModelNameDictionary::setActive(m_modelLanguage == kModelNameLanguageChineseDictionary);
+    }
 }
 
 Project::~Project() NANOEM_DECL_NOEXCEPT
@@ -5502,6 +5532,17 @@ Project::language() const NANOEM_DECL_NOEXCEPT
 nanoem_language_type_t
 Project::castLanguage() const NANOEM_DECL_NOEXCEPT
 {
+    switch (m_modelLanguage) {
+    case kModelNameLanguageJapanese:
+        return NANOEM_LANGUAGE_TYPE_JAPANESE;
+    case kModelNameLanguageEnglish:
+        return NANOEM_LANGUAGE_TYPE_ENGLISH;
+    case kModelNameLanguageChineseDictionary:
+        /* nanoem C API 与 IO 插件只接受日/英枚举，中文仅通过 ModelNameDictionary 在显示缓存层替换 */
+        return NANOEM_LANGUAGE_TYPE_JAPANESE;
+    default:
+        break;
+    }
     switch (m_language) {
     case ITranslator::kLanguageTypeJapanese:
     case ITranslator::kLanguageTypeKorean:
@@ -5510,6 +5551,26 @@ Project::castLanguage() const NANOEM_DECL_NOEXCEPT
         return NANOEM_LANGUAGE_TYPE_JAPANESE;
     default:
         return NANOEM_LANGUAGE_TYPE_ENGLISH;
+    }
+}
+
+Project::ModelNameLanguageType
+Project::modelLanguage() const NANOEM_DECL_NOEXCEPT
+{
+    return m_modelLanguage;
+}
+
+void
+Project::setModelLanguage(ModelNameLanguageType value)
+{
+    if (value != m_modelLanguage && value >= kModelNameLanguageFirstEnum && value < kModelNameLanguageMaxEnum) {
+        m_modelLanguage = value;
+        ModelNameDictionary::setActive(value == kModelNameLanguageChineseDictionary);
+        for (ModelList::const_iterator it = m_allModelPtrs.begin(), end = m_allModelPtrs.end(); it != end; ++it) {
+            Model *model = *it;
+            model->resetLanguage();
+        }
+        rebuildAllTracks();
     }
 }
 

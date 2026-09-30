@@ -8,7 +8,7 @@ endif()
 # version
 include(${PROJECT_SOURCE_DIR}/cmake/GetGitRevisionDescription.cmake)
 git_describe(NANOEM_BUNDLE_VERSION --tags)
-string(REGEX MATCH "^v[0-9]+\\.([0-9]+)\\.([0-9]+)" VERSION_MATCH ${NANOEM_BUNDLE_VERSION})
+string(REGEX MATCH "^v([0-9]+)\\.([0-9]+)\\.([0-9]+)" VERSION_MATCH ${NANOEM_BUNDLE_VERSION})
 set(NANOEM_WIN32_VERSION_MAJOR "${CMAKE_MATCH_1}")
 set(NANOEM_WIN32_VERSION_MINOR "${CMAKE_MATCH_2}")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.rc.in ${CMAKE_CURRENT_BINARY_DIR}/version.rc @ONLY)

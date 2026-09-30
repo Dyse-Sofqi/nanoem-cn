@@ -234,6 +234,19 @@ public:
     static void setStandardDepthStencilState(sg_depth_state &ds, sg_stencil_state &ss) NANOEM_DECL_NOEXCEPT;
     static void setShadowDepthStencilState(sg_depth_state &ds, sg_stencil_state &ss) NANOEM_DECL_NOEXCEPT;
 
+    /*! @brief 模型名（骨骼/变形等）的显示语言。
+
+        ChineseDictionary 表示通过 ModelNameDictionary 把日文名替换为中文显示，
+        仅作用于界面显示缓存，动作绑定与模型数据仍使用原始名字。 */
+    enum ModelNameLanguageType {
+        kModelNameLanguageFollowUI = -1,
+        kModelNameLanguageFirstEnum = 0,
+        kModelNameLanguageJapanese = kModelNameLanguageFirstEnum,
+        kModelNameLanguageEnglish,
+        kModelNameLanguageChineseDictionary,
+        kModelNameLanguageMaxEnum
+    };
+
     struct Injector {
         const IUnicodeStringFactoryRepository *m_unicodeStringFactoryRepository;
         const JSON_Value *m_applicationConfiguration;
@@ -255,6 +268,7 @@ public:
         nanoem_f32_t m_windowDevicePixelRatio;
         nanoem_f32_t m_viewportDevicePixelRatio;
         int m_preferredUndoCount;
+        int m_modelLanguage;
     };
     Project(const Injector &injector);
     ~Project() NANOEM_DECL_NOEXCEPT;
@@ -647,6 +661,8 @@ public:
     ITranslator::LanguageType language() const NANOEM_DECL_NOEXCEPT;
     nanoem_language_type_t castLanguage() const NANOEM_DECL_NOEXCEPT;
     void setLanguage(ITranslator::LanguageType value);
+    ModelNameLanguageType modelLanguage() const NANOEM_DECL_NOEXCEPT;
+    void setModelLanguage(ModelNameLanguageType value);
     Vector2UI16 shadowMapSize() const NANOEM_DECL_NOEXCEPT;
     void setShadowMapSize(const Vector2UI16 &value);
     Vector2UI16 viewportImageSize() const NANOEM_DECL_NOEXCEPT;
@@ -940,6 +956,7 @@ private:
     TimelineSegment m_selectionSegment;
     nanoem_frame_index_t m_baseDuration;
     ITranslator::LanguageType m_language;
+    ModelNameLanguageType m_modelLanguage;
     tinystl::pair<Vector4UI16, Vector4UI16> m_uniformViewportLayoutRect;
     tinystl::pair<Vector2UI16, Vector2UI16> m_uniformViewportImageSize;
     Vector4SI32 m_backgroundVideoRect;

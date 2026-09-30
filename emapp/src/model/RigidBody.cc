@@ -6,6 +6,7 @@
 
 #include "emapp/model/RigidBody.h"
 
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Constants.h"
 #include "emapp/EnumUtils.h"
 #include "emapp/PhysicsEngine.h"
@@ -70,6 +71,7 @@ RigidBody::resetLanguage(const nanoem_model_rigid_body_t *rigidBodyPtr, nanoem_u
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

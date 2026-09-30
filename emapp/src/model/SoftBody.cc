@@ -8,6 +8,7 @@
 
 #include "emapp/EnumUtils.h"
 #include "emapp/Model.h"
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/PhysicsEngine.h"
 #include "emapp/StringUtils.h"
 #include "emapp/model/Vertex.h"
@@ -109,6 +110,7 @@ SoftBody::resetLanguage(
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

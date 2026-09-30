@@ -3,6 +3,8 @@
    from https://stackoverflow.com/questions/6693100/how-to-generate-windows-dll-versioning-information-with-cmake
  */
 
+#include <windows.h>
+
 #pragma once
 
 #define IDI_NANOEM 100

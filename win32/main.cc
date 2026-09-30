@@ -9,6 +9,7 @@
 #include "Win32ThreadedApplicationService.h"
 
 #include <Windows.h>
+#include <cstdlib>
 #include <mfapi.h>
 #include <objbase.h>
 #include <shellapi.h>
@@ -23,9 +24,11 @@
 
 #if defined(NANOEM_ENABLE_LOGGING)
 #define SPDLOG_WCHAR_TO_UTF8_SUPPORT
+#include <chrono>
 #include "spdlog/async.h"
 #include "spdlog/cfg/env.h"
 #include "spdlog/sinks/base_sink.h"
+#include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace {
@@ -84,17 +87,25 @@ runApplication(HINSTANCE hInstance, int argc, const char *const *argv, const wch
         tinystl::vector<spdlog::sink_ptr, TinySTLAllocator> sinks;
         sinks.push_back(std::make_shared<OutputDebugStringSink<std::mutex>>());
         sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
+        /* NANOEM_LOG_FILE 环境变量指定时，同步输出一份文件日志（用于无控制台场景排障） */
+        if (const char *logFilePath = std::getenv("NANOEM_LOG_FILE")) {
+            sinks.push_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFilePath, true));
+        }
         auto logger = std::make_shared<spdlog::async_logger>(
             "emapp", sinks.begin(), sinks.end(), spdlog::thread_pool(), spdlog::async_overflow_policy::block);
         spdlog::register_logger(logger);
+        spdlog::flush_every(std::chrono::seconds(1));
         spdlog::cfg::load_env_levels();
 #endif /* NANOEM_ENABLE_LOGGING */
         const int screenWidth = GetSystemMetrics(SM_CXSCREEN);
         const int screenHeight = GetSystemMetrics(SM_CYSCREEN);
         const nanoem_f32_t devicePixelRatio = Win32ThreadedApplicationService::calculateDevicePixelRatio();
         const Vector2UI32 &windowSize = ThreadedApplicationService::minimumRequiredWindowSize();
-        const Vector4UI32 rect((screenWidth - windowSize.x * devicePixelRatio) * 0.5f,
-            (screenHeight - windowSize.y * devicePixelRatio) * 0.5f, windowSize);
+        /* clamp the centered position to keep the window on-screen at high DPI scaling */
+        const nanoem_f32_t left = (screenWidth - windowSize.x * devicePixelRatio) * 0.5f,
+                           top = (screenHeight - windowSize.y * devicePixelRatio) * 0.5f;
+        const Vector4UI32 rect(left > 0 ? static_cast<uint32_t>(left + 0.5f) : 0,
+            top > 0 ? static_cast<uint32_t>(top + 0.5f) : 0, windowSize);
         MainWindow window(&command, &preference, &service, &client, hInstance, rect, devicePixelRatio);
         while (window.isRunning()) {
             window.processMessage(&msg);

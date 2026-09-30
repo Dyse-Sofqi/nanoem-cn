@@ -213,7 +213,9 @@ BaseDraggingObjectState::updateCameraAngle(const Vector2SI32 &delta)
 {
     if (Project *project = m_stateControllerPtr->currentProject()) {
         ICamera *camera = project->activeCamera();
-        camera->setAngle(glm::radians(glm::degrees(camera->angle()) + Vector3(delta.y, delta.x, 0)));
+        /* nanoem-cn: MMD-style camera -- horizontal drag orbits the camera in the drag direction,
+         * vertical drag keeps the scene following the drag (pitch keeps upstream sign) */
+        camera->setAngle(glm::radians(glm::degrees(camera->angle()) + Vector3(delta.y, -delta.x, 0)));
         camera->update();
     }
 }
@@ -2035,8 +2037,9 @@ StateController::handlePointerScroll(const Vector3SI32 &logicalScaleCursorPositi
         if (intersectsViewportLayoutRect(project, logicalScaleCursorPosition) && !project->audioPlayer()->isPlaying() &&
             delta.y != 0) {
             ICamera *camera = project->activeCamera();
+            /* nanoem-cn: MMD-style convention -- wheel up zooms in (camera distance decreases) */
             camera->setDistance(
-                camera->distance() + delta.y * BaseDraggingObjectState::scaleFactor(logicalScaleCursorPosition));
+                camera->distance() - delta.y * BaseDraggingObjectState::scaleFactor(logicalScaleCursorPosition));
             camera->update();
             if (project->editingMode() != Project::kEditingModeSelect) {
                 project->resetAllModelEdges();

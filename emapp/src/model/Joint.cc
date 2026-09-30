@@ -6,6 +6,7 @@
 
 #include "emapp/model/Joint.h"
 
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Constants.h"
 #include "emapp/EnumUtils.h"
 #include "emapp/PhysicsEngine.h"
@@ -131,6 +132,7 @@ Joint::resetLanguage(
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

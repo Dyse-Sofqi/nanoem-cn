@@ -6,6 +6,7 @@
 
 #include "emapp/model/Constraint.h"
 
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Constants.h"
 #include "emapp/EnumUtils.h"
 #include "emapp/StringUtils.h"
@@ -158,6 +159,7 @@ Constraint::resetLanguage(const nanoem_model_constraint_t *constraintPtr, nanoem
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

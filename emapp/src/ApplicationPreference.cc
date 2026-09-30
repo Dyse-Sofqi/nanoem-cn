@@ -35,6 +35,7 @@ static const char kGFXPassPoolSize[] = "gfx.pool.pass";
 static const char kGFXPipelinePoolSize[] = "gfx.pool.pipeline";
 static const char kGFXUniformBufferSize[] = "gfx.buffer.uniform";
 static const char kLanguage[] = "language";
+static const char kModelLanguage[] = "model.language";
 static const int kBufferSize = 128;
 
 } /* namespace anonymous */
@@ -333,6 +334,18 @@ void
 ApplicationPreference::setLanguage(int value)
 {
     writeInt(kLanguage, value);
+}
+
+int
+ApplicationPreference::modelLanguage() const NANOEM_DECL_NOEXCEPT
+{
+    return readInt(kModelLanguage, NANOEM_LANGUAGE_TYPE_UNKNOWN);
+}
+
+void
+ApplicationPreference::setModelLanguage(int value)
+{
+    writeInt(kModelLanguage, value);
 }
 
 const char *

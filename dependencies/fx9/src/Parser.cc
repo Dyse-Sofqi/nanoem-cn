@@ -701,7 +701,16 @@ ParserContext::execute(const TString &source, const TString &preamble)
     size_t lengths[] = { preamble.size(), source.size() };
     TInputScanner scanner(2, sources, lengths, names);
     m_context->setScanner(&scanner);
-    if (const char *p = strrchr(m_filename.c_str(), '/')) {
+    /* 基目录推导需同时识别 '/' 与 '\\'：调用方传入的路径可能混用分隔符
+       （例如 ".../08_MOON\\effect.fx"），只按 '/' 查找会丢掉最后一级目录，
+       导致 #include 解析失败。 */
+    const char *lastSlash = strrchr(m_filename.c_str(), '/');
+    const char *lastBackslash = strrchr(m_filename.c_str(), '\\');
+    const char *p = lastSlash;
+    if (lastBackslash != nullptr && (p == nullptr || lastBackslash > p)) {
+        p = lastBackslash;
+    }
+    if (p != nullptr) {
         m_includer.setSourceBasePath(TString(m_filename.c_str(), p));
     }
     LexerContext lexer(*m_context, m_filename.c_str(), m_includer);

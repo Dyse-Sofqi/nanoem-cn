@@ -36,7 +36,8 @@ nanoem 是一款跨平台的开源 [MMD（MikuMikuDance）](https://sites.google
 - 内置离线文档（帮助菜单直接打开本地 HTML）
 - 中文字体替换（Noto Sans SC），移除日文字体回退
 - Windows 子窗口点击修复（进行中）
-- Windows DPI 缩放适配（进行中）
+- Windows 高分屏（DPI 缩放）适配：Per-Monitor V2 感知、UI 文字按缩放率高清渲染、3D 视口原生分辨率渲染、非整数缩放（125%/150%/175%）坐标取整修正
+- 相机操作改为 MMD 习惯的「抓取式」方向：右键拖拽时画面内容跟随鼠标方向旋转、中键拖拽平移时画面内容跟随鼠标移动、滚轮向上滚动为拉近（上游为 FPS 式视线跟随与相反的滚轮方向）
 
 ## 截图
 
@@ -68,6 +69,40 @@ mkdir out && cd out
 cmake -G Ninja ..
 cmake --build .
 ```
+
+<details>
+<summary>Windows（Visual Studio 2022 Build Tools）</summary>
+
+```powershell
+git submodule update --init --recursive
+
+# 1. 编译第三方依赖（写入 out/dependencies）
+$env:NANOEM_TARGET_ARCHITECTURES="x86_64"
+$env:NANOEM_TARGET_CONFIGURATIONS="release"
+$env:NANOEM_TARGET_COMPILER="vs2022"
+$env:NANOEM_ENABLE_BUILD_MIMALLOC="1"
+cmake -DCONFIG=release -P scripts/build.cmake
+
+# 2. 编译主程序
+mkdir out\core; cd out\core
+cmake -DCMAKE_INSTALL_PREFIX=install-root `
+  -DFX9_ENABLE_OPTIMIZER=OFF `
+  -DNANOEM_ENABLE_BULLET=ON `
+  -DNANOEM_ENABLE_MIMALLOC=ON `
+  -DNANOEM_ENABLE_NMD=ON `
+  -DNANOEM_ENABLE_TEST=OFF `
+  -DNANOEM_INSTALL_EFFECT_PLUGIN=ON `
+  -DNANOEM_INSTALL_FFMPEG_PLUGIN=OFF `
+  -DNANOEM_INSTALL_GIF_PLUGIN=OFF `
+  -DNANOEM_INSTALL_LSMASH_PLUGIN=ON `
+  -DNANOEM_TARGET_COMPILER=vs2022 `
+  -G"Visual Studio 17 2022" -Ax64 `
+  ..\..\..
+cmake --build . --config release
+```
+
+构建产物位于 `out\core\bin\Release\`（nanoem.exe 与 sokol_d3d11.dll 等）。
+</details>
 
 详细信息请参考 [GitHub Action Workflow](.github/workflows/main.yml) 或原项目文档。
 

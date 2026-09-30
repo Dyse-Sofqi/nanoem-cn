@@ -6,6 +6,7 @@
 
 #include "emapp/model/Material.h"
 
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Constants.h"
 #include "emapp/EnumUtils.h"
 #include "emapp/StringUtils.h"
@@ -76,6 +77,7 @@ Material::resetLanguage(
     if (m_name.empty()) {
         m_name = m_canonicalName;
     }
+    ModelNameDictionary::translate(m_name);
 }
 
 void

@@ -1588,6 +1588,31 @@
     en_US: Simplified Chinese
     ja_JP: 簡体字中国語
     zh_CN: 简体中文
+- key: nanoem.gui.window.preference.project.model-language.title
+  phrase:
+    en_US: Model Name Language
+    ja_JP: モデル名の言語
+    zh_CN: 模型名显示语言
+- key: nanoem.gui.window.preference.project.model-language.follow-ui
+  phrase:
+    en_US: Follow UI Language
+    ja_JP: UI言語に従う
+    zh_CN: 跟随界面语言
+- key: nanoem.gui.window.preference.project.model-language.japanese
+  phrase:
+    en_US: Japanese
+    ja_JP: 日本語
+    zh_CN: 日语
+- key: nanoem.gui.window.preference.project.model-language.english
+  phrase:
+    en_US: English
+    ja_JP: 英語
+    zh_CN: 英语
+- key: nanoem.gui.window.preference.project.model-language.chinese-dictionary
+  phrase:
+    en_US: Chinese (Dictionary)
+    ja_JP: 中国語（辞書）
+    zh_CN: 中文（词典）
 - key: nanoem.gui.window.preference.grid.size.cell
   phrase:
     en_US: Cell Size

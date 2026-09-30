@@ -1706,13 +1706,15 @@ BaseApplicationService::createProject(const Vector2UI16 &logicalPixelWindowSize,
     injector.m_windowDevicePixelRatio = windowDevicePixelRatio;
     injector.m_viewportDevicePixelRatio = viewportDevicePixelRatio;
     injector.m_preferredUndoCount = preference.undoSoftLimit();
+    injector.m_modelLanguage = preference.modelLanguage();
     Project *project = nanoem_new(Project(injector));
     if (!project->initialize(error)) {
         error.addModalDialog(this);
     }
     project->setEffectPluginEnabled(preference.isEffectEnabled());
     project->setCompiledEffectCacheEnabled(preference.isEffectCacheEnabled());
-    const Vector2UI16 devicePixelWindowSize(Vector2(logicalPixelWindowSize) * project->windowDevicePixelRatio());
+    const Vector2UI16 devicePixelWindowSize(
+        glm::round(Vector2(logicalPixelWindowSize) * project->windowDevicePixelRatio()));
     m_window->resizeDevicePixelWindowSize(devicePixelWindowSize);
     if (g_sentryAvailable) {
         sentry_value_t breadcrumb = sentry_value_new_breadcrumb(nullptr, nullptr);
@@ -2911,7 +2913,7 @@ BaseApplicationService::handleCommandMessage(Nanoem__Application__Command *comma
                 : project->windowDevicePixelRatio();
             const Nanoem__Application__ViewportResizedCommand *commandPtr = command->viewport_resized;
             const Vector2UI16 logicalPixelWindowSize(commandPtr->width, commandPtr->height),
-                devicePixelWindowSize(Vector2(logicalPixelWindowSize) * devicePixelRatio);
+                devicePixelWindowSize(glm::round(Vector2(logicalPixelWindowSize) * devicePixelRatio));
             resizeDefaultRenderTarget(devicePixelWindowSize, project);
             project->resizeWindowSize(logicalPixelWindowSize);
             m_window->resizeDevicePixelWindowSize(devicePixelWindowSize);
@@ -2925,7 +2927,7 @@ BaseApplicationService::handleCommandMessage(Nanoem__Application__Command *comma
                 : project->windowDevicePixelRatio();
             const Nanoem__Application__WindowResizedCommand *commandPtr = command->window_resized;
             const Vector2UI16 logicalPixelWindowSize(commandPtr->width, commandPtr->height),
-                devicePixelWindowSize(Vector2(logicalPixelWindowSize) * devicePixelRatio);
+                devicePixelWindowSize(glm::round(Vector2(logicalPixelWindowSize) * devicePixelRatio));
             resizeDefaultRenderTarget(devicePixelWindowSize, project);
             project->resizeWindowSize(logicalPixelWindowSize);
             m_window->resizeDevicePixelWindowSize(devicePixelWindowSize);
@@ -3143,7 +3145,8 @@ BaseApplicationService::handleCommandMessage(Nanoem__Application__Command *comma
     case NANOEM__APPLICATION__COMMAND__TYPE_CHANGE_DEVICE_PIXEL_RATIO: {
         nanoem_f32_t devicePixelRatio = command->change_device_pixel_ratio->value;
         if (nanoem_likely(project)) {
-            const Vector2 devicePixelWindowSize(Vector2(project->windowSize()) * devicePixelRatio);
+            const Vector2UI16 devicePixelWindowSize(
+                glm::round(Vector2(project->windowSize()) * devicePixelRatio));
             resizeDefaultRenderTarget(devicePixelWindowSize, project);
             project->setWindowDevicePixelRatio(devicePixelRatio);
             project->setViewportDevicePixelRatio(devicePixelRatio);

@@ -121,8 +121,8 @@ PreferenceDialog::draw(Project *project)
             ImGui::TextUnformatted(tr("nanoem.gui.window.preference.project.language.title"));
             ITranslator *translator = application()->translator();
             const ITranslator::LanguageType language = translator->language();
+            const nanoem_u32_t flags = project->isModelEditingEnabled() ? ImGuiSelectableFlags_Disabled : 0;
             if (ImGui::BeginCombo("##language", selectedLanguageString(language))) {
-                const nanoem_u32_t flags = project->isModelEditingEnabled() ? ImGuiSelectableFlags_Disabled : 0;
                 for (int i = ITranslator::kLanguageTypeFirstEnum; i < ITranslator::kLanguageTypeMaxEnum; i++) {
                     ITranslator::LanguageType type = static_cast<ITranslator::LanguageType>(i);
                     if (translator->isSupportedLanguage(type) &&
@@ -131,6 +131,26 @@ PreferenceDialog::draw(Project *project)
                         translator->setLanguage(type);
                         ApplicationPreference preference(application());
                         preference.setLanguage(type);
+                    }
+                }
+                ImGui::EndCombo();
+            }
+            ImGui::TextUnformatted(tr("nanoem.gui.window.preference.project.model-language.title"));
+            const Project::ModelNameLanguageType modelLanguage = project->modelLanguage();
+            if (ImGui::BeginCombo("##model-language", selectedModelLanguageString(modelLanguage))) {
+                static const Project::ModelNameLanguageType kModelLanguageMenuItems[] = {
+                    Project::kModelNameLanguageFollowUI,
+                    Project::kModelNameLanguageJapanese,
+                    Project::kModelNameLanguageEnglish,
+                    Project::kModelNameLanguageChineseDictionary,
+                };
+                for (size_t i = 0; i < BX_COUNTOF(kModelLanguageMenuItems); i++) {
+                    const Project::ModelNameLanguageType menuItemValue = kModelLanguageMenuItems[i];
+                    if (ImGui::Selectable(
+                            selectedModelLanguageString(menuItemValue), menuItemValue == modelLanguage, flags)) {
+                        project->setModelLanguage(menuItemValue);
+                        ApplicationPreference preference(application());
+                        preference.setModelLanguage(static_cast<int>(menuItemValue));
                     }
                 }
                 ImGui::EndCombo();
@@ -357,6 +377,22 @@ PreferenceDialog::selectedLanguageString(ITranslator::LanguageType value) const 
         return translator->translate("nanoem.gui.window.preference.project.language.simplified-chinese");
     default:
         return "(Unknown)";
+    }
+}
+
+const char *
+PreferenceDialog::selectedModelLanguageString(Project::ModelNameLanguageType value) const NANOEM_DECL_NOEXCEPT
+{
+    const ITranslator *translator = application()->translator();
+    switch (value) {
+    case Project::kModelNameLanguageJapanese:
+        return translator->translate("nanoem.gui.window.preference.project.model-language.japanese");
+    case Project::kModelNameLanguageEnglish:
+        return translator->translate("nanoem.gui.window.preference.project.model-language.english");
+    case Project::kModelNameLanguageChineseDictionary:
+        return translator->translate("nanoem.gui.window.preference.project.model-language.chinese-dictionary");
+    default:
+        return translator->translate("nanoem.gui.window.preference.project.model-language.follow-ui");
     }
 }
 

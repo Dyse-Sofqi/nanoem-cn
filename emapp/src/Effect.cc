@@ -731,6 +731,15 @@ PrivateEffectUtils::attachShaderSource(const Fx9__Effect__Shader *shaderPtr, con
             | D3DCOMPILE_OPTIMIZATION_LEVEL1
 #endif
             ;
+#if defined(NANOEM_ENABLE_LOGGING)
+        /* TEMPORARY DIAGNOSTIC: 输出 fx9 生成的着色器源码（截断），用于检查常量缓冲布局 */
+        {
+            /* 只 dump 主像素着色器（包含 DiffuseColor 静态计算的那个）的完整源码 */
+            if (strstr(newShaderCode.c_str(), "DiffuseColor") != nullptr) {
+                EMLOG_INFO("effectdiag: shadercode {}: {}", newFilename.c_str(), newShaderCode.c_str());
+            }
+        }
+#endif /* NANOEM_ENABLE_LOGGING */
         if (g_D3DCompile) {
             const UINT flags2 = D3DCOMPILE_FLAGS2_FORCE_ROOT_SIGNATURE_LATEST;
             ID3DBlob *assemblyBlob = nullptr, *errorBlob = nullptr;
@@ -1107,9 +1116,24 @@ Effect::compileFromSource(
         char text[Inline::kLongNameStackBufferSize];
         StringUtils::format(text, sizeof(text), "Compiling Effect %s", fileURI.lastPathComponent().c_str());
         progress.setText(text);
+#if defined(NANOEM_ENABLE_LOGGING)
+        EMLOG_INFO("effectdiag: compile path=[{}]", fileURI.absolutePathConstString());
+#endif /* NANOEM_ENABLE_LOGGING */
         succeeded = proxy.compile(fileURI, output);
         if (!succeeded) {
-            error = proxy.error();
+            const Error compileError(proxy.error());
+#if defined(NANOEM_ENABLE_LOGGING)
+            EMLOG_INFO("effectdiag: compile FAILED path=[{}] reason=[{}]", fileURI.absolutePathConstString(),
+                compileError.reasonConstString());
+#endif /* NANOEM_ENABLE_LOGGING */
+            /* 编译失败时把出错的效果文件一并写进错误信息：fx9 的报错只提到被包含的文件，
+               看不出究竟是哪一个主效果文件失败 */
+            String message("Effect: ");
+            message.append(fileURI.absolutePathConstString());
+            message.append("\n");
+            message.append(compileError.reasonConstString());
+            error = Error(message.c_str(), compileError.recoverySuggestionConstString(),
+                Error::kDomainTypeApplication);
         }
     }
     return succeeded;
@@ -1269,6 +1293,7 @@ Effect::Effect(Project *project, GlobalUniform *globalUniformPtr, AccessoryProgr
     , m_initializeGlobal(false)
     , m_hasScriptExternal(false)
     , m_needsBehaviorCompatibility(false)
+    , m_currentDrawableTranslucent(true)
 {
     nanoem_assert(m_project, "must NOT be nullptr");
     nanoem_assert(m_globalUniformPtr, "must NOT be nullptr");
@@ -1723,6 +1748,42 @@ Effect::load(const nanoem_u8_t *data, size_t size, Progress &progress, Error &er
                                                    "out vec4 o_color0;\n");
                             pixelShaderCode.append(pixelShaderHeaderComment.c_str());
                             dx9ms::createShader(pixelShader, shaderDescription, pixelShaderCode, shaderOutputVariables);
+#if defined(NANOEM_ENABLE_LOGGING)
+                            /* TEMPORARY DIAGNOSTIC: 输出预着色器符号（判断 static 初始化是否依赖参数） */
+                            {
+                                static tinystl::unordered_set<String, TinySTLAllocator> diagnosedPreshaders;
+                                String key(nameConstString());
+                                key.append("/");
+                                key.append(passPtr->name);
+                                if (diagnosedPreshaders.find(key) == diagnosedPreshaders.end()) {
+                                    diagnosedPreshaders.insert(key);
+                                    EMLOG_INFO("effectdiag: preshader effect={} pass={} vsInstructions={} vsSymbols={} "
+                                               "psInstructions={} psSymbols={}",
+                                        nameConstString(), passPtr->name, int(preshaders.vertex.m_instructions.size()),
+                                        int(preshaders.vertex.m_symbols.size()),
+                                        int(preshaders.pixel.m_instructions.size()),
+                                        int(preshaders.pixel.m_symbols.size()));
+                                    for (size_t i = 0; i < preshaders.pixel.m_symbols.size() && i < 20; i++) {
+                                        const Preshader::Symbol &sym = preshaders.pixel.m_symbols[i];
+                                        EMLOG_INFO("effectdiag: preshaderPS pass={} symbol={} set={} index={} count={}",
+                                            passPtr->name, sym.m_name.c_str(), int(sym.m_set), int(sym.m_index),
+                                            int(sym.m_count));
+                                    }
+                                    for (size_t i = 0; i < preshaders.pixel.m_instructions.size() && i < 12; i++) {
+                                        const Preshader::Instruction &ins = preshaders.pixel.m_instructions[i];
+                                        String operands;
+                                        for (size_t j = 0; j < ins.m_operands.size(); j++) {
+                                            char buf[32];
+                                            StringUtils::format(buf, sizeof(buf), "[t=%d,i=%d]", int(ins.m_operands[j].m_type),
+                                                int(ins.m_operands[j].m_index));
+                                            operands.append(buf);
+                                        }
+                                        EMLOG_INFO("effectdiag: preshaderPS pass={} opcode={} numElements={} operands={}",
+                                            passPtr->name, int(ins.m_opcode), int(ins.m_numElements), operands.c_str());
+                                    }
+                                }
+                            }
+#endif /* NANOEM_ENABLE_LOGGING */
                             if (shaderDescription.vs.source && shaderDescription.fs.source) {
                                 convertPipeline<Fx9__Effect__Dx9ms__Pass, Fx9__Effect__Dx9ms__RenderState>(
                                     passPtr->implementation_dx9ms, pd);
@@ -2080,6 +2141,20 @@ Effect::upload(effect::AttachmentType type, const Archiver *archiver, Progress &
         }
         error = Error(message.c_str(), nullptr, Error::kDomainTypeApplication);
     }
+#if defined(NANOEM_ENABLE_LOGGING)
+    /* TEMPORARY DIAGNOSTIC: 输出效果加载结果与已注册的语义参数，用于定位效果透明问题 */
+    EMLOG_INFO("effectdiag: load effect={} succeeded={} errors={} materialDiffuse={} materialAmbient={} "
+               "materialEmissive={} materialSpecular={} toonColor={} lightDiffuse={} lightAmbient={} "
+               "lightSpecular={} edgeColor={} groundShadowColor={}",
+        nameConstString(), succeeded ? 1 : 0, m_errorMessages.size(), m_materialDiffuseUniforms.size(),
+        m_materialAmbientUniforms.size(), m_materialEmissiveUniforms.size(), m_materialSpecularUniforms.size(),
+        m_materialToonColorUniforms.size(), m_lightDiffuseUniforms.size(), m_lightAmbientUniforms.size(),
+        m_lightSpecularUniforms.size(), m_materialEdgeColorUniforms.size(),
+        m_materialGroundColorUniforms.size());
+    for (StringList::const_iterator it = m_errorMessages.begin(), end = m_errorMessages.end(); it != end; ++it) {
+        EMLOG_INFO("effectdiag: error: {}", it->c_str());
+    }
+#endif /* NANOEM_ENABLE_LOGGING */
     SG_POP_GROUP();
     return succeeded;
 }
@@ -2708,6 +2783,20 @@ Effect::setGlobalParameters(const IDrawable *drawable, const Project *project, e
                                                    end = m_vectorParameterUniforms.end();
          it != end; ++it) {
         const NonSemanticParameter &parameter = it->second;
+#if defined(NANOEM_ENABLE_LOGGING)
+        /* TEMPORARY DIAGNOSTIC: 输出效果自带参数（带默认值的非语义参数）的实际取值 */
+        {
+            static tinystl::unordered_set<String, TinySTLAllocator> diagnosedParams;
+            if (diagnosedParams.find(parameter.m_name) == diagnosedParams.end()) {
+                diagnosedParams.insert(parameter.m_name);
+                const Vector4 firstValue(parameter.m_values.empty() ? Vector4(0) : parameter.m_values[0]);
+                EMLOG_INFO("effectdiag: nonsemanticParam effect={} name={} numValues={} first=("
+                           "{:.3f},{:.3f},{:.3f},{:.3f})",
+                    nameConstString(), parameter.m_name.c_str(), int(parameter.m_values.size()), firstValue.x,
+                    firstValue.y, firstValue.z, firstValue.w);
+            }
+        }
+#endif /* NANOEM_ENABLE_LOGGING */
         writeUniformBuffer(parameter.m_name, pass, parameter);
     }
     if (!m_viewportPixelUniforms.empty()) {
@@ -2883,7 +2972,10 @@ Effect::setLightParameters(const ILight *light, bool adjustment, effect::Pass *p
             }
         }
         if (!m_lightDiffuseUniforms.empty()) {
-            const Vector4 diffuse(0);
+            /* 对象绘制 pass（模型/配件）取光照颜色。此前这里写 0，导致效果里
+               MaterialDiffuse * LightDiffuse 之类的写法恒为 0，模型渲染成全黑
+               （G_Shader 等使用 LightDiffuse 的效果都会命中）。 */
+            const Vector4 diffuse(lightColor, 1);
             for (SemanticUniformList::const_iterator it = m_lightDiffuseUniforms.begin(),
                                                      end = m_lightDiffuseUniforms.end();
                  it != end; ++it) {
@@ -2906,6 +2998,7 @@ Effect::setAllAccessoryParameters(const Accessory *accessory, const Project *pro
 {
     nanoem_parameter_assert(accessory, "must not be nullptr");
     nanoem_parameter_assert(pass, "must not be nullptr");
+    m_currentDrawableTranslucent = accessory->isTranslucent();
     for (SemanticUniformList::const_iterator it = m_controlObjectUniforms.begin(), end = m_controlObjectUniforms.end();
          it != end; ++it) {
         const String &parameterName = *it;
@@ -3040,6 +3133,8 @@ Effect::setAllModelParameters(const Model *model, const Project *project, Pass *
 {
     nanoem_parameter_assert(model, "must not be nullptr");
     nanoem_parameter_assert(pass, "must not be nullptr");
+    /* MMD 语义：模型整体不透明度较低时视为半透明，供未声明渲染状态的 pass 作默认值 */
+    m_currentDrawableTranslucent = model->isTranslucent();
     for (SemanticUniformList::const_iterator it = m_controlObjectUniforms.begin(), end = m_controlObjectUniforms.end();
          it != end; ++it) {
         const String &parameterName = *it;
@@ -3277,6 +3372,8 @@ Effect::setMaterialParameters(const nanoem_model_material_t *materialPtr, const 
     nanoem_parameter_assert(pass, "must not be nullptr");
     const model::Material *material = model::Material::cast(materialPtr);
     const model::Material::Color &baseColor = material->base();
+    /* MMD 判定：材质漫反射 alpha < 1 即按半透明材质处理 */
+    m_currentDrawableTranslucent = m_currentDrawableTranslucent || baseColor.m_diffuseOpacity < 1.0f;
     if (!m_materialAmbientUniforms.empty()) {
         const Vector4 ambient(baseColor.m_diffuse, 1);
         for (SemanticUniformList::const_iterator it = m_materialAmbientUniforms.begin(),
@@ -3407,6 +3504,29 @@ Effect::setMaterialParameters(const nanoem_model_material_t *materialPtr, const 
     writeUniformBuffer("use_subtexture", pass, usingSubTexture);
     const bool useToonTexture = material->toonImage() != nullptr;
     writeUniformBuffer("use_toon", pass, useToonTexture);
+    /* TEMPORARY DIAGNOSTIC: 每个材质首次绘制时输出传给效果的材质参数，用于定位效果透明问题 */
+#if defined(NANOEM_ENABLE_LOGGING)
+    {
+        static tinystl::unordered_set<String, TinySTLAllocator> diagnosed;
+        char keyBuffer[Inline::kLongNameStackBufferSize];
+        StringUtils::format(keyBuffer, sizeof(keyBuffer), "\(%p)", static_cast<const void *>(this));
+        String diagnoseKey(keyBuffer);
+        diagnoseKey.append(material->canonicalNameConstString());
+        if (diagnosed.find(diagnoseKey) == diagnosed.end()) {
+            diagnosed.insert(diagnoseKey);
+            EMLOG_INFO("effectdiag: effect={} material={} pass={} diffuse=({:.3f},{:.3f},{:.3f},{:.3f}) ambient=("
+                       "{:.3f},{:.3f},{:.3f}) specular=({:.3f},{:.3f},{:.3f},{:.3f}) texture={} spheremap={} subtexture={} "
+                       "toon={} light=({:.3f},{:.3f},{:.3f})",
+                nameConstString(), material->canonicalNameConstString(), target.c_str(), baseColor.m_diffuse.x,
+                baseColor.m_diffuse.y, baseColor.m_diffuse.z, baseColor.m_diffuseOpacity, baseColor.m_ambient.x,
+                baseColor.m_ambient.y, baseColor.m_ambient.z, baseColor.m_specular.x, baseColor.m_specular.y,
+                baseColor.m_specular.z, baseColor.m_specularPower, usingDiffuseTexture ? 1 : 0,
+                usingSphereMapTexture ? 1 : 0, usingSubTexture ? 1 : 0, useToonTexture ? 1 : 0,
+                project()->globalLight()->color().x, project()->globalLight()->color().y,
+                project()->globalLight()->color().z);
+        }
+    }
+#endif /* NANOEM_ENABLE_LOGGING */
 }
 
 void
@@ -3474,6 +3594,12 @@ Effect::setShadowMapParameters(const ShadowCamera *shadowCamera, const Matrix4x4
         bool sameOutput = m_currentRenderTargetPassDescription.color_attachments[0].image.id == shadowMapImage.id;
         m_firstImageHandle = sameOutput ? m_project->sharedFallbackImage() : shadowMapImage;
     }
+}
+
+bool
+Effect::isCurrentDrawableTranslucent() const NANOEM_DECL_NOEXCEPT
+{
+    return m_currentDrawableTranslucent;
 }
 
 void
@@ -4121,6 +4247,19 @@ Effect::handleRenderColorTargetSemantic(
             self->setNormalizedColorImageContainer(parameter.m_name, numMipLevels, container);
             int sampleCount = enableAA ? project->sampleCount() : 1;
             container->create(self, size, scaleFactor, numMipLevels, sampleCount, format);
+#if defined(NANOEM_ENABLE_LOGGING)
+            /* TEMPORARY DIAGNOSTIC: 检查效果声明的渲染目标纹理是否创建成功 */
+            {
+                const sg_image handle = container->colorImageHandle();
+                const sg_image_desc desc(container->colorImageDescription());
+                EMLOG_INFO("effectdiag: renderColorTarget effect={} name={} shared={} size=({:.0f},{:.0f}) fmt={} mip={} "
+                           "sample={} handleValid={} state={} descW={} descH={} descFmt={} descMip={}",
+                    self->nameConstString(), parameter.m_name.c_str(), parameter.m_shared ? 1 : 0, size.x, size.y,
+                    int(format), int(numMipLevels), sampleCount, sg::is_valid(handle) ? 1 : 0,
+                    int(sg::query_image_state(handle)), int(desc.width), int(desc.height), int(desc.pixel_format),
+                    int(desc.num_mipmaps));
+            }
+#endif /* NANOEM_ENABLE_LOGGING */
             if (parameter.m_shared) {
                 project->setSharedRenderTargetImageContainer(name, self, container);
             }
@@ -4644,6 +4783,14 @@ void
 Effect::registerImageResource(sg_image image, const ImageResourceParameter &parameter)
 {
     const String &name = parameter.m_name;
+    /* 图片创建失败（例如效果里用宏作为 ResourceName 值、或贴图解码失败导致空数据）时，
+       绑定这种非法图片会让 sokol 直接丢弃整次绘制（表现为模型完全不渲染），
+       这里统一回退到项目内置的备用贴图，保证绘制继续进行。 */
+    if (sg::query_image_state(image) != SG_RESOURCESTATE_VALID) {
+        m_logger->log("Image \"%s\" of \"%s\" in \"%s\" is invalid, fallback to the shared image",
+            name.c_str(), parameter.m_fileURI.absolutePathConstString(), nameConstString());
+        image = m_project->sharedFallbackImage();
+    }
     setImageLabel(image, name);
     m_textureResourceUniforms.insert(name);
     m_resourceImages.insert(tinystl::make_pair(name, image));
@@ -4712,8 +4859,40 @@ Effect::createOverrideImage(const String &name, const IImageView *image, bool mi
                 StringUtils::format(label, sizeof(label), "Effects/%s/%s", nameConstString(), suffix);
                 imageDescription.label = label;
             }
+#if defined(NANOEM_ENABLE_LOGGING)
+            /* TEMPORARY DIAGNOSTIC: 记录效果路径重建贴图（override image）的详情 */
+            {
+                const sg_range &src = originImageDescription.data.subimage[0][0];
+                const sg_range &dst = imageDescription.data.subimage[0][0];
+                int numMipSrc = 0, numMipDst = 0;
+                for (int i = 0; i < SG_MAX_MIPMAPS; i++) {
+                    if (originImageDescription.data.subimage[0][i].size > 0) numMipSrc++;
+                    if (imageDescription.data.subimage[0][i].size > 0) numMipDst++;
+                }
+                EMLOG_INFO("effectdiag: overrideImage name={} file={} src(w={},h={},fmt={},mip={},levels={},ptr={},"
+                           "size={}) dst(mip={},levels={},ptr={},size={}) filters(min={},mag={})",
+                    name.c_str(), image->filenameConstString(), int(originImageDescription.width),
+                    int(originImageDescription.height), int(originImageDescription.pixel_format),
+                    int(originImageDescription.num_mipmaps), numMipSrc, src.ptr, int(src.size),
+                    int(imageDescription.num_mipmaps), numMipDst, dst.ptr, int(dst.size),
+                    int(imageDescription.min_filter), int(imageDescription.mag_filter));
+            }
+#endif /* NANOEM_ENABLE_LOGGING */
+            const sg_image originalHandle = handle;
             handle = sg::make_image(&imageDescription);
+            /* 覆写贴图创建失败时（例如数据尺寸不匹配）不要绑定非法图片：
+               否则 sokol 会丢弃整次绘制，模型会完全不渲染。此时退回原始贴图。 */
+            if (sg::query_image_state(handle) != SG_RESOURCESTATE_VALID) {
+                m_logger->log("Overridden image \"%s\" of \"%s\" in \"%s\" is invalid, fallback to the original image",
+                    suffix, image->filenameConstString(), nameConstString());
+                sg::destroy_image(handle);
+                handle = originalHandle;
+            }
             setImageLabel(handle, suffix);
+#if defined(NANOEM_ENABLE_LOGGING)
+            EMLOG_INFO("effectdiag: overrideImage result name={} valid={}", name.c_str(),
+                sg::query_image_state(handle) == SG_RESOURCESTATE_VALID ? 1 : 0);
+#endif /* NANOEM_ENABLE_LOGGING */
             m_overridenImageHandles.insert(tinystl::make_pair(key, handle));
         }
     }
@@ -4802,6 +4981,21 @@ Effect::determineImageSize(
 void
 Effect::setImageUniform(const String &name, const effect::Pass *pass, sg_image handle)
 {
+#if defined(NANOEM_ENABLE_LOGGING)
+    /* TEMPORARY DIAGNOSTIC: 记录每个采样器绑定的图片状态（state=3 表示创建失败） */
+    {
+        static tinystl::unordered_set<String, TinySTLAllocator> diagnosedSamplers;
+        char keyBuffer[Inline::kLongNameStackBufferSize];
+        StringUtils::format(keyBuffer, sizeof(keyBuffer), "\(%p/%s)", static_cast<const void *>(pass), name.c_str());
+        const String key(keyBuffer);
+        if (diagnosedSamplers.find(key) == diagnosedSamplers.end()) {
+            diagnosedSamplers.insert(key);
+            EMLOG_INFO("effectdiag: imageUniform effect={} pass={} sampler={} imageValid={} state={} file={}",
+                nameConstString(), pass->nameConstString(), name.c_str(), sg::is_valid(handle) ? 1 : 0,
+                sg::is_valid(handle) ? int(sg::query_image_state(handle)) : -1, 0u);
+        }
+    }
+#endif /* NANOEM_ENABLE_LOGGING */
     SamplerRegisterIndex::List indices;
     if (pass->findPixelShaderSamplerRegisterIndex(name, indices)) {
         for (SamplerRegisterIndex::List::const_iterator it = indices.begin(), end = indices.end(); it != end; ++it) {
@@ -4850,6 +5044,39 @@ Effect::writeUniformBuffer(const String &name, const effect::Pass *passPtr, cons
 {
     nanoem_parameter_assert(passPtr, "must not be nullptr");
     nanoem_parameter_assert(ptr, "must not be nullptr");
+#if defined(NANOEM_ENABLE_LOGGING)
+    /* TEMPORARY DIAGNOSTIC: 记录关键参数落在哪个寄存器表，用于定位效果参数读不到的问题 */
+    {
+        static tinystl::unordered_set<String, TinySTLAllocator> diagnosedParams;
+        static const char *const kNamesOfInterest[] = { "WorldViewProjMatrix", "MaterialDiffuse", "LightDiffuse",
+            "MaterialAmbient", "LightAmbient", "MaterialSpecular", "LightSpecular", "use_texture" };
+        for (size_t i = 0; i < BX_COUNTOF(kNamesOfInterest); i++) {
+            if (!StringUtils::equals(name.c_str(), kNamesOfInterest[i])) {
+                continue;
+            }
+            char keyBuffer[Inline::kNameStackBufferSize];
+            StringUtils::format(keyBuffer, sizeof(keyBuffer), "%p/%s", static_cast<const void *>(passPtr),
+                kNamesOfInterest[i]);
+            const String key(keyBuffer);
+            if (diagnosedParams.find(key) != diagnosedParams.end()) {
+                continue;
+            }
+            diagnosedParams.insert(key);
+            RegisterIndex ri;
+            const int vp = passPtr->findVertexPreshaderRegisterIndex(name, ri) ? int(ri.m_index) : -1;
+            const int pp = passPtr->findPixelPreshaderRegisterIndex(name, ri) ? int(ri.m_index) : -1;
+            const bool hasVs = passPtr->findVertexShaderRegisterIndex(name, ri);
+            const int vs = hasVs ? int(ri.m_index) : -1;
+            const int vsType = hasVs ? int(ri.m_type) : -1, vsCount = hasVs ? int(ri.m_count) : -1;
+            const bool hasPs = passPtr->findPixelShaderRegisterIndex(name, ri);
+            const int ps = hasPs ? int(ri.m_index) : -1;
+            const int psType = hasPs ? int(ri.m_type) : -1, psCount = hasPs ? int(ri.m_count) : -1;
+            EMLOG_INFO("effectdiag: param {} pass={} vpreshaderIndex={} ppreshaderIndex={} vshaderIndex={} "
+                       "vshaderType/count={},{} pshaderIndex={} pshaderType/count={},{} writeSize={}",
+                name.c_str(), passPtr->nameConstString(), vp, pp, vs, vsType, vsCount, ps, psType, psCount, int(size));
+        }
+    }
+#endif /* NANOEM_ENABLE_LOGGING */
     RegisterIndex registerIndex;
     bool written = false;
     if (passPtr->findVertexPreshaderRegisterIndex(name, registerIndex)) {
@@ -5593,6 +5820,11 @@ Effect::decodeImageData(const ByteArray &bytes, const ImageResourceParameter &pa
         }
     }
     else {
+#if defined(NANOEM_ENABLE_LOGGING)
+        EMLOG_INFO("effectdiag: decodeFallback name={} file={} bytes={} descWH=({},{}) fmt={} reason=[{}]",
+            parameter.m_name.c_str(), fileURI.absolutePathConstString(), int(bytes.size()), int(parameter.m_desc.width),
+            int(parameter.m_desc.height), int(parameter.m_desc.pixel_format), error.reasonConstString());
+#endif /* NANOEM_ENABLE_LOGGING */
         error = Error();
         createImageResource(bytes.data(), bytes.size(), parameter);
     }
@@ -5782,6 +6014,42 @@ Effect::internalDrawRenderPass(const IDrawable *drawable, effect::Pass *pass, sg
     }
     SG_INSERT_MARKERF("Effect::internalDrawRenderPass(id=%d, name=%s, RTN=0x%p)", handle.id,
         m_project->findRenderPassName(handle), renderTargetNormalizer);
+#if defined(NANOEM_ENABLE_LOGGING)
+    /* TEMPORARY DIAGNOSTIC: 对比不同效果在绘制调用处的状态 */
+    {
+        static tinystl::unordered_set<String, TinySTLAllocator> diagnosedDraws;
+        char keyBuffer[Inline::kLongNameStackBufferSize];
+        StringUtils::format(keyBuffer, sizeof(keyBuffer), "%s/%s", nameConstString(), pass->nameConstString());
+        const String key(keyBuffer);
+        if (diagnosedDraws.find(key) == diagnosedDraws.end()) {
+            diagnosedDraws.insert(key);
+            int numValidImages = 0, numInvalidImages = 0;
+            for (int i = 0; i < SG_MAX_SHADERSTAGE_IMAGES; i++) {
+                if (sg::is_valid(bindings.vs_images[i])) {
+                    numValidImages++;
+                }
+                else if (bindings.vs_images[i].id != 0) {
+                    numInvalidImages++;
+                }
+                if (sg::is_valid(bindings.fs_images[i])) {
+                    numValidImages++;
+                }
+                else if (bindings.fs_images[i].id != 0) {
+                    numInvalidImages++;
+                }
+            }
+            EMLOG_INFO("effectdiag: draw effect={} pass={} renderPassValid={} colorCount={} offset={} numIndices={} "
+                       "vbValid={} ibValid={} imagesValid={} imagesInvalid={} depthWrite={} depthCompare={} blendEnabled={} "
+                       "shaderVsValid={} shaderFsValid={}",
+                nameConstString(), pass->nameConstString(), sg::is_valid(handle) ? 1 : 0, pd.color_count, offset,
+                numIndices, sg::is_valid(bindings.vertex_buffers[0]) ? 1 : 0,
+                sg::is_valid(bindings.index_buffer) ? 1 : 0, numValidImages, numInvalidImages,
+                pd.depth.write_enabled ? 1 : 0,
+                int(pd.depth.compare), pd.colors[0].blend.enabled ? 1 : 0, pd.shader.id ? 1 : 0,
+                pd.shader.id ? 1 : 0);
+        }
+    }
+#endif /* NANOEM_ENABLE_LOGGING */
     renderPassScope->modifyPipelineDescription(pd);
     {
         sg::PassBlock pb(drawQueue, m_project->beginRenderPass(handle), pa);
@@ -5798,6 +6066,28 @@ Effect::internalDrawRenderPass(const IDrawable *drawable, effect::Pass *pass, sg
         /* call animation texture sampler here to fetch "SeekVariable" parameter */
         setFoundImageSamplers(m_animatedTextureUniforms, m_animatedTextureImages, pass);
         updatePassImageHandles(pass, bindings);
+#if defined(NANOEM_ENABLE_LOGGING)
+        /* TEMPORARY DIAGNOSTIC: 记录绑定后的图片状态（无效图片会导致绘制被丢弃） */
+        {
+            static tinystl::unordered_set<const effect::Pass *, TinySTLAllocator> diagnosedImageBinds;
+            if (diagnosedImageBinds.find(pass) == diagnosedImageBinds.end()) {
+                diagnosedImageBinds.insert(pass);
+                String details;
+                for (int i = 0; i < SG_MAX_SHADERSTAGE_IMAGES; i++) {
+                    const sg_image &vs = bindings.vs_images[i], &fs = bindings.fs_images[i];
+                    if (vs.id != 0 || fs.id != 0) {
+                        char buf[96];
+                        StringUtils::format(buf, sizeof(buf), " [%d vs=%u(%d) fs=%u(%d)]", i, vs.id,
+                            sg::is_valid(vs) ? int(sg::query_image_state(vs)) : -1, fs.id,
+                            sg::is_valid(fs) ? int(sg::query_image_state(fs)) : -1);
+                        details.append(buf);
+                    }
+                }
+                EMLOG_INFO("effectdiag: bindings effect={} pass={} pipelineValid={} images:{}", nameConstString(),
+                    pass->nameConstString(), sg::is_valid(pipeline) ? 1 : 0, details.c_str());
+            }
+        }
+#endif /* NANOEM_ENABLE_LOGGING */
         renderPassScope->apply(bindings, drawable, pass, pipeline, pb);
         updatePassUniformHandles(pb);
         pb.draw(offset, numIndices);

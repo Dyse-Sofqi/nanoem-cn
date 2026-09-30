@@ -11,6 +11,7 @@
 #include "emapp/Constants.h"
 #include "emapp/Effect.h"
 #include "emapp/EnumUtils.h"
+#include "emapp/ModelNameDictionary.h"
 #include "emapp/Error.h"
 #include "emapp/FileUtils.h"
 #include "emapp/ICamera.h"
@@ -949,6 +950,7 @@ Model::load(const nanoem_u8_t *bytes, size_t length, Error &error)
         nanoem_unicode_string_factory_t *factory = m_project->unicodeStringFactory();
         nanoem_language_type_t language = m_project->castLanguage();
         StringUtils::getUtf8String(nanoemModelGetName(m_opaque, language), factory, m_name);
+        ModelNameDictionary::translate(m_name);
         StringUtils::getUtf8String(nanoemModelGetComment(m_opaque, language), factory, m_comment);
         StringUtils::getUtf8String(
             nanoemModelGetName(m_opaque, NANOEM_LANGUAGE_TYPE_FIRST_ENUM), factory, m_canonicalName);
@@ -979,6 +981,7 @@ Model::load(const nanoem_u8_t *bytes, size_t length, const ImportDescription &de
     if (succeeded) {
         const nanoem_language_type_t language = m_project->castLanguage();
         m_name = m_canonicalName = desc.m_name[language];
+        ModelNameDictionary::translate(m_name);
         m_comment = desc.m_comment[language];
         if (m_canonicalName.empty()) {
             m_canonicalName = desc.m_name[NANOEM_LANGUAGE_TYPE_FIRST_ENUM];
@@ -2050,6 +2053,7 @@ Model::resetLanguage()
     nanoem_unicode_string_factory_t *factory = m_project->unicodeStringFactory();
     nanoem_language_type_t language = m_project->castLanguage();
     StringUtils::getUtf8String(nanoemModelGetName(m_opaque, language), factory, m_name);
+    ModelNameDictionary::translate(m_name);
     StringUtils::getUtf8String(nanoemModelGetComment(m_opaque, language), factory, m_comment);
     for (nanoem_rsize_t i = 0; i < numObjects; i++) {
         const nanoem_model_bone_t *bonePtr = bones[i];
@@ -4058,6 +4062,22 @@ Model::drawColor(bool scriptExternalColor)
         IPass::Buffer buffer(numIndices, indexOffset, true);
         if (getVertexIndexBuffer(material, buffer)) {
             IEffect *effect = internalEffect(material);
+#if defined(NANOEM_ENABLE_LOGGING)
+            /* TEMPORARY DIAGNOSTIC: 记录模型绘制调用与缓冲/效果信息 */
+            {
+                static tinystl::unordered_set<String, TinySTLAllocator> diagnosedDraws;
+                String diagnoseKey(canonicalNameConstString());
+                diagnoseKey.append(material->canonicalNameConstString());
+                if (diagnosedDraws.find(diagnoseKey) == diagnosedDraws.end()) {
+                    diagnosedDraws.insert(diagnoseKey);
+                    EMLOG_INFO("effectdiag: drawColor model={} material={} passType={} indices={} vb={} ib={} "
+                               "scriptClass={} visible={}",
+                        canonicalNameConstString(), material->canonicalNameConstString(), passType.c_str(), int(numIndices),
+                        sg::is_valid(buffer.m_vertexBuffer) ? 1 : 0, sg::is_valid(buffer.m_indexBuffer) ? 1 : 0,
+                        static_cast<int>(effect ? effect->scriptClass() : -1), material->isVisible() ? 1 : 0);
+                }
+            }
+#endif /* NANOEM_ENABLE_LOGGING */
             if (ITechnique *technique = effect->findTechnique(passType, materialPtr, i, numMaterials, this)) {
                 SG_PUSH_GROUPF("Model::drawColor(offset=%d, name=%s)", i, material->canonicalNameConstString());
                 while (IPass *pass = technique->execute(this, scriptExternalColor)) {

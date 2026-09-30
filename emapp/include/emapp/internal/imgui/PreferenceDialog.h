@@ -27,6 +27,7 @@ struct PreferenceDialog : BaseNonModalDialogWindow {
         Project *project, const ApplicationMenuBuilder::MenuItemType *items, nanoem_rsize_t numItems);
     const char *selectedPixelFormatString(sg_pixel_format value) const NANOEM_DECL_NOEXCEPT;
     const char *selectedLanguageString(ITranslator::LanguageType value) const NANOEM_DECL_NOEXCEPT;
+    const char *selectedModelLanguageString(Project::ModelNameLanguageType value) const NANOEM_DECL_NOEXCEPT;
     const char *selectedFPSMenuItemString(nanoem_u32_t value) const NANOEM_DECL_NOEXCEPT;
     const char *selectedHighDPIViewportModeString(
         ApplicationPreference::HighDPIViewportModeType value) const NANOEM_DECL_NOEXCEPT;
