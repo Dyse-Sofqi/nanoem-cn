@@ -784,11 +784,8 @@ Win32ThreadedApplicationService::handleInitializeApplication()
         return dpiScale;
     };
     platformIO.Platform_OnChangedViewport = [](ImGuiViewport *viewport) {};
-    platformIO.Platform_SetImeInputPos = [](ImGuiViewport *viewport, ImVec2 pos) {
-        auto userData = static_cast<ViewportData *>(viewport->PlatformUserData);
-        ViewportData::sendMessage(ViewportData::kMessageTypeSetIMEInputPos, viewport, &pos);
-        userData->wait();
-    };
+    // IME positioning for secondary viewports is not available in the docking branch of Dear ImGui,
+    // the primary window handles IME via PlatformHandleRaw instead.
     ImGuiViewport *main = ImGui::GetMainViewport();
     main->PlatformHandle = main->PlatformHandleRaw = window;
     ViewportData *data = IM_NEW(ViewportData);
