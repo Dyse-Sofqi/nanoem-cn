@@ -959,6 +959,7 @@ private:
     ModelNameLanguageType m_modelLanguage;
     tinystl::pair<Vector4UI16, Vector4UI16> m_uniformViewportLayoutRect;
     tinystl::pair<Vector2UI16, Vector2UI16> m_uniformViewportImageSize;
+    Vector2UI16 m_uniformViewportImageBaseSize;
     Vector4SI32 m_backgroundVideoRect;
     Vector4SI32 m_boneSelectionRect;
     Vector4SI32 m_logicalScaleCursorPositions[kCursorTypeMaxEnum];

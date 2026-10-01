@@ -1245,6 +1245,7 @@ Project::Project(const Injector &injector)
                                       : kModelNameLanguageFollowUI)
     , m_uniformViewportLayoutRect(Vector4UI16(0), Vector4UI16(0))
     , m_uniformViewportImageSize(kDefaultViewportImageSize, kDefaultViewportImageSize)
+    , m_uniformViewportImageBaseSize(kDefaultViewportImageSize)
     , m_backgroundVideoRect(0)
     , m_boneSelectionRect(0)
     , m_logicalScaleMovingCursorPosition(0)
@@ -2290,7 +2291,11 @@ Project::resizeUniformedViewportLayout(const Vector4UI16 &value)
         !isViewportCaptured()) {
         m_uniformViewportLayoutRect.second = value;
         if (isUniformedViewportImageSizeEnabled()) {
-            const Vector2UI16 imageSize(uniformedViewportImageSize(currentSize, m_uniformViewportImageSize.first));
+            // derive the fitted size from the base size (explicitly chosen size) instead of the
+            // previously fitted one, otherwise integer truncation shrinks the image height a
+            // little bit on every fit round trip while the user keeps resizing the window
+            const Vector2UI16 imageSize(
+                uniformedViewportImageSize(currentSize, m_uniformViewportImageBaseSize));
             internalResizeUniformedViewportImage(imageSize);
         }
     }
@@ -5627,6 +5632,7 @@ Project::setViewportImageSize(const Vector2UI16 &value)
     if (m_viewportImageSize != value) {
         internalResizeUniformedViewportImage(value);
         m_viewportImageSize = value;
+        m_uniformViewportImageBaseSize = value;
     }
 }
 
