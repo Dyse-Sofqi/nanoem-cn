@@ -7,7 +7,6 @@
 #include "emapp/internal/ImGuiWindow.h"
 
 #include "../protoc/plugin.pb-c.h"
-#include "imgui/imgui_internal.h"
 #include "emapp/Accessory.h"
 #include "emapp/ApplicationPreference.h"
 #include "emapp/CommandRegistrator.h"
@@ -3891,31 +3890,28 @@ ImGuiWindow::drawViewportWindowMaximizeButton()
         m_viewportWindowMaximized = false;
         return;
     }
+    /* right-aligned on the first content line, regular widgets are guaranteed to render there
+       while anything drawn onto the title bar gets clipped away by the window inner rectangle */
     const ImGuiStyle &style = ImGui::GetStyle();
-    const float titleBarHeight = ImGui::GetFrameHeight(), buttonSize = titleBarHeight - style.FramePadding.y * 2;
-    const ImVec2 windowPos = ImGui::GetWindowPos(), windowSize = ImGui::GetWindowSize();
-    const ImVec2 buttonPos(windowPos.x + windowSize.x - titleBarHeight - buttonSize - style.FramePadding.x,
-        windowPos.y + style.FramePadding.y);
+    const float buttonSize = ImGui::GetFrameHeight() - style.FramePadding.y * 2;
     const ImVec2 cursorPos(ImGui::GetCursorPos());
-    /* the title bar lives outside of the window inner clip rectangle so widen it while the button
-       is being submitted, otherwise the item is discarded and never receives any interaction */
-    ::ImGuiWindow *window = ::ImGui::GetCurrentWindow();
-    const ImRect savedClipRect = window->ClipRect;
-    window->ClipRect = ImRect(windowPos, ImVec2(windowPos.x + windowSize.x, windowPos.y + windowSize.y));
-    ImGui::SetCursorScreenPos(buttonPos);
+    const ImVec2 buttonPos(cursorPos.x + ImGui::GetContentRegionAvail().x - buttonSize, cursorPos.y);
+    ImGui::SetCursorPos(buttonPos);
     ImGui::PushID("viewport.window.maximize");
     const bool toggled = ImGui::InvisibleButton("##viewport.window.maximize", ImVec2(buttonSize, buttonSize));
     const bool hovered = ImGui::IsItemHovered();
     ImGui::PopID();
-    window->ClipRect = savedClipRect;
-    const ImU32 color = ImGui::GetColorU32(hovered ? ImGuiCol_Text : ImGuiCol_TextDisabled);
-    const ImVec2 a(buttonPos.x + 3.0f, buttonPos.y + 3.0f),
-        b(buttonPos.x + buttonSize - 3.0f, buttonPos.y + buttonSize - 3.0f);
-    ImDrawList *drawList = ImGui::GetForegroundDrawList(viewport);
+    const ImVec2 a = ImGui::GetItemRectMin(), b = ImGui::GetItemRectMax();
+    ImDrawList *drawList = ImGui::GetWindowDrawList();
+    drawList->AddRectFilled(a, b, ImGui::GetColorU32(ImGuiCol_Text, hovered ? 0.25f : 0.10f),
+        style.FramePadding.y * 0.5f);
+    const ImU32 color = ImGui::GetColorU32(ImGuiCol_Text);
+    const float inset = buttonSize * 0.28f;
+    const ImVec2 ga(a.x + inset, a.y + inset), gb(b.x - inset, b.y - inset);
     if (m_viewportWindowMaximized) {
-        drawList->AddRect(ImVec2(a.x - 2.0f, a.y - 2.0f), ImVec2(b.x - 2.0f, b.y - 2.0f), color);
+        drawList->AddRect(ImVec2(ga.x - 2.5f, ga.y - 2.5f), ImVec2(gb.x - 2.5f, gb.y - 2.5f), color, 0.0f, 0, 1.5f);
     }
-    drawList->AddRect(a, b, color);
+    drawList->AddRect(ga, gb, color, 0.0f, 0, 1.5f);
     ImGui::SetCursorPos(cursorPos);
     if (toggled) {
         ImGuiPlatformIO &platformIO = ImGui::GetPlatformIO();
