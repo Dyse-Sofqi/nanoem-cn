@@ -41,6 +41,7 @@
 #include "sokol/sokol_time.h"
 
 namespace nanoem {
+
 namespace win32 {
 namespace {
 
@@ -1663,9 +1664,9 @@ MainWindow::handleMouseDown(HWND hwnd, const Vector2SI32 &coord, int type)
     const int modifiers = cursorModifiers();
     SetCapture(hwnd);
     m_client->sendScreenCursorPressMessage(devicePixelScreenPosition(hwnd, coord), type, modifiers);
-    if (m_windowHandle == hwnd) {
-        m_client->sendCursorPressMessage(logicalPosition, type, modifiers);
-    }
+    /* detached viewport windows share the same logical cursor space as the main window so the
+       project cursor has to be fed from them as well, otherwise all viewport interactions die */
+    m_client->sendCursorPressMessage(logicalPosition, type, modifiers);
     setLastLogicalCursorPosition(logicalPosition);
 }
 
@@ -1683,10 +1684,8 @@ MainWindow::handleMouseMove(HWND hwnd, const Vector2SI32 &coord, int type)
     else {
         delta = logicalPosition - lastLogicalCursorPosition();
     }
-    if (m_windowHandle == hwnd) {
-        const Vector2SI32 virtualPosition(virtualLogicalCursorPosition(logicalPosition));
-        m_client->sendCursorMoveMessage(virtualPosition, delta, 0, modifiers);
-    }
+    const Vector2SI32 virtualPosition(virtualLogicalCursorPosition(logicalPosition));
+    m_client->sendCursorMoveMessage(virtualPosition, delta, 0, modifiers);
     setLastLogicalCursorPosition(logicalPosition, delta);
 }
 
@@ -1700,9 +1699,7 @@ MainWindow::handleMouseUp(HWND hwnd, const Vector2SI32 &coord, int type)
         ReleaseCapture();
     }
     m_client->sendScreenCursorReleaseMessage(devicePixelScreenPosition(hwnd, coord), type, modifiers);
-    if (m_windowHandle == hwnd) {
-        m_client->sendCursorReleaseMessage(logicalPosition, type, modifiers);
-    }
+    m_client->sendCursorReleaseMessage(logicalPosition, type, modifiers);
     setLastLogicalCursorPosition(logicalPosition);
 }
 
@@ -1710,9 +1707,7 @@ void
 MainWindow::handleMouseWheel(HWND hwnd, const Vector2SI32 &delta)
 {
     const int modifiers = cursorModifiers();
-    if (m_windowHandle == hwnd) {
-        m_client->sendCursorScrollMessage(lastLogicalCursorPosition(), delta, modifiers);
-    }
+    m_client->sendCursorScrollMessage(lastLogicalCursorPosition(), delta, modifiers);
 }
 
 void

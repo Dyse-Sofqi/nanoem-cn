@@ -7,6 +7,7 @@
 #include "emapp/internal/ImGuiWindow.h"
 
 #include "../protoc/plugin.pb-c.h"
+#include "imgui/imgui_internal.h"
 #include "emapp/Accessory.h"
 #include "emapp/ApplicationPreference.h"
 #include "emapp/CommandRegistrator.h"
@@ -1139,6 +1140,9 @@ ImGuiWindow::ImGuiWindow(BaseApplicationService *application)
     , m_debugger(nullptr)
     , m_draggingMarkerPanelRect(Constants::kZeroV4)
     , m_elapsedTime(0)
+    , m_viewportWindowMaximized(false)
+    , m_viewportWindowRestorePos(0, 0)
+    , m_viewportWindowRestoreSize(0, 0)
     , m_currentMemoryBytes(0)
     , m_maxMemoryBytes(0)
     , m_currentCPUPercentage(0)
@@ -2769,6 +2773,7 @@ ImGuiWindow::drawMainWindow(
             ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, kWindowRounding * deviceScaleRatio);
             ImGui::SetNextWindowSizeConstraints(minimumViewportSize, ImVec2(FLT_MAX, FLT_MAX));
             if (ImGui::Begin(tr("nanoem.gui.viewport.title"), &viewportWindowDetached)) {
+                drawViewportWindowMaximizeButton();
                 drawViewport(project, state, flags);
             }
             ImGui::End();
@@ -2776,6 +2781,7 @@ ImGuiWindow::drawMainWindow(
             if (!viewportWindowDetached) {
                 project->setViewportWindowDetached(viewportWindowDetached);
                 m_defaultTimelineWidth = 0;
+                m_viewportWindowMaximized = false;
             }
         }
         else {
@@ -3874,6 +3880,64 @@ ImGuiWindow::drawViewportParameterBox(Project *project)
             nanoem_delete_safe(m_cameraDistanceVectorValueState);
         }
         ImGui::PopItemWidth();
+    }
+}
+
+void
+ImGuiWindow::drawViewportWindowMaximizeButton()
+{
+    ImGuiViewport *viewport = ImGui::GetWindowViewport();
+    if (viewport == ImGui::GetMainViewport()) {
+        m_viewportWindowMaximized = false;
+        return;
+    }
+    const ImGuiStyle &style = ImGui::GetStyle();
+    const float titleBarHeight = ImGui::GetFrameHeight(), buttonSize = titleBarHeight - style.FramePadding.y * 2;
+    const ImVec2 windowPos = ImGui::GetWindowPos(), windowSize = ImGui::GetWindowSize();
+    const ImVec2 buttonPos(windowPos.x + windowSize.x - titleBarHeight - buttonSize - style.FramePadding.x,
+        windowPos.y + style.FramePadding.y);
+    const ImVec2 cursorPos(ImGui::GetCursorPos());
+    /* the title bar lives outside of the window inner clip rectangle so widen it while the button
+       is being submitted, otherwise the item is discarded and never receives any interaction */
+    ::ImGuiWindow *window = ::ImGui::GetCurrentWindow();
+    const ImRect savedClipRect = window->ClipRect;
+    window->ClipRect = ImRect(windowPos, ImVec2(windowPos.x + windowSize.x, windowPos.y + windowSize.y));
+    ImGui::SetCursorScreenPos(buttonPos);
+    ImGui::PushID("viewport.window.maximize");
+    const bool toggled = ImGui::InvisibleButton("##viewport.window.maximize", ImVec2(buttonSize, buttonSize));
+    const bool hovered = ImGui::IsItemHovered();
+    ImGui::PopID();
+    window->ClipRect = savedClipRect;
+    const ImU32 color = ImGui::GetColorU32(hovered ? ImGuiCol_Text : ImGuiCol_TextDisabled);
+    const ImVec2 a(buttonPos.x + 3.0f, buttonPos.y + 3.0f),
+        b(buttonPos.x + buttonSize - 3.0f, buttonPos.y + buttonSize - 3.0f);
+    ImDrawList *drawList = ImGui::GetForegroundDrawList(viewport);
+    if (m_viewportWindowMaximized) {
+        drawList->AddRect(ImVec2(a.x - 2.0f, a.y - 2.0f), ImVec2(b.x - 2.0f, b.y - 2.0f), color);
+    }
+    drawList->AddRect(a, b, color);
+    ImGui::SetCursorPos(cursorPos);
+    if (toggled) {
+        ImGuiPlatformIO &platformIO = ImGui::GetPlatformIO();
+        if (!m_viewportWindowMaximized) {
+            m_viewportWindowRestorePos = viewport->Pos;
+            m_viewportWindowRestoreSize = viewport->Size;
+            for (int i = 0, numMonitors = platformIO.Monitors.Size; i < numMonitors; i++) {
+                const ImGuiPlatformMonitor &monitor = platformIO.Monitors[i];
+                if (viewport->Pos.x >= monitor.MainPos.x && viewport->Pos.x < monitor.MainPos.x + monitor.MainSize.x &&
+                    viewport->Pos.y >= monitor.MainPos.y && viewport->Pos.y < monitor.MainPos.y + monitor.MainSize.y) {
+                    platformIO.Platform_SetWindowPos(viewport, monitor.WorkPos);
+                    platformIO.Platform_SetWindowSize(viewport, monitor.WorkSize);
+                    break;
+                }
+            }
+            m_viewportWindowMaximized = true;
+        }
+        else {
+            platformIO.Platform_SetWindowPos(viewport, m_viewportWindowRestorePos);
+            platformIO.Platform_SetWindowSize(viewport, m_viewportWindowRestoreSize);
+            m_viewportWindowMaximized = false;
+        }
     }
 }
 

@@ -383,6 +383,7 @@ private:
     void drawKeyframeSelectionPanel(void *selector, int index, nanoem_f32_t padding, Project *project);
     void drawViewport(Project *project, IState *state, nanoem_u32_t flags);
     void drawViewportParameterBox(Project *project);
+    void drawViewportWindowMaximizeButton();
     void drawCommonInterpolationControls(Project *project);
     void drawBoneInterpolationPanel(const ImVec2 &panelSize, Model *activeModel, Project *project);
     void drawCameraInterpolationPanel(const ImVec2 &panelSize, Project *project);
@@ -453,6 +454,9 @@ private:
     sg_image m_transparentTileImage;
     ScreenCursor m_screenCursor;
     uint64_t m_elapsedTime;
+    bool m_viewportWindowMaximized;
+    ImVec2 m_viewportWindowRestorePos;
+    ImVec2 m_viewportWindowRestoreSize;
     nanoem_u64_t m_currentMemoryBytes;
     nanoem_u64_t m_maxMemoryBytes;
     nanoem_f32_t m_currentCPUPercentage;
