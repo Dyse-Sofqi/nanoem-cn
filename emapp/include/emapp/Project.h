@@ -350,6 +350,9 @@ public:
     bool intersectsTransformHandle(const Vector2SI32 &position, RectangleType &type) const NANOEM_DECL_NOEXCEPT;
     void clearAudioSource(Error &error);
     void clearBackgroundVideo();
+    void markUserCameraOverride();
+    void resetUserCameraOverride();
+    bool isUserCameraOverrideEnabled() const NANOEM_DECL_NOEXCEPT;
 
     void play();
     void stop();
@@ -914,6 +917,7 @@ private:
     ISkinDeformerFactory *m_skinDeformerFactory;
     PhysicsEngine *m_physicsEngine;
     PerspectiveCamera *m_camera;
+    bool m_isUserCameraOverridden;
     DirectionalLight *m_light;
     Grid *m_grid;
     Motion *m_cameraMotionPtr;

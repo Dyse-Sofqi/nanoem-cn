@@ -2452,7 +2452,7 @@ ImGuiWindow::setCameraLookAt(const Vector3 &value, ICamera *camera, Project *pro
             nanoem_delete_safe(m_cameraLookAtVectorValueState);
         }
     }
-    else if (camera && project && !project->isPlaying()) {
+    else if (camera && project) {
         m_cameraLookAtVectorValueState = nanoem_new(CameraLookAtVectorValueState(project, camera));
     }
 }
@@ -2468,7 +2468,7 @@ ImGuiWindow::setCameraAngle(const Vector3 &value, ICamera *camera, Project *proj
             nanoem_delete_safe(m_cameraAngleVectorValueState);
         }
     }
-    else if (camera && project && !project->isPlaying()) {
+    else if (camera && project) {
         m_cameraAngleVectorValueState = nanoem_new(CameraAngleVectorValueState(project, camera));
     }
 }
@@ -2484,7 +2484,7 @@ ImGuiWindow::setCameraDistance(nanoem_f32_t value, ICamera *camera, Project *pro
             nanoem_delete_safe(m_cameraDistanceVectorValueState);
         }
     }
-    else if (camera && project && !project->isPlaying()) {
+    else if (camera && project) {
         m_cameraDistanceVectorValueState = nanoem_new(CameraDistanceVectorValueState(project, camera));
     }
 }
@@ -2500,7 +2500,7 @@ ImGuiWindow::setCameraFov(nanoem_f32_t value, ICamera *camera, Project *project)
             nanoem_delete_safe(m_cameraFovVectorValueState);
         }
     }
-    else if (camera && project && !project->isPlaying()) {
+    else if (camera && project) {
         m_cameraFovVectorValueState = nanoem_new(CameraFovVectorValueState(project, camera));
     }
 }
@@ -2508,7 +2508,9 @@ ImGuiWindow::setCameraFov(nanoem_f32_t value, ICamera *camera, Project *project)
 void
 ImGuiWindow::setCameraPerspective(bool value, ICamera *camera, Project *project)
 {
-    BX_UNUSED_1(project);
+    if (project->isPlaying()) {
+        project->markUserCameraOverride();
+    }
     camera->setPerspective(value);
     camera->update();
     project->resetAllModelEdges();
@@ -3833,7 +3835,6 @@ ImGuiWindow::drawViewportParameterBox(Project *project)
         ImGui::PopItemWidth();
     }
     else {
-        const bool playing = project->isPlaying();
         ICamera *camera = project->activeCamera();
         ImGui::PushItemWidth(width * 0.2f);
         ImGui::TextUnformatted(tr("nanoem.gui.viewport.parameter.camera.look-at"));
@@ -3841,8 +3842,8 @@ ImGuiWindow::drawViewportParameterBox(Project *project)
         ImGui::SameLine();
         ImGui::PushItemWidth(width * 0.3f);
         Vector3 lookAt(camera->lookAt());
-        if (handleDragFloat3("##viewport.camera.look-at", glm::value_ptr(lookAt), !playing, kTranslationStepFactor, 0,
-                0, "%.2f", ImGuiSliderFlags_None)) {
+        if (handleDragFloat3("##viewport.camera.look-at", glm::value_ptr(lookAt), true, kTranslationStepFactor, 0, 0,
+                "%.2f", ImGuiSliderFlags_None)) {
             setCameraLookAt(lookAt, camera, project);
         }
         if (handleVectorValueState(m_cameraLookAtVectorValueState)) {
@@ -3856,8 +3857,8 @@ ImGuiWindow::drawViewportParameterBox(Project *project)
         ImGui::SameLine();
         ImGui::PushItemWidth(width * 0.3f);
         Vector3 angle(glm::degrees(camera->angle()));
-        if (handleDragFloat3("##viewport.camera.angle", glm::value_ptr(angle), !playing, kOrientationStepFactor, -180,
-                180, "%.1f", ImGuiSliderFlags_None)) {
+        if (handleDragFloat3("##viewport.camera.angle", glm::value_ptr(angle), true, kOrientationStepFactor, -180, 180,
+                "%.1f", ImGuiSliderFlags_None)) {
             setCameraAngle(angle, camera, project);
         }
         if (handleVectorValueState(m_cameraAngleVectorValueState)) {
@@ -3871,8 +3872,8 @@ ImGuiWindow::drawViewportParameterBox(Project *project)
         ImGui::PushItemWidth(width * 0.2f);
         ImGui::SameLine();
         nanoem_f32_t distance(camera->distance());
-        if (handleDragFloat(
-                "##viewport.camera.distance", &distance, !playing, 1.0f, 1, 100000.0f, "%.1f", ImGuiSliderFlags_None)) {
+        if (handleDragFloat("##viewport.camera.distance", &distance, true, 1.0f, 1, 100000.0f, "%.1f",
+                ImGuiSliderFlags_None)) {
             setCameraDistance(distance, camera, project);
         }
         if (handleVectorValueState(m_cameraDistanceVectorValueState)) {
@@ -4247,19 +4248,23 @@ ImGuiWindow::drawCameraPanel(const ImVec2 &panelSize, Project *project)
     ImGui::Separator();
     ImGui::Spacing();
     bool buttonEnabled = !project->isPlaying();
-    if (handleTranslatedButton("nanoem.gui.panel.camera.reset", -1, buttonEnabled)) {
+    /* nanoem-cn: camera view operations (reset/perspective/FOV) stay available while playing, as MMD does */
+    if (handleTranslatedButton("nanoem.gui.panel.camera.reset", -1, true)) {
         activeCamera->reset();
         activeCamera->update();
         project->resetAllModelEdges();
+        if (project->isPlaying()) {
+            project->markUserCameraOverride();
+        }
     }
     bool perspective = activeCamera->isPerspective();
-    if (handleCheckBox(tr("nanoem.gui.panel.camera.perspective"), &perspective, buttonEnabled)) {
+    if (handleCheckBox(tr("nanoem.gui.panel.camera.perspective"), &perspective, true)) {
         setCameraPerspective(perspective, activeCamera, project);
     }
     ImGui::PushItemWidth(-1);
     int fov = activeCamera->fov();
     if (handleSliderInt(
-            "##fov", &fov, buttonEnabled, 1, 135, tr("nanoem.gui.panel.camera.fov.format"), ImGuiSliderFlags_None)) {
+            "##fov", &fov, true, 1, 135, tr("nanoem.gui.panel.camera.fov.format"), ImGuiSliderFlags_None)) {
         setCameraFov(static_cast<nanoem_f32_t>(fov), activeCamera, project);
     }
     if (handleVectorValueState(m_cameraFovVectorValueState)) {
@@ -4645,25 +4650,27 @@ ImGuiWindow::drawViewPanel(const ImVec2 &panelSize, Project *project)
     ImGui::Spacing();
     ICamera *camera = project->activeCamera();
     bool buttonEnabled = !project->isPlaying();
-    if (handleTranslatedButton("nanoem.gui.panel.view.front", ImGui::GetContentRegionAvail().x * 0.5f, buttonEnabled)) {
+    /* nanoem-cn: view angle presets stay available while playing, as MMD does */
+    const bool presetEnabled = true;
+    if (handleTranslatedButton("nanoem.gui.panel.view.front", ImGui::GetContentRegionAvail().x * 0.5f, presetEnabled)) {
         setCameraAngle(Vector3(0), camera, project);
     }
     ImGui::SameLine();
-    if (handleTranslatedButton("nanoem.gui.panel.view.back", ImGui::GetContentRegionAvail().x, buttonEnabled)) {
+    if (handleTranslatedButton("nanoem.gui.panel.view.back", ImGui::GetContentRegionAvail().x, presetEnabled)) {
         setCameraAngle(Vector3(0, 180, 0), camera, project);
     }
-    if (handleTranslatedButton("nanoem.gui.panel.view.up", ImGui::GetContentRegionAvail().x * 0.5f, buttonEnabled)) {
+    if (handleTranslatedButton("nanoem.gui.panel.view.up", ImGui::GetContentRegionAvail().x * 0.5f, presetEnabled)) {
         setCameraAngle(Vector3(90, 0, 0), camera, project);
     }
     ImGui::SameLine();
-    if (handleTranslatedButton("nanoem.gui.panel.view.left", ImGui::GetContentRegionAvail().x, buttonEnabled)) {
+    if (handleTranslatedButton("nanoem.gui.panel.view.left", ImGui::GetContentRegionAvail().x, presetEnabled)) {
         setCameraAngle(Vector3(0, -90, 0), camera, project);
     }
-    if (handleTranslatedButton("nanoem.gui.panel.view.right", ImGui::GetContentRegionAvail().x * 0.5f, buttonEnabled)) {
+    if (handleTranslatedButton("nanoem.gui.panel.view.right", ImGui::GetContentRegionAvail().x * 0.5f, presetEnabled)) {
         setCameraAngle(Vector3(0, 90, 0), camera, project);
     }
     ImGui::SameLine();
-    if (handleTranslatedButton("nanoem.gui.panel.view.bottom", ImGui::GetContentRegionAvail().x, buttonEnabled)) {
+    if (handleTranslatedButton("nanoem.gui.panel.view.bottom", ImGui::GetContentRegionAvail().x, presetEnabled)) {
         setCameraAngle(Vector3(-90, 0, 0), camera, project);
     }
     const ICamera::FollowingType followingType = camera->followingType();

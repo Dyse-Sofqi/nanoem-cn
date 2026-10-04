@@ -217,6 +217,9 @@ BaseDraggingObjectState::updateCameraAngle(const Vector2SI32 &delta)
          * vertical drag keeps the scene following the drag (pitch keeps upstream sign) */
         camera->setAngle(glm::radians(glm::degrees(camera->angle()) + Vector3(delta.y, -delta.x, 0)));
         camera->update();
+        if (project->isPlaying()) {
+            project->markUserCameraOverride();
+        }
     }
 }
 
@@ -229,9 +232,10 @@ BaseDraggingObjectState::setType(IState::Type value)
 bool
 BaseDraggingObjectState::canUpdateCameraAngle() const NANOEM_DECL_NOEXCEPT
 {
+    /* nanoem-cn: keep camera orbiting available while playing, as MMD does */
     bool canUpdate = m_canUpdateAngle;
     if (const Project *project = m_stateControllerPtr->currentProject()) {
-        canUpdate &= !(m_applicationPtr->hasModalDialog() || project->audioPlayer()->isPlaying());
+        canUpdate &= !m_applicationPtr->hasModalDialog();
     }
     return canUpdate;
 }
@@ -347,8 +351,16 @@ DraggingBoneState::onPress(const Vector3SI32 &logicalScaleCursorPosition, Error 
     internal::IDraggingState *draggingState = nullptr;
     if (Project *project = m_stateControllerPtr->currentProject()) {
         Model *model = project->activeModel();
-        if (!model || project->isPlaying()) {
+        if (!model) {
             /* do nothing */
+        }
+        /* nanoem-cn: while playing only camera view handles stay interactive, as MMD does */
+        else if (project->isPlaying()) {
+            if (project->intersectsTransformHandle(logicalScaleCursorPosition, rectangleType) &&
+                (rectangleType == Project::kRectangleCameraLookAt ||
+                    rectangleType == Project::kRectangleCameraZoom)) {
+                draggingState = createTransformHandleDraggingState(rectangleType, logicalScaleCursorPosition, project);
+            }
         }
         else if (project->intersectsTransformHandle(logicalScaleCursorPosition, rectangleType)) {
             draggingState = createTransformHandleDraggingState(rectangleType, logicalScaleCursorPosition, project);
@@ -572,8 +584,8 @@ DraggingCameraState::onPress(const Vector3SI32 &logicalScaleCursorPosition, Erro
     BX_UNUSED_1(error);
     Project::RectangleType rectangleType = Project::kRectangleTypeMaxEnum;
     Project *project = m_stateControllerPtr->currentProject();
-    if (project && !project->isPlaying() &&
-        project->intersectsTransformHandle(logicalScaleCursorPosition, rectangleType)) {
+    /* nanoem-cn: all transform handles are camera operations here, so they stay available while playing */
+    if (project && project->intersectsTransformHandle(logicalScaleCursorPosition, rectangleType)) {
         internal::IDraggingState *draggingState =
             createTransformHandleDraggingState(rectangleType, logicalScaleCursorPosition, project);
         setDraggingState(draggingState, logicalScaleCursorPosition);
@@ -898,7 +910,14 @@ BaseSelectionState::onPress(const Vector3SI32 &logicalScaleCursorPosition, Error
     if (Project *project = m_stateControllerPtr->currentProject()) {
         Project::RectangleType rectangleType;
         if (project->isPlaying()) {
-            /* do nothing */
+            /* nanoem-cn: while playing only camera view handles stay interactive, as MMD does */
+            if (project->intersectsTransformHandle(logicalScaleCursorPosition, rectangleType) &&
+                (rectangleType == Project::kRectangleCameraLookAt ||
+                    rectangleType == Project::kRectangleCameraZoom)) {
+                internal::IDraggingState *draggingState =
+                    createTransformHandleDraggingState(rectangleType, logicalScaleCursorPosition, project);
+                setDraggingState(draggingState, logicalScaleCursorPosition);
+            }
         }
         else if (project->intersectsTransformHandle(logicalScaleCursorPosition, rectangleType)) {
             internal::IDraggingState *draggingState =
@@ -2034,8 +2053,8 @@ void
 StateController::handlePointerScroll(const Vector3SI32 &logicalScaleCursorPosition, const Vector2SI32 &delta)
 {
     if (Project *project = currentProject()) {
-        if (intersectsViewportLayoutRect(project, logicalScaleCursorPosition) && !project->audioPlayer()->isPlaying() &&
-            delta.y != 0) {
+        /* nanoem-cn: keep wheel zoom available while playing, as MMD does */
+        if (intersectsViewportLayoutRect(project, logicalScaleCursorPosition) && delta.y != 0) {
             ICamera *camera = project->activeCamera();
             /* nanoem-cn: MMD-style convention -- wheel up zooms in (camera distance decreases) */
             camera->setDistance(
@@ -2043,6 +2062,9 @@ StateController::handlePointerScroll(const Vector3SI32 &logicalScaleCursorPositi
             camera->update();
             if (project->editingMode() != Project::kEditingModeSelect) {
                 project->resetAllModelEdges();
+            }
+            if (project->isPlaying()) {
+                project->markUserCameraOverride();
             }
         }
         project->setLastScrollDelta(delta);

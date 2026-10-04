@@ -100,6 +100,9 @@ DraggingCameraState::distance() const NANOEM_DECL_NOEXCEPT
 void
 DraggingCameraState::updateLastCursorPosition(const Vector2 &logicalCursorPosition, const Vector3 &delta)
 {
+    if (m_project->isPlaying()) {
+        m_project->markUserCameraOverride();
+    }
     m_lastPressedCursorPosition = logicalCursorPosition;
     m_accumulatedPositionDelta += delta;
 }

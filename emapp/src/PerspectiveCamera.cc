@@ -258,6 +258,30 @@ PerspectiveCamera::synchronizeParameters(const Motion *motion, const nanoem_fram
             setPerspective(nanoemMotionCameraKeyframeIsPerspectiveView(prevKeyframe) != 0);
             synchronizeOutsideParent(prevKeyframe);
         }
+        /* nanoem-cn: MMD-style clamp -- hold the boundary keyframe when the frame lies outside
+         * the camera motion range instead of resetting to the initial pose */
+        else if (prevKeyframe || nextKeyframe) {
+            const nanoem_motion_camera_keyframe_t *boundaryKeyframe = prevKeyframe ? prevKeyframe : nextKeyframe;
+            setLookAt(glm::make_vec3(nanoemMotionCameraKeyframeGetLookAt(boundaryKeyframe)));
+            setAngle(glm::make_vec3(nanoemMotionCameraKeyframeGetAngle(boundaryKeyframe)));
+            setFov(nanoemMotionCameraKeyframeGetFov(boundaryKeyframe));
+            setDistance(nanoemMotionCameraKeyframeGetDistance(boundaryKeyframe) * kDistanceFactor);
+            setPerspective(nanoemMotionCameraKeyframeIsPerspectiveView(boundaryKeyframe) != 0);
+            for (int i = 0; i < int(BX_COUNTOF(m_bezierControlPoints)); i++) {
+                nanoem_motion_camera_keyframe_interpolation_type_t type =
+                    nanoem_motion_camera_keyframe_interpolation_type_t(i);
+                if (nanoemMotionCameraKeyframeIsLinearInterpolation(boundaryKeyframe, type)) {
+                    m_bezierControlPoints[i] = kDefaultBezierControlPoint;
+                    m_isLinearInterpolation[i] = true;
+                }
+                else {
+                    m_bezierControlPoints[i] =
+                        glm::make_vec4(nanoemMotionCameraKeyframeGetInterpolation(boundaryKeyframe, type));
+                    m_isLinearInterpolation[i] = false;
+                }
+            }
+            synchronizeOutsideParent(boundaryKeyframe);
+        }
     }
 }
 

@@ -42,6 +42,9 @@ BaseCameraVectorValueState::camera() const NANOEM_DECL_NOEXCEPT
 void
 BaseCameraVectorValueState::update()
 {
+    if (m_project->isPlaying()) {
+        m_project->markUserCameraOverride();
+    }
     m_camera->update();
     m_project->resetAllModelEdges();
 }

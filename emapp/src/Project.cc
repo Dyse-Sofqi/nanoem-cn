@@ -1278,6 +1278,7 @@ Project::Project(const Injector &injector)
     , m_actualFPS(0)
     , m_actionSequence(0)
     , m_active(false)
+    , m_isUserCameraOverridden(false)
 {
     const bool topLeft = sg::query_features().origin_top_left;
     Inline::clearZeroMemory(m_logicalScaleCursorPositions);
@@ -2562,6 +2563,8 @@ Project::play()
     const bool playable = !isModelEditingEnabled();
     if (playable) {
         const nanoem_frame_index_t durationAt = duration(), localFrameIndexAt = currentLocalFrameIndex();
+        /* nanoem-cn: a new playing session lets the camera motion drive the camera again */
+        resetUserCameraOverride();
         preparePlaying();
         synchronizeAllMotions(playingSegment().frameIndexFrom(), 0, PhysicsEngine::kSimulationTimingBefore);
         resetPhysicsSimulation();
@@ -2577,6 +2580,8 @@ Project::stop()
     m_audioPlayer->stop();
     m_audioPlayer->update();
     prepareStopping(false);
+    /* nanoem-cn: back to editing, camera motion sync applies again */
+    resetUserCameraOverride();
     synchronizeAllMotions(0, 0, PhysicsEngine::kSimulationTimingBefore);
     resetPhysicsSimulation();
     synchronizeAllMotions(0, 0, PhysicsEngine::kSimulationTimingAfter);
@@ -2591,9 +2596,19 @@ Project::pause(bool force)
 {
     if (force || isPlaying()) {
         const nanoem_frame_index_t lastDuration = duration(), lastLocalFrameIndex = currentLocalFrameIndex();
+        /* nanoem-cn: keep the current view on pause instead of restoring the pre-play camera, as MMD does */
+        const Vector3 pausedAngle(activeCamera()->angle()), pausedLookAt(activeCamera()->lookAt());
+        const nanoem_f32_t pausedDistance = activeCamera()->distance();
+        const int pausedFov = activeCamera()->fov();
         m_audioPlayer->pause();
         m_audioPlayer->update();
         prepareStopping(false);
+        ICamera *camera = activeCamera();
+        camera->setAngle(pausedAngle);
+        camera->setLookAt(pausedLookAt);
+        camera->setDistance(pausedDistance);
+        camera->setFov(pausedFov);
+        camera->update();
         eventPublisher()->publishPauseEvent(lastDuration, lastLocalFrameIndex);
     }
 }
@@ -2771,7 +2786,8 @@ Project::resetAllPasses()
 void
 Project::pushUndo(undo_command_t *command)
 {
-    nanoem_assert(!isPlaying(), "must not be called while playing");
+    /* nanoem-cn: camera edits are allowed while playing (MMD-style), so undo pushes are
+     * silently dropped instead of asserting */
     if (!isPlaying()) {
         undoStackPushCommand(undoStack(), command);
         eventPublisher()->publishPushUndoCommandEvent(command);
@@ -6808,6 +6824,14 @@ Project::destroyDetachedEffect(Effect *effect)
 void
 Project::synchronizeCamera(nanoem_frame_index_t frameIndex, nanoem_f32_t amount)
 {
+    /* nanoem-cn: MMD-style -- an empty camera motion must never overwrite the user's free
+     * camera (upstream reset the camera to its initial pose on every seek) */
+    nanoem_rsize_t numCameraKeyframes = 0;
+    nanoemMotionGetAllCameraKeyframeObjects(m_cameraMotionPtr->data(), &numCameraKeyframes);
+    if (numCameraKeyframes == 0 || m_isUserCameraOverridden) {
+        m_camera->setDirty(false);
+        return;
+    }
     static const Vector3 kCamraDirection(-1, 1, 1);
     PerspectiveCamera camera0(this), camera1(this);
     camera0.synchronizeParameters(m_cameraMotionPtr, frameIndex);
@@ -6833,6 +6857,24 @@ Project::synchronizeCamera(nanoem_frame_index_t frameIndex, nanoem_f32_t amount)
     }
     m_camera->update();
     m_camera->setDirty(false);
+}
+
+void
+Project::markUserCameraOverride()
+{
+    m_isUserCameraOverridden = true;
+}
+
+void
+Project::resetUserCameraOverride()
+{
+    m_isUserCameraOverridden = false;
+}
+
+bool
+Project::isUserCameraOverrideEnabled() const NANOEM_DECL_NOEXCEPT
+{
+    return m_isUserCameraOverridden;
 }
 
 void
@@ -7243,6 +7285,18 @@ Project::preparePlaying()
 {
     setInputTextFocus(false);
     saveState(m_lastSaveState);
+    /* nanoem-cn: playback switches the active camera to the global one -- carry the current
+     * view over so the viewport does not jump when pressing play, as MMD does */
+    ICamera *camera = activeCamera();
+    if (camera != globalCamera()) {
+        const PerspectiveCamera &c = m_lastSaveState->m_camera;
+        camera = globalCamera();
+        camera->setAngle(c.angle());
+        camera->setLookAt(c.lookAt());
+        camera->setDistance(c.distance());
+        camera->setFov(c.fov());
+        camera->update();
+    }
     setActiveModel(nullptr);
     setActiveAccessory(nullptr);
     const nanoem_frame_index_t from = playingSegment().frameIndexFrom();
@@ -7482,10 +7536,21 @@ Project::continuesPlaying()
     bool playing = true;
     nanoem_frame_index_t frameIndex = currentLocalFrameIndex();
     if (m_audioPlayer->isFinished() || frameIndex >= m_playingSegment.frameIndexTo(duration())) {
+        /* nanoem-cn: keep the adjusted view across loop wraps instead of restoring the
+         * pre-play camera on every loop, as MMD does */
+        const Vector3 loopAngle(activeCamera()->angle()), loopLookAt(activeCamera()->lookAt());
+        const nanoem_f32_t loopDistance = activeCamera()->distance();
+        const int loopFov = activeCamera()->fov();
         stop();
         if (isLoopEnabled()) {
             internalSeek(0);
             play();
+            ICamera *camera = activeCamera();
+            camera->setAngle(loopAngle);
+            camera->setLookAt(loopLookAt);
+            camera->setDistance(loopDistance);
+            camera->setFov(loopFov);
+            camera->update();
         }
         else {
             playing = false;
