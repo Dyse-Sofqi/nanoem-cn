@@ -257,7 +257,8 @@ MainWindow::menuHandle() noexcept
 void
 MainWindow::clearTitle()
 {
-    SetWindowTextW(m_windowHandle, L"nanoem");
+    /* nanoem-cn: build marker so the running build is identifiable from the title bar */
+    SetWindowTextW(m_windowHandle, L"nanoem-cn 20261005b");
 }
 
 void
@@ -266,7 +267,7 @@ MainWindow::setTitle(const URI &fileURI)
     wchar_t title[256];
     MutableWideString ws;
     StringUtils::getWideCharString(fileURI.lastPathComponentConstString(), ws);
-    swprintf_s(title, L"%s - nanoem", ws.data());
+    swprintf_s(title, L"%s - nanoem-cn 20261005b", ws.data());
     SetWindowTextW(m_windowHandle, title);
 }
 
